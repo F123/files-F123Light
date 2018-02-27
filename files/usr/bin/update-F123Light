@@ -45,12 +45,12 @@ done
 echo $(gettext "Updating configuration and other files...")
 
 # Clone the F123Light git repository. We need its system and user files, which are stored in build/files.
-git clone -q https://github.com/F123/F123Light.git /tmp/F123Light
+git clone -q https://github.com/F123/files-F123Light.git /tmp/F123Light
 
  # Copy in the files. All files are to be copied for now, and then /etc/skel should be recopied to the user's $HOME.
 # This will only copy to the $HOME of the user running this update script.
 shopt -s dotglob
-sudo cp -R /tmp/F123Light/build/files/* /
+sudo cp -R /tmp/F123Light/files/* /
 cp -R /etc/skel/* $HOME
 
 # The temporary files downloaded from the F123Light git repository are no longer needed. Delete the clone.
