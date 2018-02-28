@@ -1,0 +1,3 @@
+browse the internet with Chromium,startx /usr/bin/chromium --enable-speech-dispatcher>&/dev/null
+browse the internet with Firefox,startx /usr/bin/kies_firefox>&/dev/null
+browse the internet with lynx,lynx
