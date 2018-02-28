@@ -53,21 +53,21 @@ shopt -s dotglob
 sudo cp -R /tmp/F123Light/files/* /
 
 # Kies menus are based on the system locale, so if something changes, links to old files need to be removed, and new links need to be made.
-rm -f /etc/skel/.kies/*txt
+sudo rm -f /etc/skel/.kies/*txt
 if test -d /etc/skel/.kies/$LANG; then
 	cd /etc/skel/.kies/$LANG
-	ln *txt ..
+	sudo ln *txt ..
 	cd $OLDPWD
-elif test -d $chroot/etc/skel/.kies/C; then
+elif test -d /etc/skel/.kies/C; then
 	cd /etc/skel/.kies/C
-	ln *txt ..
+	sudo ln *txt ..
 	cd $OLDPWD
 fi
 
 cp -R /etc/skel/* $HOME
 
 # The temporary files downloaded from the F123Light git repository are no longer needed. Delete the clone.
-rm -Rf /tmp/F123Light
+sudo rm -Rf /tmp/F123Light
 
 # Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
 # We will prompt for a keypress. Enter to reboot, escape to exit the script and return to the shell or calling script.
