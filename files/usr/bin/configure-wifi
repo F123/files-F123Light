@@ -42,13 +42,9 @@ while true; do
 	done
 	read -p "Which network would you like to use? " network
 	network=${networks[$((network-1))]}
-case $network in
-		1-100])
+	if (($network>0 && $network<$(({#networks[@]})))); then 
 			break
-		;;
-		*)
-		;;
-	esac
+	fi
 done
 
 read -s -p "Enter the password for ${network}. Just press the enter key if $network is unsecured. " pass
