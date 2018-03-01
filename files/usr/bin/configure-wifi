@@ -33,14 +33,23 @@ done
 IFS=$ifs
 
 # List the wireless networks in range and prompt for the one to configure.
-echo These are the wireless networks that can be found near you.
-listed=1
-for ESSID in ${networks[@]}; do
-	echo ${listed}.  $ESSID
-	listed=$(($listed+1))
-done
-read -p "Which network would you like to use? " network
-network=${networks[$((network-1))]}
+while true; do
+	echo These are the wireless networks that can be found near you.
+	listed=1
+	for ESSID in ${networks[@]}; do
+		echo ${listed}.  $ESSID
+		listed=$(($listed+1))
+	done
+	read -p "Which network would you like to use? " network
+	network=${networks[$((network-1))]}
+case network in
+		1-100])
+			break
+		;;
+		*)
+		;;
+	esac
+
 read -s -p "Enter the password for ${network}. Just press the enter key if $network is unsecured. " pass
 echo Connecting to ${network}...
 
