@@ -49,6 +49,7 @@ case network in
 		*)
 		;;
 	esac
+done
 
 read -s -p "Enter the password for ${network}. Just press the enter key if $network is unsecured. " pass
 echo Connecting to ${network}...
