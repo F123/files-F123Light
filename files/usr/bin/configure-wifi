@@ -42,7 +42,7 @@ while true; do
 	done
 	read -p "Which network would you like to use? " network
 	network=${networks[$((network-1))]}
-	if (($network>0 && $network<$((${#networks[@]}+1)))); then 
+	if ((network>0 && network<=listed)); then 
 			break
 	fi
 done
