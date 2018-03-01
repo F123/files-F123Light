@@ -41,7 +41,7 @@ while true; do
 		listed=$(($listed+1))
 	done
 	read -p "Which network would you like to use? " network
-	if ((network>0 && network<=listed)); then 
+	if ((network>0 && network<=listed-1)); then 
 		network=${networks[$((network-1))]}
 			break
 	fi
