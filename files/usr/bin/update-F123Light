@@ -38,7 +38,7 @@ packer -Syu --noedit --noconfirm >& /dev/null
 
 # There's no easy way to check versions of git packages without downloading them, so just update these whether they have new versions or not.
 echo $(gettext "Updating F123Light extra software...")
-for package in espeak-ng-git speech-dispatcher-git fenrir-git kies-git; do
+for package in bicon-git espeak-ng-git speech-dispatcher-git fenrir-git kies-git; do
 	packer -S $package --noedit --noconfirm >&/dev/null
 done
 
