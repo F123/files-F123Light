@@ -41,10 +41,10 @@ BLD='\033[1;30m'
 NC='\033[0m' # No Color
 
 function check_response { # response as parameter
-  printf "Continue to run script? [${BLD}Enter to continue, ${NC}/escape to stop. "
   ifs=$IFS
   unset IFS
   while true; do
+    printf "Continue to run script? [${BLD}Enter to continue, ${NC}escape to stop. "
     read -rs -N1 key
     printf "\n"
     case $key in
