@@ -88,7 +88,7 @@ function root_prompt {
 
 ################################
 # Start with informative message
-printf "${GRN}This script will install espeak-ng-git and MBROLA software with $voices voices.\n${NC}"
+printf "${GRN}This script will install MBROLA software with $voices voices.\n${NC}"
 printf "${GRN}You will need to enter ${BLD}your${GRN} password to install software.\n${NC}"
 
 # Check for answer and exit, if necessary
