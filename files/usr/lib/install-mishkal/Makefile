@@ -25,7 +25,6 @@
 
 # test it
 mishkal:
-	git clone https://github.com/linuxscout/mishkal 
 	echo "Install Mishkal arabic diacritizer "
 	mkdir -p /opt/mishkal/
 	chmod 777 -R /opt/mishkal
