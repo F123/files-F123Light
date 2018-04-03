@@ -22,7 +22,7 @@
 #
 #--code--
 
-cat <<< -end-of-text
+cat <<-endOfText
 	Welcome to the F123Light Operating System!
 
 	Since this is the first time you start your system, the following questions will allow you to easily configure things such as wireless access. For any questions which you do not know the answer for or would prefer to answer at another time, simply press the "Escape" key, also known as the "ESC" key. The "Escape" key is usually found at the top left corner of your keyboard.
@@ -40,16 +40,18 @@ cat <<< -end-of-text
 	For security reasons, we recommend that you start by changing the default passwords to something that is actually secret.
 
 	Start by changing the password you used to login. This password is also used for administration tasks such as configuring your wireless network.
-end-of-text
+endOfText
 passwd
 
-echo Now change the password of the administrator user called root. You usually won't need this password, but it does need to be memorable, as it will be used for recovery and other emergencies.
+echo Now change the password of the administrator user called root. You usually won\'t need this password, but it does need to be memorable, as it will be used for recovery and other emergencies.
 echo First enter the password you just set up for your login user. Then you will be prompted for the root password.
 sudo passwd
 
-echo In order to use the internet, you need to set up a connection.
-echo If you already plugged in a wire that is connected directly to a router or modem, you don't need to do anything here.
-echo However, if you don't have a wire connected, but want to use the internet, you can confiure the wireless network here.
+cat <<-endOfText
+	In order to use the internet, you need to set up a network connection.
+	If you already plugged in a wire that is connected directly to a router or modem, you don't need to do anything here.
+	However, if you don't have a wire connected, but want to use the internet, you can configure the wireless network here.
+endOfText
 ifs=$IFS
 unset IFS
 while true; do
@@ -70,7 +72,7 @@ done
 IFS=$ifs
 unset $ifs
 
-if test $(which install-mbrola; then
+if test $(which install-mbrola); then
 	echo The standard speech synthesizer on F123Light is eSpeak-NG, which is the voice you are hearing right now. However, other options exist and one of them is called MBROLA. Would you like to have MBROLA voices available to you?
 	ifs=$IFS
 	unset IFS
