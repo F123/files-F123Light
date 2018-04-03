@@ -94,3 +94,14 @@ if test $(which install-mbrola); then
 	IFS=$ifs
 	unset $ifs
 fi
+cat <<-endOfText
+	Firstboot is complete.
+	If you want to run this script again, just run
+	firstboot
+	at any time.
+	If you want to change your passwords again, run
+	change-passwords
+	To reconfigure the wireless network, run
+	configure-wifi
+endOfText
+sleep 6
