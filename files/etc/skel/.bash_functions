@@ -21,6 +21,18 @@
 #
 #--code--
 
+change-passwords () {
+	echo Changing passwords ...
+	echo Start by changing the password you used to login.
+	passwd
+
+	cat <<-endOfText
+		Now change the password of the administrator user called root. You usually won't need this password, but it does need to be memorable, as it will be used for recovery and other emergencies.
+		You can also change this password even if you have forgotten the root password.
+		First enter the password you just set up for your login user. Then you will be prompted for the root password.
+	sudo passwd
+}
+
 configure-wifi () {
 	# Runs the script to connect to a wireless network. Prompts for sudo privileges
 	sudo -p "Connecting to a wireless network requires administrator privileges. Please enter your password to continue. " /usr/bin/configure-wifi
