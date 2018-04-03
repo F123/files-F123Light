@@ -1,0 +1,94 @@
+#!/bin/bash
+# FirstBoot
+# A few preliminary steps that a user must take when boothing a new system for the first time
+#
+# Copyright 2018, F123 Consulting, <information@f123.org>
+# Copyright 2018, Kyle, <kyle@free2.ml>
+#
+# This is free software; you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 3, or (at your option) any later
+# version.
+#
+# This software is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this package; see the file COPYING.  If not, write to the Free
+# Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA.
+#
+#--code--
+
+cat <<< -end-of-text
+	Welcome to the F123Light Operating System!
+
+	Since this is the first time you start your system, the following questions will allow you to easily configure things such as wireless access. For any questions which you do not know the answer for or would prefer to answer at another time, simply press the "Escape" key, also known as the "ESC" key. The "Escape" key is usually found at the top left corner of your keyboard.
+
+	The screen reading software which is now reading this text for you is called Fenrir. Many of the commands you can use to control Fenrir start with a special key, which we can call the Fenrir key. On F123Light, the Fenrir key is the "Insert" key on your numeric keypad, which is the group of keys tipically found on the right of most full-size desktop keyboards.
+
+	For example, you can use "Fenrir+Up", in other words, press and hold the Insert key and then press the up arrow, if you want to increase volume. "Fenrir+Down" will decrease volume.
+
+	You can also use "Fenrir+Left" and "Fenrir+Right" to reduce and increase the speed at which Fenrir reads the screen to you.
+
+	To read by line, you can use the 7, 8, and 9 keys on your numeric keypad. Number 7 will read the previous line, 8 the current line, and 9 the next line.
+
+	You may explore these and other commands without causing any changes to the computer by entering Fenrir's learn mode by pressing "Fenrir+H". After entering this command, you can press any key combination you desire and the computer will describe its purpose. Once you press the "Escape" key, the screen will be active again and any key combination you press will actually work.
+
+	For security reasons, we recommend that you start by changing the default passwords to something that is actually secret.
+
+	Start by changing the password you used to login. This password is also used for administration tasks such as configuring your wireless network.
+end-of-text
+passwd
+
+echo Now change the password of the administrator user called root. You usually won't need this password, but it does need to be memorable, as it will be used for recovery and other emergencies.
+echo First enter the password you just set up for your login user. Then you will be prompted for the root password.
+sudo passwd
+
+echo In order to use the internet, you need to set up a connection.
+echo If you already plugged in a wire that is connected directly to a router or modem, you don't need to do anything here.
+echo However, if you don't have a wire connected, but want to use the internet, you can confiure the wireless network here.
+ifs=$IFS
+unset IFS
+while true; do
+	read -rs -N1 -p "$(gettext "Press enter to configure the wireless network, or escape to skip this step. ")" key
+	echo
+	case $key in
+		$'\n')
+			sudo configure-wifi
+			break
+		;;
+$'\e')
+			break
+		;;
+		*)
+		;;
+	esac
+done
+IFS=$ifs
+unset $ifs
+
+if test $(which install-mbrola; then
+	echo The standard speech synthesizer on F123Light is eSpeak-NG, which is the voice you are hearing right now. However, other options exist and one of them is called MBROLA. Would you like to have MBROLA voices available to you?
+	ifs=$IFS
+	unset IFS
+	while true; do
+		read -rs -N1 -p "$(gettext "Press enter to install the MBROLA voices, or escape to skip this step. ")" key
+		echo
+		case $key in
+			$'\n')
+				sudo install-mbrola
+				break
+			;;
+	$'\e')
+				break
+			;;
+			*)
+			;;
+		esac
+	done
+	IFS=$ifs
+	unset $ifs
+fi
