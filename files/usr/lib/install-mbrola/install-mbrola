@@ -46,7 +46,7 @@ function check_response { # response as parameter
   ifs=$IFS
   unset IFS
   while true; do
-    printf "Continue to run script? [${BLD}Enter to continue, ${NC}escape to stop. "
+    printf "Continue to run script? ${BLD}Enter${NC} to continue, ${BLD}escape${NC} to stop. "
     read -rs -N1 key
     printf "\n"
     case $key in
