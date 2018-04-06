@@ -1,5 +1,4 @@
 #!/bin/bash
-# mbrola-setup.sh
 #
 # This script automates setup of latest mbrola binary and Mbrola voices
 # on Arch for x86 and armv7l/armv7h (Raspberry Pi) compatible hardware.
@@ -26,103 +25,7 @@
 # Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 #
-###### Configuration #####
-# List of space separated voices here
-voices="br1 br2 br3 br4"
-# (just suffix, prefix 'mbrola-voices-' for package name will be added automatically):
-# List of all vailable voices can be viewed at:
-# https://aur.archlinux.org/packages/?O=0&K=mbrola-voices
-##########################
-# Colorize output
-RED='\033[0;31m'
-GRN='\033[0;32m'
-YEL='\033[1;33m'
-BLD='\033[1;30m'
-NC='\033[0m' # No Color
-
-function check_response { # response as parameter
-  ifs=$IFS
-  unset IFS
-  while true; do
-    printf "Continue to run script? [${BLD}Enter to continue, ${NC}escape to stop. "
-    read -rs -N1 key
-    printf "\n"
-    case $key in
-      $'\n')
-        break
-      ;;
-      $'\e')
-        IFS=$ifs
-        exit 0
-      ;;
-      *)
-      ;;
-    esac
-  done
-  IFS=$ifs
-  unset $ifs
-}
-
-# Check status of mandatory operations and exit on failure
-function check_error_exit {
-  if [[ $? -ne 0 ]]; then
-    printf "${RED}There was an error, when installing package.\n${NC}"
-    printf "Please, check entered password or network connectivity and try to run this script again!\n${NC}"
-    exit 1
-  fi
-}
-
-# Check status of optional operations and continue
-function check_error {
-  if [[ $? -ne 0 ]]; then
-    printf "${YEL}==> WARNING: ${BLD}There was some error, which MAY be OK...\n${NC}"
-    return 1
-  else
-    return 0
-  fi
-}
-
-function root_prompt {
-  printf "${GRN}Going to root user${NC}. Enter ${BLD}'root'${NC} "
-}
-
-################################
-# Start with informative message
-printf "${GRN}This script will install MBROLA software with $voices voices.\n${NC}"
-printf "${GRN}You will need to enter ${BLD}your${GRN} password to install software.\n${NC}"
-
-# Check for answer and exit, if necessary
-check_response response
-
-# Get the password to allow root access
-sudo -p 'Enter your password to continue ' printf "\n"
-
-# Update repositories
-printf "Updating package databases...\n"
-sudo pacman -Sy >&/dev/null
-check_error_exit
-
-# Install MBROLA binary package from unsupported user archive
-printf "Installing MBROLA binary package...\n"
-cd /tmp
-git clone https://odo.lv/git/aur/mbrola >& /dev/null #Ignore git errors, just check status
-check_error
-cd mbrola
-makepkg --noconfirm >& /dev/null
-sudo pacman --noconfirm -U --needed mbrola-*.xz >& /dev/null
-check_error_exit
-
-# Install MBROLA voices from supported user archives
-for i in $voices; do
-  printf "Installing ${BLD}${i}${NC} MBROLA voice...\n"
-  cd /tmp
-  git clone https://aur.archlinux.org/mbrola-voices-${i}.git >& /dev/null
-  if [[ $(check_error) == 1 ]];then continue; fi
-  cd mbrola-voices-$i
-  makepkg --noconfirm >& /dev/null
-  if [[ $(check_error) == 1 ]];then continue; fi
-  sudo pacman --noconfirm -U --needed mbrola-voices-${i}*-any.pkg.tar.xz >& /dev/null
-  check_error
-done
-
-printf "\n${BLD}Setup is finished${NC}\nPlease review output to check for errors.\n"
+# Get source dir, considering script can be executed from different places
+cdir=$(dirname "$0")
+# Install necessary MBROLA voices
+$cdir/install-mbrola "br1 br2 br3 br4"
