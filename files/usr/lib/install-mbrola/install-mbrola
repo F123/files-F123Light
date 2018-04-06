@@ -1,5 +1,4 @@
 #!/bin/bash
-# mbrola-setup.sh
 #
 # This script automates setup of latest mbrola binary and Mbrola voices
 # on Arch for x86 and armv7l/armv7h (Raspberry Pi) compatible hardware.
