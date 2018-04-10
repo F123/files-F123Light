@@ -61,7 +61,7 @@ function check_response { # response as parameter
     esac
   done
   IFS=$ifs
-  unset $ifs
+  unset ifs
 }
 
 # Check status of mandatory operations and exit on failure
