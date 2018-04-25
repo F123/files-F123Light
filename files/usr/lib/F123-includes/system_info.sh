@@ -1,7 +1,6 @@
 #!/bin/bash
 # System Info
-# Gathers information about the machine to provide a seemless transition from
-one script to another.
+# Gathers information about the machine to provide a seemless transition from one script to another.
 #
 # Copyright 2018, F123 Consulting, <information@f123.org>
 # Copyright 2018, Storm Dragon, <storm_dragon@linux-a11y.org>
