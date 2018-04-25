@@ -1,7 +1,6 @@
 #!/bin/bash
-# System Info
-# Gathers information about the machine to provide a seemless transition from
-one script to another.
+# Script Functions
+# Useful stuff for getting keypresses, or doing repetitive taks
 #
 # Copyright 2018, F123 Consulting, <information@f123.org>
 # Copyright 2018, Storm Dragon, <storm_dragon@linux-a11y.org>
@@ -23,7 +22,23 @@ one script to another.
 #
 #--code--
 
-# Get the coluns androws of the "screen"
-cols=$(tput cols)
-lines=$(tput lines)
-
+get_keypress() {
+    # Returnes the pressed key.
+    # There arre two ways to use this function.
+    # first way, get_keypress variableName
+    # Second way variableName="$(get_keypress)"
+    # This variable name is long to absolutely minimize possibility of collision.
+local getKeypressFunctionReturnVariable=$1
+local returnedKeypress
+# Unset IFS to capture any key that is pressed.
+ifs="$IFS"
+unset IFS
+read -sn1 returnedKeypress
+# Restore IFS
+IFS="$ifs"
+if [[ $getKeypressFunctionReturnVariable ]]; then
+eval $getKeypressFunctionReturnVariable="'$returnedKeypress'"
+else
+echo "$returnedKeypress"
+fi
+}
