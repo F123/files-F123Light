@@ -28,7 +28,7 @@ ip link set up dev wlan0
 ifs=$IFS
 IFS=$'\n'
 for ESSID in $(iwlist wlan0 scan | grep ESSID | cut -d\" -f2); do
-	networks+=($ESSID)
+	networks+=("$ESSID")
 done
 IFS=$ifs
 
