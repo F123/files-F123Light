@@ -28,6 +28,15 @@ for i in /usr/lib/F123-includes/*.sh ; do
     source $i
 done
 
+# Link scripts to /usr/bin to make the available as executables.
+link_scripts() {
+    for i in /usr/lib/F123-wrappers/*.* ; do
+        if ! [[ -e /usr/bin/${i##*/} ]]; then
+            ln -s $i /usr/bin/${i##*/}
+        fi
+    done
+}
+
 # Welcome message
 welcome_message() {
 # Welcomes the user.
@@ -121,6 +130,7 @@ EOF
 # Call the functions that make up this script.
 # I tried to make the functions descriptive as to what they do.
 # See comments in the functions themselves for details
+link_scripts
 welcome_message
 get_internet
 setup_complete
