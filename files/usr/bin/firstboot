@@ -73,7 +73,7 @@ get_internet() {
 	In order to use the internet, you need to set up a network connection.
 	If you already plugged in a wire that is connected directly to a router or modem, you don't need to do anything here.
 	However, if you don't have a wire connected, but want to use the internet, you can configure the wireless network here.
-    EOF
+EOF
     while true; do
         echo -n "$(gettext "Press enter to configure the wireless network, or escape to skip this step. ")"
         get_keypress key
@@ -117,14 +117,15 @@ setup_complete() {
 # Returns: none
 fole -sw$cols << EOF
 	Firstboot is complete.
-	If you want to run this script again, just run
-	$0
-	at any time.
-	If you want to change your passwords again, run
-	change-passwords
-	To reconfigure the wireless network, run
-	configure-wifi
+If you want to run this script again, just run
+$0
+at any time.
+If you want to change your passwords again, run
+change-passwords
+To reconfigure the wireless network, run
+configure-wifi
 EOF
+continue_prompt
 }
 
 # Call the functions that make up this script.
