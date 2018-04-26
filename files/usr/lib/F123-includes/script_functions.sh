@@ -61,17 +61,34 @@ get_keypress() {
     # first way, get_keypress variableName
     # Second way variableName="$(get_keypress)"
     # This variable name is long to absolutely minimize possibility of collision.
-local getKeypressFunctionReturnVariable=$1
-local returnedKeypress
-# Unset IFS to capture any key that is pressed.
-ifs="$IFS"
-unset IFS
-read -sn1 returnedKeypress
-# Restore IFS
-IFS="$ifs"
-if [[ $getKeypressFunctionReturnVariable ]]; then
-eval $getKeypressFunctionReturnVariable="'$returnedKeypress'"
-else
-echo "$returnedKeypress"
-fi
+    local getKeypressFunctionReturnVariable=$1
+    local returnedKeypress
+    # Unset IFS to capture any key that is pressed.
+    local ifs="$IFS"
+    unset IFS
+    read -sn1 returnedKeypress
+    # Restore IFS
+    IFS="$ifs"
+    if [[ $getKeypressFunctionReturnVariable ]]; then
+        eval $getKeypressFunctionReturnVariable="'$returnedKeypress'"
+    else
+        echo "$returnedKeypress"
+    fi
 }
+
+continue_prompt() {
+    # Returnes: none
+    # Optional args: Prompt text
+    local promptText="${1:-When you understand and are ready, press any key to continue:}"
+    local continue
+    echo "$promptText "
+    # Unset IFS to capture any key that is pressed.
+    local ifs="$IFS"
+    unset IFS
+    read -sn1 continue
+    # Restore IFS
+    IFS="$ifs"
+}
+
+continue_prompt
+continue_prompt "Cut the chatter and pick up a platter!"
