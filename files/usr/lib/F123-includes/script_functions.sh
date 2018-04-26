@@ -89,6 +89,3 @@ continue_prompt() {
     # Restore IFS
     IFS="$ifs"
 }
-
-continue_prompt
-continue_prompt "Cut the chatter and pick up a platter!"
