@@ -28,6 +28,12 @@ lines=$(tput lines)
 # Settings to improve accessibility of dialog.
 DIALOGOPTS='--no-lines --visit-items'
 
+msgbox() {
+# Returns: None
+# Shows the provided message on the screen with an ok button.
+dialog --msgbox "$*" $lines $cols
+}
+
 yesno() {
     # Returns: Yes or No
     # Called  in if $(yesno) == "Yes"
