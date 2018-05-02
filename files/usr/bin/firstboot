@@ -78,7 +78,7 @@ EOF
         echo -n "$(gettext "Press enter to configure the wireless network, or escape to skip this step. ")"
         get_keypress key
         echo
-        case $key in
+        case "$key" in
             $'\n')
                 sudo configure-wifi
                 break
@@ -115,7 +115,7 @@ setup_complete() {
 # Left aligned so the text is prpperly formated when output to the screen.
 # Args: none
 # Returns: none
-fole -sw$cols << EOF
+fold -sw$cols << EOF
 	Firstboot is complete.
 If you want to run this script again, just run
 $0
