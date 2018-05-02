@@ -125,6 +125,8 @@ change-passwords
 To reconfigure the wireless network, run
 configure-wifi
 EOF
+# remove the firstboot file
+rm ~/.firstboot
 continue_prompt
 }
 
