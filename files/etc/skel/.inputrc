@@ -1,0 +1,10 @@
+# Reload changes with control+x followed by control+r
+set echo-control-characters off
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+#Macros
+# Alt+f1 load text menu
+# Bug in bash and keymapping means we have to bind a nonexistant key, then map alt+f1 to it.
+"\201":"\C-k \C-u/usr/bin/kies\n"
+"\eOP":'$'"\201"
