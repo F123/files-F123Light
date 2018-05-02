@@ -19,12 +19,12 @@ if [[ -n "$DISPLAY" ]]; then
     export BROWSER=firefox
     export EDITOR=pluma
 else
-    export BROWSER=elinks
+    export BROWSER=w3m
     export EDITOR=nano
 fi
 GPG_TTY=$(tty)
 export GPG_TTYA
-export PAGER=more
+export PAGER=w3m
 # Don't put commands prefixed with space, or duplicate commands in history
 export HISTCONTROL=ignoreboth
 
