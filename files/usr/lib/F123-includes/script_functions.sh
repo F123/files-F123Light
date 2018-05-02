@@ -26,7 +26,7 @@
 cols=$(tput cols)
 lines=$(tput lines)
 # Settings to improve accessibility of dialog.
-DIALOGOPTS='--no-lines --visit-items'
+export DIALOGOPTS='--no-lines --visit-items'
 
 msgbox() {
 # Returns: None
