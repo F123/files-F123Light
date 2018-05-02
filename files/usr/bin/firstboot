@@ -75,15 +75,15 @@ get_internet() {
 	However, if you don't have a wire connected, but want to use the internet, you can configure the wireless network here.
 EOF
     while true; do
-        echo -n "$(gettext "Press enter to configure the wireless network, or escape to skip this step. ")"
-        get_keypress key
+        #echo -n "$(gettext "Press enter to configure the wireless network, or escape to skip this step. ")"
+        key="$(yesno "$(gettext "Would you like to configure the wireless network now?")")"
         echo
         case "$key" in
-            $'\n')
+            "Yes")
                 sudo configure-wifi
                 break
             ;;
-            $'\e')
+            "No")
                 break
             ;;
         esac
