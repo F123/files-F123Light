@@ -100,7 +100,6 @@ radiolist() {
     # Args: minimum group 2, multiples of 2, "tag" "choice"
     # returns: single selected tag
     # The description with & as the first letter is checked by default (optional).
-      local menuList
     if [[ $((${#@} / 2)) -gt $((lines - 5)) ]]; then
         local optionSize=$((lines - 5))
     else
