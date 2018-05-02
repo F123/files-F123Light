@@ -67,6 +67,64 @@ get_keypress() {
     fi
 }
 
+checklist() {
+    # Args: minimum group 2, multiples of 2, "tag" "choice"
+    # returns: all selected tags
+    # Descriptions with & as the first letter are checked by default (optional).
+      local menuList
+    if [[ $((${#@} / 2)) -gt $((lines - 5)) ]]; then
+        local optionSize=$((lines - 5))
+    else
+        local optionSize=$((${#@} / 2))
+    fi
+    ifs="$IFS"
+    IFS=$'\n'
+    dialog --backtitle "Choose Multiselection: Please choose all that apply by arrowing to the option and pressing space. Checked items will have an asterisk (*)." \
+        --checklist "Please select the applicable options" $lines $cols $optionSize $(
+        while [[ $# -gt 0 ]]; do
+            echo "$1"
+            shift
+            if [[ "${1::1}" == "&" ]]; then
+            echo "${1:1}"
+            echo "ON"
+        else
+            echo "$1"
+            echo "OFF"
+        fi
+        shift
+    done) --stdout
+    IFS="$ifs"
+}
+
+radiolist() {
+    # Args: minimum group 2, multiples of 2, "tag" "choice"
+    # returns: single selected tag
+    # The description with & as the first letter is checked by default (optional).
+      local menuList
+    if [[ $((${#@} / 2)) -gt $((lines - 5)) ]]; then
+        local optionSize=$((lines - 5))
+    else
+        local optionSize=$((${#@} / 2))
+    fi
+    ifs="$IFS"
+    IFS=$'\n'
+        dialog --backtitle "Choose Single selection: Please choose one by arrowing to the option and pressing space. The checked item will have an asterisk (*)." \
+        --radiolist "Please select one" $lines $cols $optionSize $(
+        while [[ $# -gt 0 ]]; do
+            echo "$1"
+            shift
+            if [[ "${1::1}" == "&" ]]; then
+                echo "${1:1}"
+                echo "ON"
+            else
+                echo "$1"
+                echo "OFF"
+            fi
+            shift
+        done) --stdout
+    IFS="$ifs"
+}
+
 continue_prompt() {
     # Returnes: none
     # Optional args: Prompt text
