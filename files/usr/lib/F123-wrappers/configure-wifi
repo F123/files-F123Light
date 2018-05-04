@@ -47,7 +47,7 @@ while true; do
 	fi
 done
 
-read -s -p "Enter the password for ${network}. Just press the enter key if $network is unsecured. " pass
+pass="$("Enter the password for ${network}. Just press the enter key if $network is unsecured.")"
 echo Connecting to ${network}...
 
 # Create the systemd network file if it doesn't already exist
