@@ -36,7 +36,7 @@ IFS=$ifs
 while true; do
 	echo These are the wireless networks that can be found near you.
 	listed=1
-	for ESSID in ${networks[@]}; do
+	for ESSID in "${networks[@]}"; do
 		echo ${listed}.  $ESSID
 		listed=$(($listed+1))
 	done
