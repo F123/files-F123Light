@@ -31,8 +31,8 @@ done
 # Link scripts to /usr/bin to make the available as executables.
 link_scripts() {
     for i in /usr/lib/F123-wrappers/*.* ; do
-        if ! [[ -e /usr/bin/${i##*/} ]]; then
-            ln -s $i /usr/bin/${i##*/}
+        if ! [[ -e "/usr/bin/$(basename "$i" .sh)" ]]; then
+            sudo ln -s "$i" "/usr/bin/$(basename "$i" .sh)"
         fi
     done
 }
