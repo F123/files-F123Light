@@ -113,6 +113,22 @@ checklist() {
     IFS="$ifs"
 }
 
+menulist() {
+    # Args: minimum group 2, multiples of 2, "tag" "choice"
+    # returns: selected tag
+      local menuList
+    if [[ $((${#@} / 2)) -gt $((lines - 5)) ]]; then
+        local optionSize=$((lines - 5))
+    else
+        local optionSize=$((${#@} / 2))
+    fi
+    ifs="$IFS"
+    IFS=$'\n'
+    dialog --backtitle "$(gettext "Use the up and down arrow keys to find the option you want, then press enter to select it.")" \
+        --menu "$(gettext "Please select one")" $lines $cols $optionSize $@ --stdout
+    IFS="$ifs"
+}
+
 radiolist() {
     # Args: minimum group 2, multiples of 2, "tag" "choice"
     # returns: single selected tag
