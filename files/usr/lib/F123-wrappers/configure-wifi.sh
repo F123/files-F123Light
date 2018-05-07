@@ -22,7 +22,7 @@
 #--code--
 
 # Source the F123 script functions
-. /usr/lib/f123-includes/script_functions.sh
+. /usr/lib/F123-includes/script_functions.sh
 
 # Be sure the wireless interface is up.
 ip link set up dev wlan0
