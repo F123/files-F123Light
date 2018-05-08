@@ -33,7 +33,7 @@ inputbox() {
     # Args 1, Instructions for box.
     # args: 2 initial text (optional)
     dialog --backtitle "$(gettext "Enter text and press enter.")" \
-        --inputbox "$(gettext "$1")" $lines $cols "$2" --stdout
+        --inputbox "$(gettext "$1")" $((lines - 5)) $cols "$2" --stdout
 }
 
 passwordbox() {
@@ -41,13 +41,13 @@ passwordbox() {
     # Args 1, Instructions for box.
     # args: 2 initial text (optional)
     dialog --backtitle "$(gettext "Enter text and press enter.")" \
-        --passwordbox "$(gettext "$1")" $lines $cols "$2" --stdout
+        --passwordbox "$(gettext "$1")" $((lines - 5)) $cols "$2" --stdout
 }
 
 msgbox() {
 # Returns: None
 # Shows the provided message on the screen with an ok button.
-dialog --msgbox "$(gettext "$*")" $lines $cols
+dialog --msgbox "$(gettext "$*")" $((lines - 5)) $cols
 }
 
 yesno() {
@@ -55,7 +55,7 @@ yesno() {
     # Args: Question to user.
     # Called  in if $(yesno) == "Yes"
     # Or variable=$(yesno)
-    dialog --yesno "$(gettext "$*")" $lines $cols --stdout
+    dialog --yesno "$(gettext "$*")" $((lines - 5)) $cols --stdout
     if [[ $? -eq 0 ]]; then
         echo "Yes"
     else
@@ -97,7 +97,7 @@ checklist() {
     ifs="$IFS"
     IFS=$'\n'
     dialog --backtitle "$(gettext "Choose Multiselection: Please choose all that apply by arrowing to the option and pressing space. Checked items will have an asterisk (*).")" \
-        --checklist "$(gettext "Please select the applicable options")" $lines $cols $optionSize $(
+        --checklist "$(gettext "Please select the applicable options")" $((lines - 5)) $cols $optionSize $(
         while [[ $# -gt 0 ]]; do
             echo "$1"
             shift
@@ -125,7 +125,7 @@ menulist() {
     ifs="$IFS"
     IFS=$'\n'
     dialog --backtitle "$(gettext "Use the up and down arrow keys to find the option you want, then press enter to select it.")" \
-        --menu "$(gettext "Please select one")" $lines $cols $optionSize $@ --stdout
+        --menu "$(gettext "Please select one")" $((lines - 5)) $cols $optionSize $@ --stdout
     IFS="$ifs"
 }
 
@@ -141,7 +141,7 @@ radiolist() {
     ifs="$IFS"
     IFS=$'\n'
         dialog --backtitle "$(gettext "Choose Single selection: Please choose one by arrowing to the option and pressing space. The checked item will have an asterisk (*).")" \
-        --radiolist "$(gettext "Please select one")" $lines $cols $optionSize $(
+        --radiolist "$(gettext "Please select one")" $((lines - 5)) $cols $optionSize $(
         while [[ $# -gt 0 ]]; do
             echo "$1"
             shift
