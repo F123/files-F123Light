@@ -31,5 +31,5 @@ export HISTCONTROL=ignoreboth
 # Run a firstboot script, only if this is the top level shell, only if ~/.firstboot exists and only if a firstboot script exists.
 test $SHLVL -eq 1 && test -e ${HOME}/.firstboot && test -e $(which firstboot) && firstboot
 
-# Load a Kies menu, but only if this is the first shell
-test $SHLVL -eq 1 && kiesmenu
+# Load Pdmenu , but only if this is the first shell
+test $SHLVL -eq 1 && pdmenu -squn
