@@ -8,7 +8,7 @@
 title:Welcome to F123
 
 # Define the main menu.
-menu:main:F123 Main Menu:Please make a seclection
+menu:main:F123 Main Menu:Please make a selection
 	show:_Games Menu..::games
 	show:_Internet menu..::internet
 	show:_System Configuration Menu..::configuration
