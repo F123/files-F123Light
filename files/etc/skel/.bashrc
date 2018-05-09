@@ -32,4 +32,4 @@ export HISTCONTROL=ignoreboth
 test $SHLVL -eq 1 && test -e ${HOME}/.firstboot && test -e $(which firstboot) && firstboot
 
 # Load Pdmenu , but only if this is the first shell
-test $SHLVL -eq 1 && pdmenu -squn
+test $SHLVL -eq 1 && pdmenu -un
