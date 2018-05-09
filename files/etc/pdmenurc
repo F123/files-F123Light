@@ -28,7 +28,7 @@ menu:games:Games:Command line games
 	exec:_Boggle (Not screen reader friendly)::clear;boggle
 	exec:_Canfield (Not screen reader friendly)::clear;canfield
 	exec:_Cribbage (Not screen reader friendly)::clear;cribbage
-	exec:_Go Fish::clear;go-fish
+	exec:_Go Fish:pause:clear;go-fish
 	exec:_Gomoku::clear;gomoku
 	exec:_Hangman::clear;hangman
 	exec:_Hunt (Not screen reader friendly)::clear;hunt
