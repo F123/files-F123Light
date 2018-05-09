@@ -13,6 +13,8 @@ menu:main:F123 Main Menu:Please make a seclection
 	show:_Internet menu..::internet
 	show:_System Configuration Menu..::configuration
 	nop
+	show:_Power Options..::power
+	nop
 	exit:_Exit
 
 
@@ -57,5 +59,11 @@ menu:internet:Internet:Internet programs
 menu:configuration:Configuration:System Configuration
 	exec:_Email Configuration::clear;fleacollar
 	exec:_Wireless Internet Connection::clear;configre-wifi
+	nop
+	exit:_Main menu..
+
+menu:power:Power:Shutdown or restart your computer
+	exec:_Power Off::poweroff
+	exec:_Restart::reboot
 	nop
 	exit:_Main menu..
