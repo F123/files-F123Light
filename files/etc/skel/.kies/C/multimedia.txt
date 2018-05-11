@@ -1,1 +1,0 @@
-play an audio file,pickafile -b -- mpv -really-quiet

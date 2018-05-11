@@ -1,3 +1,0 @@
-pidgin messaging,startx pidgin >& /dev/null
-manage mail with Alpine,alpine
-manage mail with Thunderbird,kies_thunderbird_startx

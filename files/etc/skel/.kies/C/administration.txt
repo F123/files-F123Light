@@ -1,4 +1,0 @@
-show software image version,kies_show_version
-add an item to administration ,kiesadd administration.txt
-change your password,passwd 
-change the root password,sudo passwd root

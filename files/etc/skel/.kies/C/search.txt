@@ -1,3 +1,0 @@
-look up a word in the dictionary,kies_lookup
-look up a term in the online encyclopedia,kies_wiki_search_online
-search the Internet,kies_search_google

@@ -1,7 +1,0 @@
-use calculator,calc
-unit conversions,kies units
-extract various archives,kies extract_archives
-manage your files,kies files
-convert pdf to html,pickafile kies_pdfconvert
-audio file conversions,kies audio_conversions
-Read text from an image,startx lios >& /dev/null

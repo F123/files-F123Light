@@ -1,3 +1,0 @@
-edit text files,kies edit
-LibreOffice Writer,pickafile -b kies_lo_writer_wrapper
-LibreOffice Calc,pickafile -b kies_lo_calc_wrapper
