@@ -13,7 +13,7 @@ shopt -s autocd
 [[ -f ".bash_functions" ]] && . .bash_functions
 #Invironment variables
 export QT_ACCESSIBILITY=1
-PS1='[\u@\h \W] \$ '
+PS1='\$ '
 export DIALOGOPTS='--no-lines --visit-items'
 if [[ -n "$DISPLAY" ]]; then
     export BROWSER=firefox
