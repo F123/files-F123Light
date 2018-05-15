@@ -55,7 +55,7 @@ yesno() {
     # Args: Question to user.
     # Called  in if $(yesno) == "Yes"
     # Or variable=$(yesno)
-    dialog --yesno "$(gettext "$*")" $((lines - 5)) $cols --stdout
+    dialog --backtitle "Press enter to continue or escape to abort." --yesno "$(gettext "$*")" $((lines - 5)) $cols --stdout
     if [[ $? -eq 0 ]]; then
         echo "Yes"
     else
