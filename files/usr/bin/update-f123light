@@ -29,7 +29,7 @@ export TEXTDOMAINDIR=/usr/share/locale
 set -e
 
 # Import the standard F123Light functions
-. /usr/lib/F123Light-includes/script_functions.sh
+. /usr/lib/F123-includes/script_functions.sh
 
 # Due to the nature of system updates, this script may ask for the user's password more than once.
 # Try to minimize user fears with a friendly message.
