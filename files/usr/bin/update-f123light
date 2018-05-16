@@ -41,7 +41,7 @@ sudo pacman -Syu --noconfirm >& /dev/null
 
 # Since any git version could appear to the system as a downgrade, update these packages whether an update appears to be  available or not.
 infobox "Updating F123Light extra software..."
-sudo pacman -S bicon-git espeak-ng-git speech-dispatcher-git fenrir-git pdmenu-git --noconfirm
+sudo pacman -S bicon-git espeak-ng-extended-git speech-dispatcher-git fenrir-git pdmenu-git --noconfirm >& /dev/null
 
 infobox "Updating configuration and other files..."
 
