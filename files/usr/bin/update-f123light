@@ -21,28 +21,29 @@
 #--code--
 
 # the gettext essentials
-export TEXTDOMAIN=update-F123Light
+export TEXTDOMAIN=update-f123light
 export TEXTDOMAINDIR=/usr/share/locale
 
 . gettext.sh
 
 set -e
 
+# Import the standard F123Light functions
+. /usr/lib/F123Light-includes/script_functions.sh
+
 # Due to the nature of system updates, this script may ask for the user's password more than once.
 # Try to minimize user fears with a friendly message.
-echo $(gettext "You are updating your system, which may ask you for your password more than once. Don't be alarmed; this is perfectly normal.")
+msgbox "You are updating your system, which may ask you for your password more than once. Don't be alarmed; this is perfectly normal. Press the enter key to continue."
 
 # Update all packages on the system. Start with ALARM provided packages and versioned AUR packages.
-echo $(gettext "Updating system software...")
-packer -Syu --noedit --noconfirm >& /dev/null
+infobox "Updating system software..."
+sudo pacman -Syu --noconfirm >& /dev/null
 
-# There's no easy way to check versions of git packages without downloading them, so just update these whether they have new versions or not.
-echo $(gettext "Updating F123Light extra software...")
-for package in bicon-git espeak-ng-git speech-dispatcher-git fenrir-git kies-git; do
-	packer -S $package --noedit --noconfirm >&/dev/null
-done
+# Since any git version could appear to the system as a downgrade, update these packages whether an update appears to be  available or not.
+infobox "Updating F123Light extra software..."
+sudo pacman -S bicon-git espeak-ng-git speech-dispatcher-git fenrir-git pdmenu-git --noconfirm
 
-echo $(gettext "Updating configuration and other files...")
+infobox "Updating configuration and other files..."
 
 # Cleanup just in case there is a temporary file repository left behind from a previous update.
 sudo rm -Rf /tmp/F123Light
@@ -54,19 +55,6 @@ git clone -q https://github.com/F123/files-F123Light.git /tmp/F123Light
 # This will only copy to the $HOME of the user running this update script.
 shopt -s dotglob
 sudo cp -R /tmp/F123Light/files/* /
-
-# Kies menus are based on the system locale, so if something changes, links to old files need to be removed, and new links need to be made.
-sudo rm -f /etc/skel/.kies/*txt
-if test -d /etc/skel/.kies/$LANG; then
-	cd /etc/skel/.kies/$LANG
-	sudo ln *txt ..
-	cd $OLDPWD
-elif test -d /etc/skel/.kies/C; then
-	cd /etc/skel/.kies/C
-	sudo ln *txt ..
-	cd $OLDPWD
-fi
-
 cp -R /etc/skel/* $HOME
 
 # The temporary files downloaded from the F123Light git repository are no longer needed. Delete the clone.
@@ -74,24 +62,12 @@ sudo rm -Rf /tmp/F123Light
 
 # Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
 # We will prompt for a keypress. Enter to reboot, escape to exit the script and return to the shell or calling script.
-echo $(gettext "Your system has been updated. Although usually not necessary, it may help to reboot. Would you like to do this now?")
-OLDIFS=$IFS
-unset IFS
-while true; do
-	read -rs -N1 -p "$(gettext "Press enter to reboot, or escape to finish the update without rebooting. ")" key
-	echo
+key=$(Yesno "Your system has been updated. Although usually not necessary, it may help to reboot. Would you like to do this now? Press enter to reboot, or escape to finish the update without rebooting.")
 	case $key in
-		$'\n')
+		"Yes")
 			systemctl reboot
-			break
 		;;
-$'\e')
-			break
-		;;
-		*)
+"No")
 		;;
 	esac
-done
-IFS=$OLDIFS
-unset $OLDIFS
-echo $(gettext "Update complete.")
+infobox "Update complete."
