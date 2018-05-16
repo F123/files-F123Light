@@ -50,6 +50,12 @@ msgbox() {
 dialog --msgbox "$(gettext "$*")" $((lines - 5)) $cols
 }
 
+infobox() {
+# Returns: None
+# Shows the provided message on the screen with no buttons.
+dialog --infobox "$(gettext "$*")" $lines $cols
+}
+
 yesno() {
     # Returns: Yes or No
     # Args: Question to user.
