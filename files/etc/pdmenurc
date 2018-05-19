@@ -58,7 +58,7 @@ menu:internet:Internet:Internet programs
 # submenu for configuring the computer.
 menu:configuration:Configuration:System Configuration
 	exec:_Email Configuration::clear;fleacollar
-	exec:_Wireless Internet Connection::clear;configre-wifi
+	exec:_Wireless Internet Connection::clear;sudo configure-wifi
 	nop
 	exit:_Main menu..
 
