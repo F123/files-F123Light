@@ -57,7 +57,7 @@ if (which "$1" 2> /dev/null > /dev/null)
                    exit 1
                    fi
                    
-test -z $DISPLAY&&echo Usage: startx $@&&exit
+test -z $DISPLAY&&echo Usage: startx $0 $@&&exit
 jwm&
 orca&
 $@
