@@ -60,4 +60,4 @@ if (which "$1" 2> /dev/null > /dev/null)
 test -z $DISPLAY&&echo Usage: startx $@&&exit
 jwm&
 orca&
-firefox $@
+$@
