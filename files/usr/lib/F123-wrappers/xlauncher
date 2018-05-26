@@ -1,11 +1,8 @@
 #!/bin/bash
+# xlauncher
+#
 # Copyright 2018, F123 Consulting, <information@f123.org>
-# Copyright 2018, Kyle, <kyle@free2.ml>
-# Based on code taken from the Kies menu system
-# (C) copyright Meraka Institute,  
-# Meraka, CSIR, P.O. Box 395, Pretoria, 0001, South Africa  
-# EMAIL: [Willem van der Walt](wvdwalt@csir.co.za)  
-# Web: http://www.meraka.org.za
+# Copyright 2018, Storm Dragon, <storm_dragon@linux-a11y.org>
 #
 # This is free software; you can redistribute it and/or modify it under the
 # terms of the GNU General Public License as published by the Free
@@ -22,42 +19,22 @@
 # Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 #
-#--code--
-check_for() {
-if (which "$1" 2> /dev/null > /dev/null)
-  then ok=0
-    else ok=1
-      fi
-      }
-      check_for startx
-      if (test $ok -eq 1)
-       then echo $0 "requires xinit which is not installed"
-            read -t8 -p "press enter to exit" wag
-                   exit 1
-                   fi
-                   
-      check_for jwm
-      if (test $ok -eq 1)
-       then echo $0 "requires jwm which is not installed"
-            read -t8 -p "press enter to exit" wag
-                   exit 1
-                   fi
-                   
-                   check_for orca
-                   if (test $ok -eq 1)
-                    then echo $0 "requires orca which is not installed"
-                         read -t8 -p "press enter to exit" wag
-                                exit 1
-                                fi
-                                
-      check_for $1
-      if (test $ok -eq 1)
-       then echo $0 "requires $1 which is not installed"
-            read -t8 -p "press enter to exit" wag
-                   exit 1
-                   fi
-                   
-test -z $DISPLAY&&echo Usage: startx $@&&exit
+#--code-- 
+
+# Check for required programs
+for i in jwm orca startx ; do
+    command -v "$i" || {
+        echo "Please install $i and run $0 again."
+        exit 1
+    }
+done
+
+if [[ $# == 0 ]]; then
+    echo "Usage $0 \"program name\" optional arguments."
+    exit 1
+fi
+
 jwm&
 orca&
-$@
+command "$1" $@
+exit 0
