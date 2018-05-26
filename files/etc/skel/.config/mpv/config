@@ -1,0 +1,6 @@
+# Write your default config options here!
+
+cache=1024
+volume-max=900
+ao=alsa
+framedrop=decoder+vo
