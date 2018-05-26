@@ -22,7 +22,7 @@
 #--code--
                                                                                 
 # Load F123 includes
-for i in ../F123-includes/* ; do
+for i in /usr/lib/F123-includes/* ; do
     source $i
 done
 
