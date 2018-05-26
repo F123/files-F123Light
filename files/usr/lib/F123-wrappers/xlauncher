@@ -34,7 +34,7 @@ if [[ $# == 0 ]]; then
     exit 1
 fi
 
-jwm&
-orca&
+command jwm &
+command orca &
 command "$1" $@
 exit 0
