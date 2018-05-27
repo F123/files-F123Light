@@ -53,6 +53,12 @@ menu:internet:Internet:Internet programs
 	exec:_E-Mail::clear;mutt
 	exec:_Basic Web Browser::clear;w3m -v
 	exec:_Full Web Browser::clear;test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/addScreenToIgnoreList.py;startx /usr/lib/F123-wrappers/xlauncher firefox;test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/removeScreenFromIgnoreList.py
+	group:_Mumble Voice Chat
+        exec::clear
+        exec::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/addScreenToIgnoreList.py
+        exec::startx /usr/lib/F123-wrappers/xlauncher mumble
+        exec::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/removeScreenFromIgnoreList.py
+    endgroup
 	nop
 	exit:_Main menu..
 
