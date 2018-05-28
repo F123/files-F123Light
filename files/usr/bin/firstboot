@@ -101,13 +101,24 @@ configure_mbrola() {
     fi
 }
 
-# create vconsole.conf
+# Load the correct custom keymap at boot if present
 # This should cause the right keymap to load on startup making the right alt key usable.
-write_vconsole() {
-    # use the first part of LANG, before the .
-    case "${LANG%%.*}" in
-        "en_US") echo 'KEYMAP=us'  | sudo tee /etc/vconsole.conf &> /dev/null;;
-    esac
+load_keymap() {
+    if [[ -f "/usr/share/kbd/keymaps/i386/qwerty${LANG%%.*}.map.gz" ]]; then
+    sudo cat << EOF > "/etc/systemd/system/keymap.service"
+[Unit]
+After=getty@tty1.service
+Description=Load keymap
+                                                                                
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/loadkeys ${LANG%%.*}
+                                                                                
+[Install]
+WantedBy=multi-user.target
+EOF
+    fi
+    sudo systemctl enable --now keymap.service
 }
 
 setup_complete() {
@@ -133,7 +144,7 @@ continue_prompt
 # Call the functions that make up this script.
 # I tried to make the functions descriptive as to what they do.
 # See comments in the functions themselves for details
-[[ -e ~/.firstboot ]] && write_vconsole
+[[ -e ~/.firstboot ]] && load_keymap
 welcome_message
 get_internet
 setup_complete
