@@ -28,15 +28,6 @@ for i in /usr/lib/F123-includes/*.sh ; do
     source $i
 done
 
-# Link scripts to /usr/bin to make the available as executables.
-link_scripts() {
-    for i in /usr/lib/F123-wrappers/*.* ; do
-        if ! [[ -e "/usr/bin/$(basename "$i" .sh)" ]]; then
-            sudo ln -s "$i" "/usr/bin/$(basename "$i" .sh)"
-        fi
-    done
-}
-
 # Welcome message
 welcome_message() {
 # Welcomes the user.
@@ -110,6 +101,15 @@ configure_mbrola() {
     fi
 }
 
+# create vconsole.conf
+# This should cause the right keymap to load on startup making the right alt key usable.
+write_vconsole() {
+    # use the first part of LANG, before the .
+    case "${LANG%%.*}" in
+        "en_US") echo 'KEYMAP=us'  | sudo tee /etc/vconsole.conf &> /dev/null;;
+    esac
+}
+
 setup_complete() {
 # Final comments
 # Left aligned so the text is prpperly formated when output to the screen.
@@ -133,7 +133,7 @@ continue_prompt
 # Call the functions that make up this script.
 # I tried to make the functions descriptive as to what they do.
 # See comments in the functions themselves for details
-link_scripts
+[[ -e ~/.firstboot ]] && write_vconsole
 welcome_message
 get_internet
 setup_complete
