@@ -65,6 +65,8 @@ menu:internet:Internet:Internet programs
 # submenu for configuring the computer.
 menu:configuration:Configuration:System Configuration
 	exec:_Email Configuration::clear;fleacollar
+	exec:_Password Configuration::clear;/usr/lib/F123-wrappers/configure-passwords
+	exec:_Password Configuration::clear;/usr/lib/F123-wrappers/configure-security
 	exec:_Wireless Internet Connection::clear;configre-wifi
 	nop
 	exit:_Main menu..
