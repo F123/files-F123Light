@@ -105,7 +105,7 @@ configure_mbrola() {
 # This should cause the right keymap to load on startup making the right alt key usable.
 load_keymap() {
     if [[ -f "/usr/share/kbd/keymaps/i386/qwerty/${LANG%%.*}.map.gz" ]]; then
-    sudo cat << EOF > "/etc/systemd/system/keymap.service"
+    cat << EOF | sudo tee "/etc/systemd/system/keymap.service" &> /dev/null
 [Unit]
 After=getty@tty1.service
 Description=Load keymap
@@ -118,7 +118,7 @@ ExecStart=/usr/bin/loadkeys ${LANG%%.*}
 WantedBy=multi-user.target
 EOF
     fi
-    sudo systemctl enable --now keymap.service
+    sudo systemctl enable --now keymap.service &> /dev/null
 }
 
 setup_complete() {
