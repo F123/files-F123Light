@@ -104,7 +104,7 @@ configure_mbrola() {
 # Load the correct custom keymap at boot if present
 # This should cause the right keymap to load on startup making the right alt key usable.
 load_keymap() {
-    if [[ -f "/usr/share/kbd/keymaps/i386/qwerty${LANG%%.*}.map.gz" ]]; then
+    if [[ -f "/usr/share/kbd/keymaps/i386/qwerty/${LANG%%.*}.map.gz" ]]; then
     sudo cat << EOF > "/etc/systemd/system/keymap.service"
 [Unit]
 After=getty@tty1.service
@@ -144,7 +144,7 @@ continue_prompt
 # Call the functions that make up this script.
 # I tried to make the functions descriptive as to what they do.
 # See comments in the functions themselves for details
-[[ -e ~/.firstboot ]] && load_keymap
+[[ -f ~/.firstboot ]] && load_keymap
 welcome_message
 get_internet
 [[ "$(yesno "Do you want to change passwords for users of this system?")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-passwords
