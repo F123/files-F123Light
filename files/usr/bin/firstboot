@@ -147,6 +147,6 @@ continue_prompt
 [[ -f ~/.firstboot ]] && load_keymap
 welcome_message
 get_internet
-[[ "$(yesno "Do you want to change passwords for users of this system?")" == "Yes" ]] && /usr/lib/F123-wrappers/change-passwords
-[[ "$(yesno "Do you want to change security options for this system?")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-security
+[[ "$(yesno "Do you want to change passwords for users of this system?")" == "Yes" ]] && /usr/lib/F123-wrappers/change-passwords.sh
+[[ "$(yesno "Do you want to change security options for this system?")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-security.sh
 setup_complete
