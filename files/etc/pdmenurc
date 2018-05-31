@@ -67,7 +67,7 @@ menu:configuration:Configuration:System Configuration
 	exec:_Change Passwords::clear;/usr/lib/F123-wrappers/configure-passwords
 	exec:_Email Configuration::clear;fleacollar
 	exec:_Security Configuration::clear;/usr/lib/F123-wrappers/configure-security
-	exec:_Wireless Internet Connection::clear;configre-wifi
+	exec:_Wireless Internet Connection::clear;configure-wifi
 	nop
 	exit:_Main menu..
 
