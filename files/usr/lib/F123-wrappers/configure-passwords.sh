@@ -41,7 +41,7 @@ echo "$1:$passOne" | chpasswd
 }
 
 # Provide possibility for setting passwords using plain text and readline navigation.
-showPasswords="$(yesnow "Do you want speech feedback when setting passwords? This is a security risk as anyone looking at your screen can read your password, or if someone is listening, they will be able to hear what you are typing.")"
+showPasswords="$(yesno "Do you want speech feedback when setting passwords? This is a security risk as anyone looking at your screen can read your password, or if someone is listening, they will be able to hear what you are typing.")"
 
 # Set prompt for select menu
 PS3="Select account: "
