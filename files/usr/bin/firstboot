@@ -141,6 +141,8 @@ EOF
 continue_prompt
 }
 
+# Make sure basic xdg directory structure is in place:
+xdg-user-dirs-update
 # Call the functions that make up this script.
 # I tried to make the functions descriptive as to what they do.
 # See comments in the functions themselves for details
