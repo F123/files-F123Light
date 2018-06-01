@@ -12,6 +12,7 @@ menu:main:F123 Main Menu:Please make a selection
 	show:_Games Menu..::games
 	show:_Internet menu..::internet
 	show:_Media menu..::media
+	show:_Office menu..::office
 	show:_System Configuration Menu..::configuration
 	nop
 	show:_Power Options..::power
@@ -70,6 +71,52 @@ menu:internet:Internet:Internet programs
 
 menu:media:Media:Multi-media applications
 	exec:_Youtube (audio only)::youtube-viewer -novideo
+	group:Youtube (full _video)
+        exec:::clear
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/addScreenToIgnoreList.py
+        exec:::startx /usr/lib/F123-wrappers/xlauncher lxterminal -e youtube-viewer
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/removeScreenFromIgnoreList.py
+    endgroup
+	nop
+	exit:_Main menu..
+
+menu:office:Office:Word processing, calendar, etc
+	group:Database
+        exec:::clear
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/addScreenToIgnoreList.py
+        exec:::startx /usr/lib/F123-wrappers/xlauncher lobase
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/removeScreenFromIgnoreList.py
+    endgroup
+	group:Diagrams
+        exec:::clear
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/addScreenToIgnoreList.py
+        exec:::startx /usr/lib/F123-wrappers/xlauncher lodraw
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/removeScreenFromIgnoreList.py
+    endgroup
+	group:Formula Editor
+        exec:::clear
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/addScreenToIgnoreList.py
+        exec:::startx /usr/lib/F123-wrappers/xlauncher lomath
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/removeScreenFromIgnoreList.py
+    endgroup
+	group:Presentation
+        exec:::clear
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/addScreenToIgnoreList.py
+        exec:::startx /usr/lib/F123-wrappers/xlauncher loimpress
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/removeScreenFromIgnoreList.py
+    endgroup
+	group:Spreadsheet
+        exec:::clear
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/addScreenToIgnoreList.py
+        exec:::startx /usr/lib/F123-wrappers/xlauncher localc
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/removeScreenFromIgnoreList.py
+    endgroup
+	group:Word Processor
+        exec:::clear
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/addScreenToIgnoreList.py
+        exec:::startx /usr/lib/F123-wrappers/xlauncher lowriter
+        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/removeScreenFromIgnoreList.py
+    endgroup
 	nop
 	exit:_Main menu..
 
