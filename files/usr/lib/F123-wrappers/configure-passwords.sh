@@ -41,7 +41,7 @@ echo "$1:$passOne" | chpasswd
 }
 
 # Provide possibility for setting passwords using plain text and readline navigation.
-get_input showPasswords "Do you want speech feedback when setting passwords? This is a security risk as anyone looking at your screen can read your password, or if someone is listening, they will be able to hear what you are typing." yes -no
+showPasswords=$(yesnow "Do you want speech feedback when setting passwords? This is a security risk as anyone looking at your screen can read your password, or if someone is listening, they will be able to hear what you are typing.")"
 
 # Set prompt for select menu
 PS3="Select account: "
@@ -62,7 +62,7 @@ if [[ "$USER" != "$i" ]]; then
 sudo="sudo"
 fi
 # If we don't have to provide plain text, just let the system do it's thing.
-if [[ "$showPasswords" != "yes" ]]; then
+if [[ "$showPasswords" != "Yes" ]]; then
 echo "passwd $i"
 else
 set_password_with_text $i
