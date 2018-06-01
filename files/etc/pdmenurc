@@ -81,6 +81,8 @@ menu:media:Media:Multi-media applications
 	exit:_Main menu..
 
 menu:office:Office:Word processing, calendar, etc
+	exec:Text Editor::clear;${EDITOR:-nano}
+	nop:Office Suite
 	group:Database
         exec:::clear
         exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/addScreenToIgnoreList.py
