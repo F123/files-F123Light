@@ -1,5 +1,5 @@
 #!/bin/bash
-# change-passwords
+# configure-passwords
 #
 # Copyright 2018, F123 Consulting, <information@f123.org>
 # Copyright 2018, Storm Dragon, <storm_dragon@linux-a11y.org>
@@ -63,7 +63,7 @@ sudo="sudo"
 fi
 # If we don't have to provide plain text, just let the system do it's thing.
 if [[ "$showPasswords" != "Yes" ]]; then
-echo "passwd $i"
+passwd $i
 else
 set_password_with_text $i
 fi
