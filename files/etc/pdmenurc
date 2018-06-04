@@ -70,6 +70,8 @@ menu:internet:Internet:Internet programs
 	exit:_Main menu..
 
 menu:media:Media:Multi-media applications
+	exec:_CD Audio Ripper (ripit)::ripit
+	exec:_Music Player (cmus)::cmus
 	exec:_Youtube (audio only)::youtube-viewer -novideo
 	group:Youtube (full _video)
         exec:::clear
@@ -81,6 +83,8 @@ menu:media:Media:Multi-media applications
 	exit:_Main menu..
 
 menu:office:Office:Word processing, calendar, etc
+	exec:_Month Calendar:pause:clear;ncal
+	exec:_Year Calendar:pause:clear;ncal -y
 	exec:Text Editor::clear;${EDITOR:-nano}
 	nop:Office Suite
 	group:Database
