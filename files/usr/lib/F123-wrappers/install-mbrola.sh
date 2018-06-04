@@ -26,13 +26,51 @@
 # 02110-1301, USA.
 #
 ###### Configuration #####
-# Get list of voices from passed parameters
+# Build a list of available voices based on the system language
 # (just suffix, prefix 'mbrola-voices-' for package name will be added automatically):
-voices="$1"
-# (Take only first parameter, considering that other parameters/words could
-# be used for localized messages)
 # List of all vailable voices can be viewed at:
 # https://aur.archlinux.org/packages/?O=0&K=mbrola-voices
+case $LANG in
+	af_ZA.UTF-8)
+		voices="af1"
+	;;
+	ar_dz.UTF-8)
+		voices="ar1 ar2"
+	;;
+	de_DE.UTF-8)
+		voices="de1 de2 de3 de4 de5 de6 de7 de8"
+	;;
+	en_US.UTF-8)
+		voices="us1 us2 us3"
+	;;
+	es_ES.UTF-8)
+		voices="es1 es2 es3 es4"
+	;;
+	fr_FR.UTF-8)
+		voices="fr1 fr2 fr3 fr4 fr5 fr6 fr7"
+	;;
+	hi_IN)
+		voices="in1 in2"
+	;;
+	hu_HU.UTF-8)
+		voices="hu1"
+	;;
+	id_ID.UTF-8)
+		voices="id1"
+	;;
+	pl_PL.UTF-8)
+		voices="pl1"
+	;;
+	pt_BR.UTF-8)
+		voices="br1 br2 br3 br4"
+	;;
+	tr_TR.UTF-8)
+		voices="tr1 tr2"
+	;;
+	*)
+		echo No MBROLA voices are currently available for your language. && exit 0
+	;;
+esac
 ##########################
 # Colorize output
 RED='\033[0;31m'

@@ -1,5 +1,5 @@
 #!/bin/bash
-# change-passwords
+# configure-passwords
 #
 # Copyright 2018, F123 Consulting, <information@f123.org>
 # Copyright 2018, Storm Dragon, <storm_dragon@linux-a11y.org>
@@ -41,7 +41,7 @@ echo "$1:$passOne" | chpasswd
 }
 
 # Provide possibility for setting passwords using plain text and readline navigation.
-get_input showPasswords "Do you want speech feedback when setting passwords? This is a secruity risk as anyone looking at yor screen can read your password, or if someone is listening, they will be able to hear what you are typing." yes -no
+showPasswords="$(yesno "Do you want speech feedback when setting passwords? This is a security risk as anyone looking at your screen can read your password, or if someone is listening, they will be able to hear what you are typing.")"
 
 # Set prompt for select menu
 PS3="Select account: "
@@ -62,8 +62,8 @@ if [[ "$USER" != "$i" ]]; then
 sudo="sudo"
 fi
 # If we don't have to provide plain text, just let the system do it's thing.
-if [[ "$showPasswords" != "yes" ]]; then
-echo "passwd $i"
+if [[ "$showPasswords" != "Yes" ]]; then
+passwd $i
 else
 set_password_with_text $i
 fi

@@ -27,11 +27,11 @@ for i in /usr/lib/F123-includes/* ; do
 done
 
 disable_password() {
-    sudo echo "%wheel ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/f123.conf
+    echo "%wheel ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/f123
 }
 
 require_password() {
-    sudo echo "%wheel ALL=(ALL) ALL" | sudo tee /etc/sudoers.d/f123.conf
+    echo "%wheel ALL=(ALL) ALL" | sudo tee /etc/sudoers.d/f123
 }
 
 disable_autologin() {
@@ -39,7 +39,7 @@ disable_autologin() {
 }
 
 enable_autologin() {
-cat << EOF > "/etc/systemd/system/getty@tty1.service.d/override.conf"
+cat << EOF | sudo tee "/etc/systemd/system/getty@tty1.service.d/override.conf" &> /dev/null
 [Service]
 ExecStart=
 ExecStart=-/usr/bin/agetty --autologin $SUDO_USER --noclear %I $TERM

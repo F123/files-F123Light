@@ -28,15 +28,6 @@ for i in /usr/lib/F123-includes/*.sh ; do
     source $i
 done
 
-# Link scripts to /usr/bin to make the available as executables.
-link_scripts() {
-    for i in /usr/lib/F123-wrappers/*.* ; do
-        if ! [[ -e "/usr/bin/$(basename "$i" .sh)" ]]; then
-            sudo ln -s "$i" "/usr/bin/$(basename "$i" .sh)"
-        fi
-    done
-}
-
 # Welcome message
 welcome_message() {
 # Welcomes the user.
@@ -110,6 +101,26 @@ configure_mbrola() {
     fi
 }
 
+# Load the correct custom keymap at boot if present
+# This should cause the right keymap to load on startup making the right alt key usable.
+load_keymap() {
+    if [[ -f "/usr/share/kbd/keymaps/i386/qwerty/${LANG%%.*}.map.gz" ]]; then
+    cat << EOF | sudo tee "/etc/systemd/system/keymap.service" &> /dev/null
+[Unit]
+After=getty@tty1.service
+Description=Load keymap
+                                                                                
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/loadkeys ${LANG%%.*}
+                                                                                
+[Install]
+WantedBy=multi-user.target
+EOF
+    fi
+    sudo systemctl enable --now keymap.service &> /dev/null
+}
+
 setup_complete() {
 # Final comments
 # Left aligned so the text is prpperly formated when output to the screen.
@@ -130,10 +141,14 @@ EOF
 continue_prompt
 }
 
+# Make sure basic xdg directory structure is in place:
+xdg-user-dirs-update
 # Call the functions that make up this script.
 # I tried to make the functions descriptive as to what they do.
 # See comments in the functions themselves for details
-link_scripts
+[[ -f ~/.firstboot ]] && load_keymap
 welcome_message
 get_internet
+[[ "$(yesno "Do you want to change passwords for users of this system?")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-passwords.sh
+[[ "$(yesno "Do you want to change security options for this system?")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-security.sh
 setup_complete
