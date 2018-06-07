@@ -14,6 +14,7 @@ menu:main:F123 Main Menu:Please make a selection
 	show:_Media menu..::media
 	show:_Office menu..::office
 	show:_System Configuration Menu..::configuration
+	show:_Tools Menu..::tools
 	nop
 	show:_Power Options..::power
 	nop
@@ -56,15 +57,15 @@ menu:internet:Internet:Internet programs
 	exec:_Basic Web Browser (W3M)::clear;w3m -v
 	group:Full _Web browser (Firefox)
         exec:::clear
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher firefox
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 	group:_Mumble Voice Chat
         exec:::clear
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher mumble
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 	nop
 	exit:_Main menu..
@@ -75,9 +76,9 @@ menu:media:Media:Multi-media applications
 	exec:_Youtube (audio only)::youtube-viewer -novideo
 	group:Youtube (full _video)
         exec:::clear
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher lxterminal -e youtube-viewer
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 	nop
 	exit:_Main menu..
@@ -89,39 +90,39 @@ menu:office:Office:Word processing, calendar, etc
 	nop:Office Suite
 	group:Database
         exec:::clear
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher lobase
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 	group:Diagrams
         exec:::clear
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher lodraw
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 	group:Formula Editor
         exec:::clear
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher lomath
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 	group:Presentation
         exec:::clear
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher loimpress
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 	group:Spreadsheet
         exec:::clear
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher localc
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 	group:Word Processor
         exec:::clear
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher lowriter
-        exec:::test -d /usr/share/fenrirscreenreader && python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 	nop
 	exit:_Main menu..
@@ -132,6 +133,16 @@ menu:configuration:Configuration:System Configuration
 	exec:_Email Configuration::clear;fleacollar
 	exec:_Security Configuration::clear;/usr/lib/F123-wrappers/configure-security
 	exec:_Wireless Internet Connection::clear;sudo configure-wifi
+	nop
+	exit:_Main menu..
+
+menu:tools:Tools:System Tools
+	group:Bluetooth manager
+        exec:::clear
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::startx /usr/lib/F123-wrappers/xlauncher bluetooth-assistant
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+    endgroup
 	nop
 	exit:_Main menu..
 
