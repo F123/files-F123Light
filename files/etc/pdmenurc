@@ -140,7 +140,7 @@ menu:tools:Tools:System Tools
 	group:Bluetooth manager
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
-        exec:::startx /usr/lib/F123-wrappers/xlauncher bluetooth-assistant
+        exec:::startx /usr/lib/F123-wrappers/xlauncher blueman-assistant
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 exec:_Search:edit,pause:recoll -t ~Search for what? :~
