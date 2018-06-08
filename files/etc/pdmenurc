@@ -143,10 +143,11 @@ menu:tools:Tools:System Tools
         exec:::startx /usr/lib/F123-wrappers/xlauncher bluetooth-assistant
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
+exec:_Search:edit,pause:recoll -t ~Search for what? :~
 	nop
 	exit:_Main menu..
 
-menu:power:Power:Shutdown or restart your computer
+menu:power:Shutdown or Restart Your Computer:Shutdown or restart your computer
 	exec:_Power Off::poweroff
 	exec:_Restart::reboot
 	nop
