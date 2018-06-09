@@ -28,14 +28,17 @@ done
 
 disable_password() {
     echo "%wheel ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/f123
+    msgbox "Passwords are no longer required to perform administrative tasks."
 }
 
 require_password() {
     echo "%wheel ALL=(ALL) ALL" | sudo tee /etc/sudoers.d/f123
+    msgbox "Passwords are now required to perform administrative tasks."
 }
 
 disable_autologin() {
     sudo rm "/etc/systemd/system/getty@tty1.service.d/override.conf" 2> /dev/null
+    msgbox "You will need to enter username and password at login for this computer."
 }
 
 enable_autologin() {
@@ -45,6 +48,7 @@ ExecStart=
 ExecStart=-/usr/bin/agetty --autologin $SUDO_USER --noclear %I $TERM
 Type=idle
 EOF
+    msgbox "You no longer need to enter username and password at login for this computer."
 }
 
 while : ; do
