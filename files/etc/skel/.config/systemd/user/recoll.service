@@ -1,0 +1,11 @@
+[Unit]
+After=getty.service
+Description=launch the recoll file indexing real time daemon
+                                                                                
+[Service]
+Type=forking
+PIDFile=/home/%u/.recoll/index.pid
+ExecStart=/usr/bin/recollindex -m
+                                                                                
+[Install]
+WantedBy=default.target

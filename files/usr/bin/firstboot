@@ -129,10 +129,10 @@ setup_complete() {
 fold -sw$cols << EOF
 	Firstboot is complete.
 If you want to run this script again, just run
-$0
+${0##*/}
 at any time.
 If you want to change your passwords again, run
-change-passwords
+configure-passwords
 To reconfigure the wireless network, run
 configure-wifi
 EOF
@@ -143,6 +143,10 @@ continue_prompt
 
 # Make sure basic xdg directory structure is in place:
 xdg-user-dirs-update
+
+# Add any user based systemd service files here. remember to redirect output.
+systemctl --user enable --now recoll.service &> /dev/null
+
 # Call the functions that make up this script.
 # I tried to make the functions descriptive as to what they do.
 # See comments in the functions themselves for details
