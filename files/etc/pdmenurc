@@ -88,6 +88,18 @@ menu:media:Media:Multi-media applications
         exec:::startx /usr/lib/F123-wrappers/xlauncher lxterminal -e youtube-viewer
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
+	nop:Book Readers
+	group:Read Books in _Epub Format
+		exec::makemenu: \
+		echo "menu:epub:Epub:Select book to read."; \
+		for i in $(find $HOME -type f -iname "*.epub") ; do \
+			j="$(basename "$i" .epub)"; \
+			echo "exec:_$j::epub2txt -p 80 '$i' | w3m"; \
+		done; \
+		echo "exit:Back to Media Menu.."
+		show:::epub
+		remove:::epub
+	endgroup
 	nop
 	exit:_Main menu..
 
