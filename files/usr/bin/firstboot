@@ -23,6 +23,11 @@
 #
 #--code--
 
+# Setup gettext
+export TEXTDOMAIN=firstboot
+export TEXTDOMAINDIR=/usr/share/locale
+. gettext.sh
+
 # Include F123-includes
 for i in /usr/lib/F123-includes/*.sh ; do
     source $i
