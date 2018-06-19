@@ -68,6 +68,11 @@
 # Restart orca
 "pgrep orca && orca --replace || orca"
 Alt+Control + o
+
+# Run dialog
+"/usr/lib/F123-wrappers/run-dialog.sh"
+Alt + F2
+
 ##################################
 # End of xbindkeys configuration #
 ##################################
