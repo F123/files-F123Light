@@ -23,6 +23,10 @@
 #
 #--code--
 
+# Setup gettext
+export TEXTDOMAIN=configure-wifi
+export TEXTDOMAINDIR=/usr/share/locale
+
 # Include F123-includes
 for i in /usr/lib/F123-includes/*.sh ; do
     source $i
