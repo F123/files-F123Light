@@ -24,7 +24,7 @@
 #--code--
 
 # Setup gettext
-export TEXTDOMAIN=configure-wifi
+export TEXTDOMAIN=firstboot
 export TEXTDOMAINDIR=/usr/share/locale
 . gettext.sh
 
