@@ -9,6 +9,7 @@
 # Copyright 2018, F123 Consulting, <information@f123.org>
 # Copyright 2018, Valdis Vitolins, <valdis.vitolins@odo.lv>
 # Copyright 2018, Kyle, <kyle@free2.ml>
+# Copyright 2018, Storm Dragon, <storm_dragon@linux-a11y.org>
 #
 # This is free software; you can redistribute it and/or modify it under the
 # terms of the GNU General Public License as published by the Free
@@ -164,4 +165,6 @@ for i in $voices; do
   check_error
 done
 
+# Enable mbrola-generic in speech-dispatcher
+sed -i 's/#AddModule "espeak-mbrola-generic" "sd_generic" "espeak-mbrola-generic.conf"/AddModule "espeak-mbrola-generic" "sd_generic" "espeak-mbrola-generic.conf"/' /etc/speech-dispatcher/speechd.conf
 printf "\n${BLD}Setup is finished${NC}\nPlease review output to check for errors.\n"
