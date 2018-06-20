@@ -166,5 +166,5 @@ for i in $voices; do
 done
 
 # Enable mbrola-generic in speech-dispatcher
-sudo sed -i 's/#AddModule "espeak-mbrola-generic" "sd_generic" "espeak-mbrola-generic.conf"/AddModule "espeak-mbrola-generic" "sd_generic" "espeak-mbrola-generic.conf"/' /etc/speech-dispatcher/speechd.conf
+# sudo sed -i 's/#AddModule "espeak-mbrola-generic" "sd_generic" "espeak-mbrola-generic.conf"/AddModule "espeak-mbrola-generic" "sd_generic" "espeak-mbrola-generic.conf"/' /etc/speech-dispatcher/speechd.conf
 printf "\n${BLD}Setup is finished${NC}\nPlease review output to check for errors.\n"
