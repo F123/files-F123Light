@@ -162,7 +162,7 @@ welcome_message
 get_internet
 # Install option speech providers
 for i in mbrola ; do
-    [[ "$(yesno "$(gettext "Do you want to install $i voices?")")" == "Yes" ]] && /usr/lib/F123-wrappers/install$i
+    [[ "$(yesno "$(gettext "Do you want to install $i voices?")")" == "Yes" ]] && /usr/lib/F123-wrappers/install-${i}.sh
 done
 [[ "$(yesno "$(gettext "Do you want to change passwords for users of this system?")")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-passwords.sh
 [[ "$(yesno "$(gettext "Do you want to change security options for this system?")")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-security.sh
