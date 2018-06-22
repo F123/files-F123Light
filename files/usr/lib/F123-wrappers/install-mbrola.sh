@@ -27,6 +27,10 @@
 # 02110-1301, USA.
 #
 ###### Configuration #####
+export TEXTDOMAIN=install-mbrola
+export TEXTDOMAINDIR=/usr/share/locale
+. gettext.sh
+
 # Build a list of available voices based on the system language
 # (just suffix, prefix 'mbrola-voices-' for package name will be added automatically):
 # List of all vailable voices can be viewed at:
@@ -69,7 +73,7 @@ case $LANG in
 		voices="tr1 tr2"
 	;;
 	*)
-		echo No MBROLA voices are currently available for your language. && exit 0
+		echo "$(gettext "No MBROLA voices are currently available for your language.")" && exit 0
 	;;
 esac
 ##########################
@@ -84,7 +88,7 @@ function check_response { # response as parameter
   ifs=$IFS
   unset IFS
   while true; do
-    printf "Continue to run script? ${BLD}Enter${NC} to continue, ${BLD}escape${NC} to stop. "
+    printf $(eval_gettext "Continue to run script? ${BLD}Enter${NC} to continue, ${BLD}escape${NC} to stop. ")"
     read -rs -N1 key
     printf "\n"
     case $key in
@@ -106,8 +110,8 @@ function check_response { # response as parameter
 # Check status of mandatory operations and exit on failure
 function check_error_exit {
   if [[ $? -ne 0 ]]; then
-    printf "${RED}There was an error, when installing package.\n${NC}"
-    printf "Please, check entered password or network connectivity and try to run this script again!\n${NC}"
+    printf "$(eval_gettext "${RED}There was an error, when installing package.\n${NC}")"
+    printf "$(eval_gettext "Please, check entered password or network connectivity and try to run this script again!\n${NC}")"
     exit 1
   fi
 }
@@ -115,7 +119,7 @@ function check_error_exit {
 # Check status of optional operations and continue
 function check_error {
   if [[ $? -ne 0 ]]; then
-    printf "${YEL}==> WARNING: ${BLD}There was some error, which MAY be OK...\n${NC}"
+    printf "$(eval_gettext "${YEL}==> WARNING: ${BLD}There was some error, which MAY be OK...\n${NC}")"
     return 1
   else
     return 0
@@ -123,27 +127,27 @@ function check_error {
 }
 
 function root_prompt {
-  printf "${GRN}Going to root user${NC}. Enter ${BLD}'root'${NC} "
+  printf "$(eval_gettext "${GRN}Going to root user${NC}. Enter ${BLD}'root'${NC} ")"
 }
 
 ################################
 # Start with informative message
-printf "${GRN}This script will install MBROLA software with $voices voices.\n${NC}"
-printf "${GRN}You will need to enter ${BLD}your${GRN} password to install software.\n${NC}"
+printf "$(eval_gettext "${GRN}This script will install MBROLA software with $voices voices.\n${NC}")"
+printf "$(eval_gettext "${GRN}You will need to enter ${BLD}your${GRN} password to install software.\n${NC}")"
 
 # Check for answer and exit, if necessary
 check_response response
 
 # Get the password to allow root access
-sudo -p 'Enter your password to continue ' printf "\n"
+sudo -p "$(gettext 'Enter your password to continue ')" printf "\n"
 
 # Update repositories
-printf "Updating package databases...\n"
+printf "$(gettext "Updating package databases...")\n"
 sudo pacman -Sy >&/dev/null
 check_error_exit
 
 # Install MBROLA binary package from unsupported user archive
-printf "Installing MBROLA binary package...\n"
+printf "$(gettext "Installing MBROLA binary package...")\n"
 cd /tmp
 git clone https://odo.lv/git/aur/mbrola >& /dev/null #Ignore git errors, just check status
 check_error
@@ -154,7 +158,7 @@ check_error_exit
 
 # Install MBROLA voices from supported user archives
 for i in $voices; do
-  printf "Installing ${BLD}${i}${NC} MBROLA voice...\n"
+  printf "$(eval_gettext"Installing ${BLD}${i}${NC} MBROLA voice...\n"
   cd /tmp
   git clone https://aur.archlinux.org/mbrola-voices-${i}.git >& /dev/null
   if [[ $(check_error) == 1 ]];then continue; fi
@@ -167,4 +171,4 @@ done
 
 # Enable mbrola-generic in speech-dispatcher
 # sudo sed -i 's/#AddModule "espeak-mbrola-generic" "sd_generic" "espeak-mbrola-generic.conf"/AddModule "espeak-mbrola-generic" "sd_generic" "espeak-mbrola-generic.conf"/' /etc/speech-dispatcher/speechd.conf
-printf "\n${BLD}Setup is finished${NC}\nPlease review output to check for errors.\n"
+printf "$(eval_gettext "\n${BLD}Setup is finished${NC}\nPlease review output to check for errors.\n")"
