@@ -21,6 +21,10 @@
 #
 #--code--
 
+export TEXTDOMAIN=configure-passwords
+export TEXTDOMAINDIR=/usr/share/locale
+. gettext.sh
+
 # Load F123 includes
 for i in /usr/lib/F123-includes/* ; do
     source $i
@@ -31,20 +35,20 @@ local passOne="one"
 local passTwo="two"
 while [[ "$passOne" != "$passTwo" ]]; do
 echo
-read -ep "Enter password for $1: " passOne
-read -ep "Enter password for $1 again: " passTwo
+read -ep "$(eval_gettext "Enter password for $1: ")" passOne
+read -ep "$(eval_gettext ""Enter password for $1 again: ")" passTwo
 if [[ "$passOne" != "$passTwo" ]]; then
-echo "Passwords do not match"
+echo "$(gettext "Passwords do not match")"
 fi
 done
 echo "$1:$passOne" | chpasswd
 }
 
 # Provide possibility for setting passwords using plain text and readline navigation.
-showPasswords="$(yesno "Do you want speech feedback when setting passwords? This is a security risk as anyone looking at your screen can read your password, or if someone is listening, they will be able to hear what you are typing.")"
+showPasswords="$(yesno "$(gettext "Do you want speech feedback when setting passwords? This is a security risk as anyone looking at your screen can read your password, or if someone is listening, they will be able to hear what you are typing.")")"
 
 # Set prompt for select menu
-PS3="Select account: "
+PS3="$(gettext "Select account: ")"
 select i in \
 $(awk -F':' '{ if ( $3 >= 1000 && $3 <= 60000 && $7 != "/sbin/nologin" && $7 != "/bin/false" ) print $1; }' /etc/passwd) Cancel
 do
