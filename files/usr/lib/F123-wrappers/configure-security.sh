@@ -21,6 +21,10 @@
 #
 #--code--
                                                                                 
+export TEXTDOMAIN=configure-security
+export TEXTDOMAINDIR=/usr/share/locale
+. gettext.sh
+
 # Load F123 includes
 for i in /usr/lib/F123-includes/* ; do
     source $i
@@ -28,17 +32,17 @@ done
 
 disable_password() {
     echo "%wheel ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/f123
-    msgbox "Passwords are no longer required to perform administrative tasks."
+    msgbox "$(gettext "Passwords are no longer required to perform administrative tasks.")"
 }
 
 require_password() {
     echo "%wheel ALL=(ALL) ALL" | sudo tee /etc/sudoers.d/f123
-    msgbox "Passwords are now required to perform administrative tasks."
+    msgbox "$(gettext "Passwords are now required to perform administrative tasks.")"
 }
 
 disable_autologin() {
     sudo rm "/etc/systemd/system/getty@tty1.service.d/override.conf" 2> /dev/null
-    msgbox "You will need to enter username and password at login for this computer."
+    msgbox "$(gettext "You will need to enter username and password at login for this computer.")"
 }
 
 enable_autologin() {
@@ -48,13 +52,13 @@ ExecStart=
 ExecStart=-/usr/bin/agetty --autologin $SUDO_USER --noclear %I $TERM
 Type=idle
 EOF
-    msgbox "You no longer need to enter username and password at login for this computer."
+    msgbox "$(gettext "You no longer need to enter username and password at login for this computer.")"
 }
 
 while : ; do
-    action="$(menulist "Enable Autologin" "Login to your computer without the need of entering username and password" "Disable Autologin" "Require a username and password to login to your computer." "Require Password" "request a password when making changes that require administrator access." "Disable Password" "Make changes to your computer that require administrator access without requiring a password. (security risk)" "Exit" "Close ${0##*/}")"
+    action="$(menulist "$(gettext "Enable Autologin")" "$gettext "Login to your computer without the need of entering username and password")" "$(gettext "Disable Autologin")" "$(gettext "Require a username and password to login to your computer.")" "$(gettext "Require Password")" "$(gettext "request a password when making changes that require administrator access.")" $(gettext "Disable Password")" "$(gettext "Make changes to your computer that require administrator access without requiring a password. (security risk)")" "$(gettext "Exit")" "Close ${0##*/}")"
     action="$(echo "${action,,}" | sed 's/ /_/g')"
-    if [[ "$action" != "exit" && -n "$action" ]]; then
+    if [[ "$action" != "$(gettext "exit")" && -n "$action" ]]; then
         eval "$action"
     else
         break
