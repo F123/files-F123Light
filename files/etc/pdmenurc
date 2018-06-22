@@ -152,6 +152,7 @@ menu:configuration:Configuration:System Configuration
 	exec:_Change Passwords::clear;/usr/lib/F123-wrappers/configure-passwords
 	exec:_Email Configuration::clear;fleacollar
 	exec:_Security Configuration::clear;/usr/lib/F123-wrappers/configure-security
+	exec:_Change System Speech::clear;/usr/lib/F123-wrappers/configure-speech.sh
 	exec:_Wireless Internet Connection::clear;sudo configure-wifi
 	nop
 	exit:_Main menu..
