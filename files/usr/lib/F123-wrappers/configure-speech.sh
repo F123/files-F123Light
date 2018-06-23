@@ -21,6 +21,10 @@
 #
 #--code-- 
 
+export TEXTDOMAIN=configure-security
+export TEXTDOMAINDIR=/usr/share/locale
+. gettext.sh
+
 # include script functions
 for i in /usr/lib/F123-includes/*.sh ; do
     source $i
@@ -50,8 +54,8 @@ read -t .001 continue
 
 # Load the new settings:
 sudo pkill -1 speech-dispatch
-spd-say "If you can hear this press any key to accept these changes. Otherwize the old settings will return after 10 seconds." &
-read -n1 -t10 -p "If you can hear this press any key to accept these changes. Otherwize the old settings will return after 10 seconds." continue
+spd-say "$(gettext "If you can hear this press any key to accept these changes. Otherwize the old settings will return after 10 seconds.")" &
+read -n1 -t10 -p "$(gettext "If you can hear this press any key to accept these changes. Otherwize the old settings will return after 10 seconds.")" continue
 # Error code 142 means a key was not pressed, so restore from backup.
 if [[ $? -eq 142 ]]; then
     sudo mv /etc/speech-dispatcher/speechd.conf.bak /etc/speech-dispatcher/speechd.conf
