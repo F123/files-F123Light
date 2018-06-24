@@ -88,7 +88,7 @@ function check_response { # response as parameter
   ifs=$IFS
   unset IFS
   while true; do
-    printf $(eval_gettext "Continue to run script? ${BLD}Enter${NC} to continue, ${BLD}escape${NC} to stop. ")"
+    printf "$(eval_gettext "Continue to run script? ${BLD}Enter${NC} to continue, ${BLD}escape${NC} to stop. ")"
     read -rs -N1 key
     printf "\n"
     case $key in
@@ -158,7 +158,7 @@ check_error_exit
 
 # Install MBROLA voices from supported user archives
 for i in $voices; do
-  printf "$(eval_gettext"Installing ${BLD}${i}${NC} MBROLA voice...\n"
+  printf "$(eval_gettext "Installing ${BLD}${i}${NC} MBROLA voice...")\n"
   cd /tmp
   git clone https://aur.archlinux.org/mbrola-voices-${i}.git >& /dev/null
   if [[ $(check_error) == 1 ]];then continue; fi
@@ -169,6 +169,4 @@ for i in $voices; do
   check_error
 done
 
-# Enable mbrola-generic in speech-dispatcher
-# sudo sed -i 's/#AddModule "espeak-mbrola-generic" "sd_generic" "espeak-mbrola-generic.conf"/AddModule "espeak-mbrola-generic" "sd_generic" "espeak-mbrola-generic.conf"/' /etc/speech-dispatcher/speechd.conf
-printf "$(eval_gettext "\n${BLD}Setup is finished${NC}\nPlease review output to check for errors.\n")"
+printf "\n$(eval_gettext "${BLD}Setup is finished${NC}\nPlease review output to check for errors.")\n"
