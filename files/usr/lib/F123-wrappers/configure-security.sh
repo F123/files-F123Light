@@ -56,7 +56,7 @@ EOF
 }
 
 while : ; do
-    action="$(menulist "$(gettext "Enable Autologin")" "$gettext "Login to your computer without the need of entering username and password")" "$(gettext "Disable Autologin")" "$(gettext "Require a username and password to login to your computer.")" "$(gettext "Require Password")" "$(gettext "request a password when making changes that require administrator access.")" $(gettext "Disable Password")" "$(gettext "Make changes to your computer that require administrator access without requiring a password. (security risk)")" "$(gettext "Exit")" "Close ${0##*/}")"
+    action="$(menulist "$(gettext "Enable Autologin")" "$gettext "Login to your computer without the need of entering username and password")" "$(gettext "Disable Autologin")" "$(gettext "Require a username and password to login to your computer.")" "$(gettext "Require Password")" "$(gettext "request a password when making changes that require administrator access.")" "$(gettext "Disable Password")" "$(gettext "Make changes to your computer that require administrator access without requiring a password. (security risk)")" "$(gettext "Exit")" "Close ${0##*/}")"
     action="$(echo "${action,,}" | sed 's/ /_/g')"
     if [[ "$action" != "$(gettext "exit")" && -n "$action" ]]; then
         eval "$action"
