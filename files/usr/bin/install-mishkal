@@ -24,9 +24,12 @@
 
 # Download mishkal in the directory where this script is installed. Get the user's password to continue
 echo Installing mishkal requires administrator privileges.
-sudo cd /usr/lib/instal-mishkal
+cd /usr/lib/instal-mishkal
 
 # Download and build
 sudo git clone https://github.com/linuxscout/mishkal
+sudo pip2 install pyarabic
+sudo pip2 install qalsadi
+sudo pip2 install arramooz-pysqlite
+sudo pip2 install mysam-tagmanager
 sudo make mishkal
-

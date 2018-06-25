@@ -33,7 +33,7 @@ inputbox() {
     # Args 1, Instructions for box.
     # args: 2 initial text (optional)
     dialog --backtitle "$(gettext "Enter text and press enter.")" \
-        --inputbox "$(gettext "$1")" $((lines - 5)) $cols "$2" --stdout
+        --inputbox "$1" $((lines - 5)) $cols "$2" --stdout
 }
 
 passwordbox() {
@@ -41,19 +41,19 @@ passwordbox() {
     # Args 1, Instructions for box.
     # args: 2 initial text (optional)
     dialog --backtitle "$(gettext "Enter text and press enter.")" \
-        --passwordbox "$(gettext "$1")" $((lines - 5)) $cols "$2" --stdout
+        --passwordbox "$1" $((lines - 5)) $cols "$2" --stdout
 }
 
 msgbox() {
 # Returns: None
 # Shows the provided message on the screen with an ok button.
-dialog --msgbox "$(gettext "$*")" $((lines - 5)) $cols
+dialog --msgbox "$*" $((lines - 5)) $cols
 }
 
 infobox() {
 # Returns: None
 # Shows the provided message on the screen with no buttons.
-dialog --infobox "$(gettext "$*")" $lines $cols
+dialog --infobox "$*" $lines $cols
 }
 
 yesno() {
@@ -61,7 +61,7 @@ yesno() {
     # Args: Question to user.
     # Called  in if $(yesno) == "Yes"
     # Or variable=$(yesno)
-    dialog --backtitle "Press enter to continue or escape to abort." --yesno "$(gettext "$*")" $((lines - 5)) $cols --stdout
+    dialog --backtitle "$(gettext "Press enter to continue or escape to abort.")" --yesno "$*" $((lines - 5)) $cols --stdout
     if [[ $? -eq 0 ]]; then
         echo "Yes"
     else
