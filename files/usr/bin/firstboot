@@ -87,7 +87,7 @@ EOF
 }
 
 configure_mbrola() {
-    if command -v install-mbrola >&> /dev/null ; then
+    if command -v install-mbrola >& /dev/null ; then
         echo "The standard speech synthesizer on F123Light is eSpeak-NG, which is the voice you are hearing right now. However, other options exist and one of them is called MBROLA. Would you like to have MBROLA voices available to you?"
         while true; do
             echo "$(gettext "Press enter to install the MBROLA voices, or escape to skip this step. ")"
@@ -110,7 +110,7 @@ configure_mbrola() {
 # This should cause the right keymap to load on startup making the right alt key usable.
 load_keymap() {
     if [[ -f "/usr/share/kbd/keymaps/i386/qwerty/${LANG%%.*}.map.gz" ]]; then
-    cat << EOF | sudo tee "/etc/systemd/system/keymap.service" >&> /dev/null
+    cat << EOF | sudo tee "/etc/systemd/system/keymap.service" >& /dev/null
 [Unit]
 After=getty@tty1.service
 Description=Load keymap
@@ -123,7 +123,7 @@ ExecStart=/usr/bin/loadkeys ${LANG%%.*}
 WantedBy=multi-user.target
 EOF
     fi
-    sudo systemctl enable --now keymap.service >&> /dev/null
+    sudo systemctl enable --now keymap.service >& /dev/null
 }
 
 setup_complete() {
@@ -150,7 +150,7 @@ continue_prompt
 xdg-user-dirs-update
 
 # Add any user based systemd service files here. remember to redirect output.
-systemctl --user enable --now recoll.service >&> /dev/null
+systemctl --user enable --now recoll.service >& /dev/null
 # Stop pulseaudio from autospawning which breaks sound horribly.
 systemctl --user mask pulseaudio.socket
 
