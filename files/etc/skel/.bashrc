@@ -29,7 +29,7 @@ export PAGER=w3m
 export HISTCONTROL=ignoreboth
 
 # Show reminders for the day if there are any.
-grep "^$(date '+%-m/%-e')" ~/calendar && calendar | w3m
+grep "^$(date '+%-m/%-e')" ~/calendar &> /dev/null && calendar | w3m
 
 # Run a firstboot script, only if this is the top level shell, only if ~/.firstboot exists and only if a firstboot script exists.
 test $SHLVL -eq 1 && test -e ${HOME}/.firstboot && test -e $(which firstboot) && firstboot
