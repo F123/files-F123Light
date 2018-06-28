@@ -132,7 +132,7 @@ setup_complete() {
 # Args: none
 # Returns: none
 fold -sw$cols << EOF
-	Firstboot is complete.
+	Initial F123 Light configuration is complete.
 If you want to run this script again, just run
 ${0##*/}
 at any time.
@@ -140,6 +140,8 @@ If you want to change your passwords again, run
 configure-passwords
 To reconfigure the wireless network, run
 configure-wifi
+To change speech options run
+configure-speech
 EOF
 # remove the firstboot file if it exists.
 [[ -e ~/.firstboot ]] && rm ~/.firstboot
