@@ -169,4 +169,19 @@ for i in $voices; do
   check_error
 done
 
+# Set mbrola as default speech for the system.
+# I did my best to leave the user without speech. Fingers crossed...
+command -v mbrola && {
+    sudo sed -i.bak "s/^[[:space:]]*DefaultModule  [[:space:]]*\S*$/DefaultModule espeak-ng-mbrola-generic/" /etc/speech-dispatcher/speechd.conf
+    # Restart Fenrir with new speech provider changes
+    sudo systemctl restart fenrirscreenreader
+    # Attempt to restart orca to apply changes if it is running:
+    if pgrep orca &> /dev/null ; then
+        for i in {0..11} ; do
+            DISPLAY=:$i orca --replace &
+            [[ $? -eq 0 ]] && break
+        done
+    fi
+}
+
 printf "\n$(eval_gettext "${BLD}Setup is finished${NC}\nPlease review output to check for errors.")\n"
