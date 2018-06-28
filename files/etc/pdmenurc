@@ -18,7 +18,7 @@ menu:main:F123 Light Main Menu:Use the up and down arrow keys to select your cho
 	nop
 	show:_Power Options..::power
 	nop
-	exit:_Exit
+	exit:_Exit Menu
 
 
 # Submenu for games.
