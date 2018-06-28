@@ -5,10 +5,10 @@
 
 # F123 menu
 
-title:Welcome to F123
+title:Welcome to F123 Light
 
 # Define the main menu.
-menu:main:F123 Main Menu:Please make a selection
+menu:main:F123 Light Main Menu:Use the up and down arrow keys to select your choice and press the 'Enter' key to activate it.
 	show:_Games Menu..::games
 	show:_Internet menu..::internet
 	show:_Media menu..::media
@@ -50,6 +50,7 @@ menu:games:Games:Command line games
 
 	nop
 	exit:_Main menu..
+
 
 # submenu for internet applications.
 menu:internet:Internet:Internet programs
@@ -103,6 +104,7 @@ menu:media:Media:Multi-media applications
 	nop
 	exit:_Main menu..
 
+
 menu:office:Office:Word processing, calendar, etc
 	exec:_Month Calendar:pause:clear;ncal
 	exec:_Year Calendar:pause:clear;ncal -y
@@ -146,6 +148,7 @@ menu:office:Office:Word processing, calendar, etc
     endgroup
 	nop
 	exit:_Main menu..
+
 
 # submenu for configuring the computer.
 menu:configuration:Configuration:System Configuration
