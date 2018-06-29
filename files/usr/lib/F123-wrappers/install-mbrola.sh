@@ -39,7 +39,7 @@ case $LANG in
 	af_ZA.UTF-8)
 		voices="af1"
 	;;
-	ar_dz.UTF-8)
+	ar_DZ.UTF-8)
 		voices="ar1 ar2"
 	;;
 	de_DE.UTF-8)
