@@ -47,7 +47,7 @@ case "$speechProvider" in
 esac
 
 # Set the  chosen speech provider option.
-sudo sed -i.bak "s/^[[:space:]]*DefaultModule  [[:space:]]*\S*$/ DefaultModule   $speechProvider/" /etc/speech-dispatcher/speechd.conf
+sudo sed -i.bak "s/^[[:space:]]*DefaultModule [[:space:]]*\S*$/ DefaultModule   $speechProvider/" /etc/speech-dispatcher/speechd.conf
 
 # Clear any keypresses in the buffer:
 read -t .001 continue
@@ -65,6 +65,7 @@ if [[ $? -eq 142 ]]; then
 fi
 
 # Restart Fenrir with new speech provider changes
+clear
 sudo systemctl restart fenrirscreenreader
 # Attempt to restart orca to apply changes if it is running:
 if pgrep orca &> /dev/null ; then
