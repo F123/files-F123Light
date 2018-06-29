@@ -57,7 +57,7 @@ sudo pkill -1 speech-dispatch
 spd-say "$(gettext "If you can hear this press any key to accept these changes. Otherwize the old settings will return after 10 seconds.")" &
 read -n1 -t10 -p "$(gettext "If you can hear this press any key to accept these changes. Otherwize the old settings will return after 10 seconds.")" continue
 # Error code 142 means a key was not pressed, so restore from backup.
-if [[ $? -eq 142 ]]; then
+if [[ $? -ne 0 ]]; then
     sudo mv /etc/speech-dispatcher/speechd.conf.bak /etc/speech-dispatcher/speechd.conf
     # Load the old settings:
     sudo pkill -1 speech-dispatch
