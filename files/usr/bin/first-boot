@@ -148,6 +148,14 @@ EOF
 continue_prompt
 }
 
+# Set the default speech-dispatcher language
+grep "^[#[:space:]]*DefaultLanguage [[:space:]]*${LANG::2}$" /etc/speech-dispatcher/speechd.conf &> /dev/null || {
+    sudo sed -i "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage ${LANG::2}/" /etc/speech-dispatcher/speechd.conf;
+    #  reload speech-dispatcher with the new settings;
+    pkill -1 speech-dispatch;
+    # Restart fenrir with the new changed language and module
+    sudo systemctl restart fenrirscreenreader;
+}
 
 # Make sure basic xdg directory structure is in place:
 xdg-user-dirs-update
