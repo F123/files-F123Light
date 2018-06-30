@@ -76,42 +76,12 @@ case $LANG in
 		echo "$(gettext "No MBROLA voices are currently available for your language.")" && exit 0
 	;;
 esac
-##########################
-# Colorize output
-RED='\033[0;31m'
-GRN='\033[0;32m'
-YEL='\033[1;33m'
-BLD='\033[1;30m'
-NC='\033[0m' # No Color
-
-function check_response { # response as parameter
-  ifs=$IFS
-  unset IFS
-  while true; do
-    printf "$(eval_gettext "Continue to run script? ${BLD}Enter${NC} to continue, ${BLD}escape${NC} to stop. ")"
-    read -rs -N1 key
-    printf "\n"
-    case $key in
-      $'\n')
-        break
-      ;;
-      $'\e')
-        IFS=$ifs
-        exit 0
-      ;;
-      *)
-      ;;
-    esac
-  done
-  IFS=$ifs
-  unset ifs
-}
 
 # Check status of mandatory operations and exit on failure
 function check_error_exit {
   if [[ $? -ne 0 ]]; then
-    printf "$(eval_gettext "${RED}There was an error, when installing package.\n${NC}")"
-    printf "$(eval_gettext "Please, check entered password or network connectivity and try to run this script again!\n${NC}")"
+    echo "$(gettext "There was an error, when installing MBROLA.")"
+    echo "$(gettext "Please, check entered password or network connectivity and try to run this script again!")"
     exit 1
   fi
 }
@@ -119,7 +89,7 @@ function check_error_exit {
 # Check status of optional operations and continue
 function check_error {
   if [[ $? -ne 0 ]]; then
-    printf "$(eval_gettext "${YEL}==> WARNING: ${BLD}There was some error, which MAY be OK...\n${NC}")"
+    echo "$(gettext "==> WARNING: There was some error, which MAY be OK...")"
     return 1
   else
     return 0
@@ -127,50 +97,34 @@ function check_error {
 }
 
 function root_prompt {
-  printf "$(eval_gettext "${GRN}Going to root user${NC}. Enter ${BLD}'root'${NC} ")"
+  echo "$(gettext "Going to root user. Enter 'root'")"
 }
 
 ################################
 # Start with informative message
-printf "$(eval_gettext "${GRN}This script will install MBROLA software with $voices voices.\n${NC}")"
-printf "$(eval_gettext "${GRN}You will need to enter ${BLD}your${GRN} password to install software.\n${NC}")"
-
-# Check for answer and exit, if necessary
-check_response response
+echo "$(eval_gettext "This script will install MBROLA software with $voices voices.")"; echo
+echo "$(gettext "You may need to enter your password to install software.")"
 
 # Get the password to allow root access
-sudo -p "$(gettext 'Enter your password to continue ')" printf "\n"
+sudo -p "$(gettext 'Enter your password to continue ')" echo
 
 # Update repositories
-printf "$(gettext "Updating package databases...")\n"
+echo "$(gettext "Updating package databases...")"
 sudo pacman -Sy >&/dev/null
 check_error_exit
 
-# Install MBROLA binary package from unsupported user archive
-printf "$(gettext "Installing MBROLA binary package...")\n"
-cd /tmp
-git clone https://odo.lv/git/aur/mbrola >& /dev/null #Ignore git errors, just check status
+# Install MBROLA binary and voices from F123 archives
+echo "$(gettext "Installing MBROLA binary...")"
+sudo pacman --noconfirm -S --needed mbrola >& /dev/null
 check_error
-cd mbrola
-makepkg --noconfirm >& /dev/null
-sudo pacman --noconfirm -U --needed mbrola-*.xz >& /dev/null
-check_error_exit
-
-# Install MBROLA voices from supported user archives
-for i in $voices; do
-  printf "$(eval_gettext "Installing ${BLD}${i}${NC} MBROLA voice...")\n"
-  cd /tmp
-  git clone https://aur.archlinux.org/mbrola-voices-${i}.git >& /dev/null
-  if [[ $(check_error) == 1 ]];then continue; fi
-  cd mbrola-voices-$i
-  makepkg --noconfirm >& /dev/null
-  if [[ $(check_error) == 1 ]];then continue; fi
-  sudo pacman --noconfirm -U --needed mbrola-voices-${i}*-any.pkg.tar.xz >& /dev/null
+for v in $voices; do
+  echo "$(eval_gettext "Installing ${v} MBROLA voice...")"; echo
+sudo pacman --noconfirm -S --needed mbrola-voices-${v} >& /dev/null
   check_error
 done
 
 # Set mbrola as default speech for the system.
-# I did my best to leave the user without speech. Fingers crossed...
+# I did my best not to leave the user without speech. Fingers crossed...
 command -v mbrola && {
     sudo sed -i.bak "s/^[[:space:]]*DefaultModule  [[:space:]]*\S*$/DefaultModule espeak-ng-mbrola-generic/" /etc/speech-dispatcher/speechd.conf
     # Restart Fenrir with new speech provider changes
@@ -184,4 +138,5 @@ command -v mbrola && {
     fi
 }
 
-printf "\n$(eval_gettext "${BLD}Setup is finished${NC}\nPlease review output to check for errors.")\n"
+echo; echo "$(gettext "Setup is finished")"
+echo "$(gettext "Please review output to check for errors.")"
