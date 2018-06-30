@@ -13,6 +13,7 @@ shopt -s autocd
 [[ -f ".bash_functions" ]] && . .bash_functions
 #Invironment variables
 export QT_ACCESSIBILITY=1
+export QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
 PS1='\$ '
 export DIALOGOPTS='--no-lines --visit-items'
 if [[ -n "$DISPLAY" ]]; then
@@ -31,8 +32,8 @@ export HISTCONTROL=ignoreboth
 # Show reminders for the day if there are any.
 grep "^$(date '+%-m/%-e')" ~/calendar &> /dev/null && calendar | w3m
 
-# Run a firstboot script, only if this is the top level shell, only if ~/.firstboot exists and only if a firstboot script exists.
-test $SHLVL -eq 1 && test -e ${HOME}/.firstboot && test -e $(which firstboot) && firstboot
+# Run a first-boot script, only if this is the top level shell, only if ~/.firstboot exists and only if a first-boot script exists.
+test $SHLVL -eq 1 && test -e ${HOME}/.firstboot && test -e $(command -v first-boot) && command first-boot
 
 # Load Pdmenu , but only if this is the first shell
 test $SHLVL -eq 1 && pdmenu -bun

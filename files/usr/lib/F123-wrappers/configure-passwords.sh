@@ -36,7 +36,7 @@ local passTwo="two"
 while [[ "$passOne" != "$passTwo" ]]; do
 echo
 read -ep "$(eval_gettext "Enter password for $1: ")" passOne
-read -ep "$(eval_gettext ""Enter password for $1 again: ")" passTwo
+read -ep "$(eval_gettext "Enter password for $1 again: ")" passTwo
 if [[ "$passOne" != "$passTwo" ]]; then
 echo "$(gettext "Passwords do not match")"
 fi

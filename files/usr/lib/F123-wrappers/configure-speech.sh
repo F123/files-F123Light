@@ -47,7 +47,7 @@ case "$speechProvider" in
 esac
 
 # Set the  chosen speech provider option.
-sudo sed -i.bak "s/^[[:space:]]*DefaultModule  [[:space:]]*\S*$/ DefaultModule   $speechProvider/" /etc/speech-dispatcher/speechd.conf
+sudo sed -i.bak "s/^[[:space:]]*DefaultModule [[:space:]]*\S*$/ DefaultModule   $speechProvider/" /etc/speech-dispatcher/speechd.conf
 
 # Clear any keypresses in the buffer:
 read -t .001 continue
@@ -57,7 +57,7 @@ sudo pkill -1 speech-dispatch
 spd-say "$(gettext "If you can hear this press any key to accept these changes. Otherwize the old settings will return after 10 seconds.")" &
 read -n1 -t10 -p "$(gettext "If you can hear this press any key to accept these changes. Otherwize the old settings will return after 10 seconds.")" continue
 # Error code 142 means a key was not pressed, so restore from backup.
-if [[ $? -eq 142 ]]; then
+if [[ $? -ne 0 ]]; then
     sudo mv /etc/speech-dispatcher/speechd.conf.bak /etc/speech-dispatcher/speechd.conf
     # Load the old settings:
     sudo pkill -1 speech-dispatch
@@ -65,6 +65,7 @@ if [[ $? -eq 142 ]]; then
 fi
 
 # Restart Fenrir with new speech provider changes
+clear
 sudo systemctl restart fenrirscreenreader
 # Attempt to restart orca to apply changes if it is running:
 if pgrep orca &> /dev/null ; then

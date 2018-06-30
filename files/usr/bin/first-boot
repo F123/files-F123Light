@@ -132,7 +132,7 @@ setup_complete() {
 # Args: none
 # Returns: none
 fold -sw$cols << EOF
-	Firstboot is complete.
+	Initial F123 Light configuration is complete.
 If you want to run this script again, just run
 ${0##*/}
 at any time.
@@ -140,10 +140,21 @@ If you want to change your passwords again, run
 configure-passwords
 To reconfigure the wireless network, run
 configure-wifi
+To change speech options run
+configure-speech
 EOF
 # remove the firstboot file if it exists.
 [[ -e ~/.firstboot ]] && rm ~/.firstboot
 continue_prompt
+}
+
+# Set the default speech-dispatcher language
+grep "^[#[:space:]]*DefaultLanguage [[:space:]]*${LANG::2}$" /etc/speech-dispatcher/speechd.conf &> /dev/null || {
+    sudo sed -i "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage ${LANG::2}/" /etc/speech-dispatcher/speechd.conf;
+    #  reload speech-dispatcher with the new settings;
+    pkill -1 speech-dispatch;
+    # Restart fenrir with the new changed language and module
+    sudo systemctl restart fenrirscreenreader;
 }
 
 # Make sure basic xdg directory structure is in place:
@@ -159,11 +170,11 @@ systemctl --user mask pulseaudio.socket >& /dev/null
 # See comments in the functions themselves for details
 [[ -f ~/.firstboot ]] && load_keymap
 welcome_message
+[[ "$(yesno "$(gettext "Do you want to change passwords for users of this system?")")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-passwords.sh
 get_internet
 # Install option speech providers
 for i in mbrola ; do
     [[ "$(yesno "$(gettext "Do you want to install $i voices?")")" == "Yes" ]] && /usr/lib/F123-wrappers/install-${i}.sh
 done
-[[ "$(yesno "$(gettext "Do you want to change passwords for users of this system?")")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-passwords.sh
 [[ "$(yesno "$(gettext "Do you want to change security options for this system?")")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-security.sh
 setup_complete
