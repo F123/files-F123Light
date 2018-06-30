@@ -119,7 +119,7 @@ sudo pacman --noconfirm -S --needed mbrola >& /dev/null
 check_error
 for v in $voices; do
   echo "$(eval_gettext "Installing ${v} MBROLA voice...")"; echo
-sudo pacman --noconfirm -S --needed mbrola-${v} >& /dev/null
+sudo pacman --noconfirm -S --needed mbrola-voices-${v} >& /dev/null
   check_error
 done
 
