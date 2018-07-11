@@ -31,22 +31,22 @@ for i in /usr/lib/F123-includes/* ; do
 done
 
 source /dev/stdin << EOF
-function $(gettext "disable_password")() {
+function $(gettext "Disable_Password")() {
     echo "%wheel ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/f123
     msgbox "$(gettext "Passwords are no longer required to perform administrative tasks.")"
 }
 
-function $(gettext "require_password")() {
+function $(gettext "Require_Password")() {
     echo "%wheel ALL=(ALL) ALL" | sudo tee /etc/sudoers.d/f123
     msgbox "$(gettext "Passwords are now required to perform administrative tasks.")"
 }
 
-function $(gettext "disable_autologin")() {
+function $(gettext "Disable_Autologin")() {
     sudo rm "/etc/systemd/system/getty@tty1.service.d/override.conf" 2> /dev/null
     msgbox "$(gettext "You will need to enter username and password at login for this computer.")"
 }
 
-function $(gettext "enable_autologin")() {
+function $(gettext "Enable_Autologin")() {
 cat << DONE | sudo tee "/etc/systemd/system/getty@tty1.service.d/override.conf" &> /dev/null
 [Service]
 ExecStart=
@@ -58,7 +58,7 @@ DONE
 EOF
 
 while : ; do
-    action="$(menulist "$(gettext "Enable Autologin")" "$(gettext "Login to your computer without the need of entering username and password")" "$(gettext "Disable Autologin")" "$(gettext "Require a username and password to login to your computer.")" "$(gettext "Require Password")" "$(gettext "request a password when making changes that require administrator access.")" "$(gettext "Disable Password")" "$(gettext "Make changes to your computer that require administrator access without requiring a password. (security risk)")" "$(gettext "Exit")" "Close ${0##*/}")"
+    action="$(menulist "$(gettext "Enable_Autologin")" "$(gettext "Login to your computer without the need of entering username and password")" "$(gettext "Disable_Autologin")" "$(gettext "Require a username and password to login to your computer.")" "$(gettext "Require_Password")" "$(gettext "request a password when making changes that require administrator access.")" "$(gettext "Disable_Password")" "$(gettext "Make changes to your computer that require administrator access without requiring a password. (security risk)")" "$(gettext "Exit")" "Close ${0##*/}")"
     action="$(echo "${action,,}" | sed 's/ /_/g')"
     if [[ "$action" != "$(gettext "exit")" && -n "$action" ]]; then
         eval "$action"
