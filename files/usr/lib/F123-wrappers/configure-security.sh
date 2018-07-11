@@ -30,30 +30,32 @@ for i in /usr/lib/F123-includes/* ; do
     source $i
 done
 
-disable_password() {
+source /dev/stdin << EOF
+function $(gettext "disable_password")() {
     echo "%wheel ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/f123
     msgbox "$(gettext "Passwords are no longer required to perform administrative tasks.")"
 }
 
-require_password() {
+function $(gettext "require_password")() {
     echo "%wheel ALL=(ALL) ALL" | sudo tee /etc/sudoers.d/f123
     msgbox "$(gettext "Passwords are now required to perform administrative tasks.")"
 }
 
-disable_autologin() {
+function $(gettext "disable_autologin")() {
     sudo rm "/etc/systemd/system/getty@tty1.service.d/override.conf" 2> /dev/null
     msgbox "$(gettext "You will need to enter username and password at login for this computer.")"
 }
 
-enable_autologin() {
-cat << EOF | sudo tee "/etc/systemd/system/getty@tty1.service.d/override.conf" &> /dev/null
+function $(gettext "enable_autologin")() {
+cat << DONE | sudo tee "/etc/systemd/system/getty@tty1.service.d/override.conf" &> /dev/null
 [Service]
 ExecStart=
 ExecStart=-/usr/bin/agetty --autologin $SUDO_USER --noclear %I $TERM
 Type=idle
-EOF
+DONE
     msgbox "$(gettext "You no longer need to enter username and password at login for this computer.")"
 }
+EOF
 
 while : ; do
     action="$(menulist "$(gettext "Enable Autologin")" "$(gettext "Login to your computer without the need of entering username and password")" "$(gettext "Disable Autologin")" "$(gettext "Require a username and password to login to your computer.")" "$(gettext "Require Password")" "$(gettext "request a password when making changes that require administrator access.")" "$(gettext "Disable Password")" "$(gettext "Make changes to your computer that require administrator access without requiring a password. (security risk)")" "$(gettext "Exit")" "Close ${0##*/}")"
