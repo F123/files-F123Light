@@ -56,7 +56,7 @@ DONE
 }
 
 while : ; do
-    action="$(menulist "enable_autologin" "$(gettext "Login to your computer without the need of entering username and password.")" "disable_autologin" "$(gettext "Require a username and password to login to your computer.")" "require_password" "$(gettext "request a password when making changes that require administrator access.")" "disable_password" "$(gettext "Make changes to your computer that require administrator access without requiring a password. (security risk)")" "exit" "$(eval_gettext "Close ${0##*/}")")"
+    action="$(menulist "enable_autologin" "$(gettext "Login to your computer without the need of entering username and password.")" "disable_autologin" "$(gettext "Require a username and password to login to your computer.")" "require_password" "$(gettext "request a password when making changes that require administrator access.")" "disable_password" "$(gettext "Make changes to your computer that require administrator access without requiring a password. (security risk)")" "exit" "$(eval_gettext "Close \${0##*/}")")"
     if [[ "$action" != "exit" && -n "$action" ]]; then
         eval "$action"
     else
