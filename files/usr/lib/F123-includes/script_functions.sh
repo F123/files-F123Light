@@ -131,7 +131,8 @@ menulist() {
     ifs="$IFS"
     IFS=$'\n'
     dialog --backtitle "$(gettext "Use the up and down arrow keys to find the option you want, then press enter to select it.")" \
-        --menu "$(gettext "Please select one")" $((lines - 5)) $cols $optionSize $@ --stdout
+        --no-tags \
+        --menu "$(gettext "Please select one")" 0 0 0 $@ --stdout
     IFS="$ifs"
 }
 
