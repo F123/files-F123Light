@@ -30,6 +30,9 @@ for i in /usr/lib/F123-includes/* ; do
     source $i
 done
 
+# How was this script called?
+CALLED=${0##*/}
+
 disable_password() {
     echo "%wheel ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/f123
     msgbox "$(gettext "Passwords are no longer required to perform administrative tasks.")"
@@ -56,7 +59,7 @@ DONE
 }
 
 while : ; do
-    action="$(menulist "enable_autologin" "$(gettext "Login to your computer without the need of entering username and password.")" "disable_autologin" "$(gettext "Require a username and password to login to your computer.")" "require_password" "$(gettext "request a password when making changes that require administrator access.")" "disable_password" "$(gettext "Make changes to your computer that require administrator access without requiring a password. (security risk)")" "exit" "$(eval_gettext "Close \${0##*/}")")"
+    action="$(menulist "enable_autologin" "$(gettext "Login to your computer without the need of entering username and password.")" "disable_autologin" "$(gettext "Require a username and password to login to your computer.")" "require_password" "$(gettext "request a password when making changes that require administrator access.")" "disable_password" "$(gettext "Make changes to your computer that require administrator access without requiring a password. (security risk)")" "exit" "$(eval_gettext "Close \$CALLED")")"
     if [[ "$action" != "exit" && -n "$action" ]]; then
         eval "$action"
     else
