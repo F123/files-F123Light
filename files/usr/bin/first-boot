@@ -133,7 +133,7 @@ systemctl --user mask pulseaudio.socket >& /dev/null
 # See comments in the functions themselves for details
 [[ -f ~/.firstboot ]] && load_keymap
 # Show quick start
-show_doc "/usr/share/doc/F123/${LANG::2}/quickstart.txt"
+show_doc "/usr/share/doc/F123/${LANG}/quickstart.txt"
 [[ "$(yesno "$(gettext "Do you want to change passwords for users of this system?")")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-passwords.sh
 get_internet
 # Install option speech providers
