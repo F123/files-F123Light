@@ -1,0 +1,58 @@
+# configure-security
+# Copyright (C) 2018 F123 Consulting <info@f123.org>
+# Copyright (C) 2018 Kyle <kyle@free2.ml>
+# Copyright (C) 2018 Shaimaa Ibrahim <Shamse1@gmail.com>
+# Arabic text is fully diacratized as per request from F123 team.
+# This file is distributed under the same license as files-F123Light.
+# FIRST AUTHOR Kyle <kyle@free2.ml>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: files-F 123Light\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-11 23:11-0400\n"
+"PO-Revision-Date: 2018-07-13 17:12+0200\n"
+"Last-Translator: Shaimaa Ibrahim <Shamse1@gmail.com>\n"
+"Language-Team: Arabic\n"
+"Language: ar_DZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.8\n"
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:38
+msgid "Passwords are no longer required to perform administrative tasks."
+msgstr "لَمْ تَعُدْ فِي حَاجَةٍ إِلَى كَلِمَاتِ الْمُرُورِ لِلْقِيَامِ بِمَهامِ الْمَسْؤُول."
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:43
+msgid "Passwords are now required to perform administrative tasks."
+msgstr "تَحْتَاجُ إِلَى  كَلِمَاتِ الْمُرُورِ لِلْقِيَامِ بِمَهَامِ الْمَسْؤُول."
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:48
+msgid "You will need to enter username and password at login for this computer."
+msgstr "سَوْفَ تَحْتَاجُ إِلَى إِدْخَالِ اِسْمِ مُسْتَخْدِمٍ وَكَلِمَةِ مُرُورٍ لِلدُّخُولِ إِلَى هَذَا الْحَاسوب."
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:58
+msgid "You no longer need to enter username and password at login for this computer."
+msgstr "لَمْ تَعُدْ فِي حَاجَةٍ إِلَى إِدْخَالِ اِسْمِ الْمُسْتَخْدِمِ وَكَلِمَةِ الْمُرُورِ لِلْدُّخُولِ إِلَى هَذَا الْحَاسوب."
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:62
+msgid "Login to your computer without the need of entering username and password."
+msgstr "الدُّخُولُ إِلَى الْحَاسوبِ دُونَ الْحَاجَةِ إِلَى إِدْخَالِ اِسْمِ الْمُسْتَخْدِمِ وَكَلِمَةِ الْمُرُور."
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:62
+msgid "Require a username and password to login to your computer."
+msgstr "تَحْتَاجُ إِلَى اِسْمِ الْمُسْتَخْدِمِ وَكَلِمَةِ الْمُرُورِ لِلدُّخُولِ إِلَى هَذَا الْحَاسوب."
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:62
+msgid "request a password when making changes that require administrator access."
+msgstr "لَا بُدَّ مِنْ تَوَافُرِ كَلِمَةِ مُرُورٍ عِنْدَ إِجْرَاءِ أَيِّ تَغْيِيرَاتٍ تَسْتَلْزِمُ وُصُولَ الْمَسْؤُول. "
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:62
+msgid "Make changes to your computer that require administrator access without requiring a password. (security risk)"
+msgstr "إِجْرَاءُ التَّغْيِيرَاتِ الَّتِي تَسْتَلْزِمُ وُصُولَ الْمَسْؤُولِ دُونَ اِسْتِخْدَامِ كَلِمَةِ مُرُور. (خَطَرُ أَمَان)"
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:62
+#, sh-format
+msgid "Close $CALLED"
+msgstr "إغلاق $CALLED"

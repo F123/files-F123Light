@@ -1,0 +1,62 @@
+# configure-security
+# Copyright (C) 2018 F123 Consulting <info@f123.org>
+# Copyright (C) 2018 Kyle <kyle@free2.ml>
+# This file is distributed under the same license as files-F123Light.
+# FIRST AUTHOR Kyle <kyle@free2.ml>, 2018.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-11 23:11-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:38
+msgid "Passwords are no longer required to perform administrative tasks."
+msgstr ""
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:43
+msgid "Passwords are now required to perform administrative tasks."
+msgstr ""
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:48
+msgid ""
+"You will need to enter username and password at login for this computer."
+msgstr ""
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:58
+msgid ""
+"You no longer need to enter username and password at login for this computer."
+msgstr ""
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:62
+msgid ""
+"Login to your computer without the need of entering username and password."
+msgstr ""
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:62
+msgid "Require a username and password to login to your computer."
+msgstr ""
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:62
+msgid ""
+"request a password when making changes that require administrator access."
+msgstr ""
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:62
+msgid ""
+"Make changes to your computer that require administrator access without "
+"requiring a password. (security risk)"
+msgstr ""
+
+#: ../files/usr/lib/F123-wrappers/configure-security.sh:62
+#, sh-format
+msgid "Close $CALLED"
+msgstr ""
