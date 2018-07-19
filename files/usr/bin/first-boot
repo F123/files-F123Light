@@ -37,10 +37,10 @@ get_internet() {
     # Initial connection to wifi
     # Args: none
     # Returns: none
-    fold -sw$cols << EOF
-	In order to use the internet, you need to set up a network connection.
+    fold -sw$cols << -EOF
+	$(gettext "In order to use the internet, you need to set up a network connection.
 	If you already plugged in a wire that is connected directly to a router or modem, you don't need to do anything here.
-	However, if you don't have a wire connected, but want to use the internet, you can configure the wireless network here.
+	However, if you don't have a wire connected, but want to use the internet, you can configure the wireless network here.")
 EOF
     while true; do
         #echo -n "$(gettext "Press enter to configure the wireless network, or escape to skip this step. ")"
@@ -60,7 +60,7 @@ EOF
 
 configure_mbrola() {
     if command -v install-mbrola >& /dev/null ; then
-        echo "The standard speech synthesizer on F123Light is eSpeak-NG, which is the voice you are hearing right now. However, other options exist and one of them is called MBROLA. Would you like to have MBROLA voices available to you?"
+        echo $(gettext "The standard speech synthesizer on F123Light is eSpeak-NG, which is the voice you are hearing right now. However, other options exist and one of them is called MBROLA. Would you like to have MBROLA voices available to you?")
         while true; do
             echo "$(gettext "Press enter to install the MBROLA voices, or escape to skip this step. ")"
             get_keypress key
@@ -103,8 +103,8 @@ setup_complete() {
 # Left aligned so the text is prpperly formated when output to the screen.
 # Args: none
 # Returns: none
-fold -sw$cols << EOF
-	Initial F123 Light configuration is complete.
+fold -sw$cols << -EOF
+	$(gettext "Initial F123 Light configuration is complete.
 If you want to run this script again, just run
 ${0##*/}
 at any time.
@@ -113,7 +113,7 @@ configure-passwords
 To reconfigure the wireless network, run
 configure-wifi
 To change speech options run
-configure-speech
+configure-speech")
 EOF
 # remove the firstboot file if it exists.
 [[ -e ~/.firstboot ]] && rm ~/.firstboot
