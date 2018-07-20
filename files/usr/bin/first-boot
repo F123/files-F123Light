@@ -78,6 +78,26 @@ configure_mbrola() {
     fi
 }
 
+# Load the correct font at boot
+load_font() {
+    case "${LANG%%.*}" in
+        *) fontName="lat2-16";;
+    esac
+    cat << EOF | sudo tee "/etc/systemd/system/font.service" >& /dev/null
+[Unit]
+After=getty@tty1.service
+Description=Load font
+                                                                                
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/setfont $fontName
+                                                                                
+[Install]
+WantedBy=multi-user.target
+EOF
+    sudo systemctl enable --now font.service >& /dev/null
+}
+
 # Load the correct custom keymap at boot if present
 # This should cause the right keymap to load on startup making the right alt key usable.
 load_keymap() {
@@ -131,6 +151,7 @@ systemctl --user mask pulseaudio.socket >& /dev/null
 # Call the functions that make up this script.
 # I tried to make the functions descriptive as to what they do.
 # See comments in the functions themselves for details
+[[ -f ~/.firstboot ]] && load_font
 [[ -f ~/.firstboot ]] && load_keymap
 # Show quick start
 show_doc "/usr/share/doc/F123/${LANG}/quickstart.txt"
