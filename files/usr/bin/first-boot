@@ -78,24 +78,17 @@ configure_mbrola() {
     fi
 }
 
+# Load the correct font.
 # Load the correct custom keymap at boot if present
-# This should cause the right keymap to load on startup making the right alt key usable.
-load_keymap() {
+set_vconsole() {
+    case "${LANG%%.*}" in
+        *) fontName="lat2-16";;
+    esac
+    echo "FONT=${fontName}" | sudo tee "/etc/vconsole.conf" >& /dev/null
     if [[ -f "/usr/share/kbd/keymaps/i386/qwerty/${LANG%%.*}.map.gz" ]]; then
-    cat << EOF | sudo tee "/etc/systemd/system/keymap.service" >& /dev/null
-[Unit]
-After=getty@tty1.service
-Description=Load keymap
-                                                                                
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/loadkeys ${LANG%%.*}
-                                                                                
-[Install]
-WantedBy=multi-user.target
-EOF
+        echo "KEYMAP=${LANG%%.*}" | sudo tee -a "/etc/vconsole.conf" >& /dev/null
     fi
-    sudo systemctl enable --now keymap.service >& /dev/null
+    sudo systemctl restart systemd-vconsole-setup.service &> /dev/null
 }
 
 setup_complete() {
@@ -131,7 +124,7 @@ systemctl --user mask pulseaudio.socket >& /dev/null
 # Call the functions that make up this script.
 # I tried to make the functions descriptive as to what they do.
 # See comments in the functions themselves for details
-[[ -f ~/.firstboot ]] && load_keymap
+[[ -f ~/.firstboot ]] && set_vconsole
 # Show quick start
 show_doc "/usr/share/doc/F123/${LANG}/quickstart.txt"
 [[ "$(yesno "$(gettext "Do you want to change passwords for users of this system?")")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-passwords.sh

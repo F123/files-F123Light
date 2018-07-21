@@ -1,0 +1,10 @@
+[Unit]
+After=getty@tty1.service
+Description=Load keymap and font
+                                                                                
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/systemd/systemd-vconsole-setup
+                                                                                
+[Install]
+WantedBy=multi-user.target
