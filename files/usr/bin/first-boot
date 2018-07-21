@@ -84,10 +84,11 @@ set_vconsole() {
     case "${LANG%%.*}" in
         *) fontName="lat2-16";;
     esac
-    echo "FONT=${LANG%%.*}" | sudo tee "/etc/vconsolfe.conf" >& /dev/null
+    echo "FONT=${fontName}" | sudo tee "/etc/vconsolfe.conf" >& /dev/null
     if [[ -f "/usr/share/kbd/keymaps/i386/qwerty/${LANG%%.*}.map.gz" ]]; then
         echo "KEYMAP=${LANG%%.*}" | sudo tee -a "/etc/vconsolfe.conf" >& /dev/null
     fi
+    sudo systemctl enable --now vconsole.service &> /dev/null
 }
 
 setup_complete() {
