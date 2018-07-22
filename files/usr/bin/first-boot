@@ -37,7 +37,7 @@ get_internet() {
     # Initial connection to wifi
     # Args: none
     # Returns: none
-    fold -sw$cols << EOF
+    fold -sw$cols <<-EOF
 	$(gettext "In order to use the internet, you need to set up a network connection.
 	If you already plugged in a wire that is connected directly to a router or modem, you don't need to do anything here.
 	However, if you don't have a wire connected, but want to use the internet, you can configure the wireless network here.")
