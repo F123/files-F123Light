@@ -30,6 +30,9 @@ for i in /usr/lib/F123-includes/* ; do
     source $i
 done
 
+# How was this script called?
+CALLED=${0##*/}
+
 disable_password() {
     echo "%wheel ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/f123
     msgbox "$(gettext "Passwords are no longer required to perform administrative tasks.")"
@@ -46,19 +49,18 @@ disable_autologin() {
 }
 
 enable_autologin() {
-cat << EOF | sudo tee "/etc/systemd/system/getty@tty1.service.d/override.conf" &> /dev/null
+cat << DONE | sudo tee "/etc/systemd/system/getty@tty1.service.d/override.conf" &> /dev/null
 [Service]
 ExecStart=
 ExecStart=-/usr/bin/agetty --autologin $SUDO_USER --noclear %I $TERM
 Type=idle
-EOF
+DONE
     msgbox "$(gettext "You no longer need to enter username and password at login for this computer.")"
 }
 
 while : ; do
-    action="$(menulist "$(gettext "Enable Autologin")" "$(gettext "Login to your computer without the need of entering username and password")" "$(gettext "Disable Autologin")" "$(gettext "Require a username and password to login to your computer.")" "$(gettext "Require Password")" "$(gettext "request a password when making changes that require administrator access.")" "$(gettext "Disable Password")" "$(gettext "Make changes to your computer that require administrator access without requiring a password. (security risk)")" "$(gettext "Exit")" "Close ${0##*/}")"
-    action="$(echo "${action,,}" | sed 's/ /_/g')"
-    if [[ "$action" != "$(gettext "exit")" && -n "$action" ]]; then
+    action="$(menulist "enable_autologin" "$(gettext "Login to your computer without the need of entering username and password.")" "disable_autologin" "$(gettext "Require a username and password to login to your computer.")" "require_password" "$(gettext "request a password when making changes that require administrator access.")" "disable_password" "$(gettext "Make changes to your computer that require administrator access without requiring a password. (security risk)")" "exit" "$(eval_gettext "Close \$CALLED")")"
+    if [[ "$action" != "exit" && -n "$action" ]]; then
         eval "$action"
     else
         break

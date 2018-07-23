@@ -33,42 +33,14 @@ for i in /usr/lib/F123-includes/*.sh ; do
     source $i
 done
 
-# Welcome message
-welcome_message() {
-# Welcomes the user.
-# Left aligned so the text is prpperly formated when output to the screen.
-# Args: none
-# Returns: none
-fold -sw$cols << EOF
-Welcome to the F123Light Operating System!
-
-Since this is the first time you start your system, the following questions will allow you to easily configure things such as wireless access. For any questions which you do not know the answer for or would prefer to answer at another time, simply press the "Escape" key, also known as the "ESC" key. The "Escape" key is usually found at the top left corner of your keyboard.
-
-The screen reading software which is now reading this text for you is called Fenrir. Many of the commands you can use to control Fenrir start with a special key, which we can call the Fenrir key. On F123Light, the Fenrir key is the "Insert" key on your numeric keypad, which is the group of keys tipically found on the right of most full-size desktop keyboards.
-
-For example, you can use "Fenrir+Up", in other words, press and hold the Insert key and then press the up arrow, if you want to increase volume. "Fenrir+Down" will decrease volume.
-
-You can also use "Fenrir+Left" and "Fenrir+Right" to reduce and increase the speed at which Fenrir reads the screen to you.
-
-To read by line, you can use the 7, 8, and 9 keys on your numeric keypad. Number 7 will read the previous line, 8 the current line, and 9 the next line.
-
-You may explore these and other commands without causing any changes to the computer by entering Fenrir's learn mode by pressing "Fenrir+H". After entering this command, you can press any key combination you desire and the computer will describe its purpose. Once you press the "Escape" key, the screen will be active again and any key combination you press will actually work.
-
-For security reasons, we recommend that you start by changing the default passwords to something that is actually secret.
-
-Start by changing the password you used to login. This password is also used for administration tasks such as configuring your wireless network.
-EOF
-continue_prompt
-}
-
 get_internet() {
     # Initial connection to wifi
     # Args: none
     # Returns: none
-    fold -sw$cols << EOF
-	In order to use the internet, you need to set up a network connection.
+    fold -sw$cols <<-EOF
+	$(gettext "In order to use the internet, you need to set up a network connection.
 	If you already plugged in a wire that is connected directly to a router or modem, you don't need to do anything here.
-	However, if you don't have a wire connected, but want to use the internet, you can configure the wireless network here.
+	However, if you don't have a wire connected, but want to use the internet, you can configure the wireless network here.")
 EOF
     while true; do
         #echo -n "$(gettext "Press enter to configure the wireless network, or escape to skip this step. ")"
@@ -88,7 +60,7 @@ EOF
 
 configure_mbrola() {
     if command -v install-mbrola >& /dev/null ; then
-        echo "The standard speech synthesizer on F123Light is eSpeak-NG, which is the voice you are hearing right now. However, other options exist and one of them is called MBROLA. Would you like to have MBROLA voices available to you?"
+        echo $(gettext "The standard speech synthesizer on F123Light is eSpeak-NG, which is the voice you are hearing right now. However, other options exist and one of them is called MBROLA. Would you like to have MBROLA voices available to you?")
         while true; do
             echo "$(gettext "Press enter to install the MBROLA voices, or escape to skip this step. ")"
             get_keypress key
@@ -106,24 +78,17 @@ configure_mbrola() {
     fi
 }
 
+# Load the correct font.
 # Load the correct custom keymap at boot if present
-# This should cause the right keymap to load on startup making the right alt key usable.
-load_keymap() {
+set_vconsole() {
+    case "${LANG%%.*}" in
+        *) fontName="lat2-16";;
+    esac
+    echo "FONT=${fontName}" | sudo tee "/etc/vconsole.conf" &> /dev/null
     if [[ -f "/usr/share/kbd/keymaps/i386/qwerty/${LANG%%.*}.map.gz" ]]; then
-    cat << EOF | sudo tee "/etc/systemd/system/keymap.service" >& /dev/null
-[Unit]
-After=getty@tty1.service
-Description=Load keymap
-                                                                                
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/loadkeys ${LANG%%.*}
-                                                                                
-[Install]
-WantedBy=multi-user.target
-EOF
+        echo "KEYMAP=${LANG%%.*}" | sudo tee -a "/etc/vconsole.conf" &> /dev/null
     fi
-    sudo systemctl enable --now keymap.service >& /dev/null
+    sudo systemctl restart systemd-vconsole-setup.service &> /dev/null
 }
 
 setup_complete() {
@@ -132,7 +97,7 @@ setup_complete() {
 # Args: none
 # Returns: none
 fold -sw$cols << EOF
-	Initial F123 Light configuration is complete.
+	$(gettext "Initial F123 Light configuration is complete.
 If you want to run this script again, just run
 ${0##*/}
 at any time.
@@ -141,7 +106,7 @@ configure-passwords
 To reconfigure the wireless network, run
 configure-wifi
 To change speech options run
-configure-speech
+configure-speech")
 EOF
 # remove the firstboot file if it exists.
 [[ -e ~/.firstboot ]] && rm ~/.firstboot
@@ -159,8 +124,9 @@ systemctl --user mask pulseaudio.socket >& /dev/null
 # Call the functions that make up this script.
 # I tried to make the functions descriptive as to what they do.
 # See comments in the functions themselves for details
-[[ -f ~/.firstboot ]] && load_keymap
-welcome_message
+[[ -f ~/.firstboot ]] && set_vconsole
+# Show quick start
+show_doc "/usr/share/doc/F123/${LANG}/quickstart.txt"
 [[ "$(yesno "$(gettext "Do you want to change passwords for users of this system?")")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-passwords.sh
 get_internet
 # Install option speech providers

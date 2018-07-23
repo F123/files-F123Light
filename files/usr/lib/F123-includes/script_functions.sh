@@ -33,7 +33,7 @@ inputbox() {
     # Args 1, Instructions for box.
     # args: 2 initial text (optional)
     dialog --backtitle "$(gettext "Enter text and press enter.")" \
-        --inputbox "$1" $((lines - 5)) $cols "$2" --stdout
+        --inputbox "$1" 0 0 "$2" --stdout
 }
 
 passwordbox() {
@@ -41,19 +41,19 @@ passwordbox() {
     # Args 1, Instructions for box.
     # args: 2 initial text (optional)
     dialog --backtitle "$(gettext "Enter text and press enter.")" \
-        --passwordbox "$1" $((lines - 5)) $cols "$2" --stdout
+        --passwordbox "$1" 0 0 "$2" --stdout
 }
 
 msgbox() {
 # Returns: None
 # Shows the provided message on the screen with an ok button.
-dialog --msgbox "$*" $((lines - 5)) $cols
+dialog --msgbox "$*" 0 0
 }
 
 infobox() {
 # Returns: None
 # Shows the provided message on the screen with no buttons.
-dialog --infobox "$*" $lines $cols
+dialog --infobox "$*" 0 0 
 }
 
 yesno() {
@@ -61,7 +61,7 @@ yesno() {
     # Args: Question to user.
     # Called  in if $(yesno) == "Yes"
     # Or variable=$(yesno)
-    dialog --backtitle "$(gettext "Press 'Enter' for \"yes\" or 'Escape' for \"no\".")" --yesno "$*" $((lines - 5)) $cols --stdout
+    dialog --backtitle "$(gettext "Press 'Enter' for \"yes\" or 'Escape' for \"no\".")" --yesno "$*" 0 0 --stdout
     if [[ $? -eq 0 ]]; then
         echo "Yes"
     else
@@ -94,16 +94,12 @@ checklist() {
     # Args: minimum group 2, multiples of 2, "tag" "choice"
     # returns: all selected tags
     # Descriptions with & as the first letter are checked by default (optional).
-      local menuList
-    if [[ $((${#@} / 2)) -gt $((lines - 5)) ]]; then
-        local optionSize=$((lines - 5))
-    else
-        local optionSize=$((${#@} / 2))
-    fi
+    local menuList
     ifs="$IFS"
     IFS=$'\n'
     dialog --backtitle "$(gettext "Choose Multiselection: Please choose all that apply by arrowing to the option and pressing space. Checked items will have an asterisk (*).")" \
-        --checklist "$(gettext "Please select the applicable options")" $((lines - 5)) $cols $optionSize $(
+        --no-tags \
+        --checklist "$(gettext "Please select the applicable options")" 0 0 0 $(
         while [[ $# -gt 0 ]]; do
             echo "$1"
             shift
@@ -122,16 +118,12 @@ checklist() {
 menulist() {
     # Args: minimum group 2, multiples of 2, "tag" "choice"
     # returns: selected tag
-      local menuList
-    if [[ $((${#@} / 2)) -gt $((lines - 5)) ]]; then
-        local optionSize=$((lines - 5))
-    else
-        local optionSize=$((${#@} / 2))
-    fi
+    local menuList
     ifs="$IFS"
     IFS=$'\n'
     dialog --backtitle "$(gettext "Use the up and down arrow keys to find the option you want, then press enter to select it.")" \
-        --menu "$(gettext "Please select one")" $((lines - 5)) $cols $optionSize $@ --stdout
+        --no-tags \
+        --menu "$(gettext "Please select one")" 0 0 0 $@ --stdout
     IFS="$ifs"
 }
 
@@ -175,4 +167,11 @@ continue_prompt() {
     read -sn1 continue
     # Restore IFS
     IFS="$ifs"
+}
+
+show_doc() {
+    # Displays file in w3m
+    # Args: path to file.
+    # Returns: none.
+    w3m "$1"
 }
