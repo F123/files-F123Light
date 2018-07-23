@@ -110,7 +110,7 @@ sudo -p "$(gettext 'Enter your password to continue ')" echo
 
 # Update repositories
 echo "$(gettext "Updating package databases...")"
-sudo pacman -Sy >&/dev/null
+sudo pacman -Syy >&/dev/null
 check_error_exit
 
 # Install MBROLA binary and voices from F123 archives
