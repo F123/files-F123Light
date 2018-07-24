@@ -108,14 +108,9 @@ echo "$(gettext "You may need to enter your password to install software.")"
 # Get the password to allow root access
 sudo -p "$(gettext 'Enter your password to continue ')" echo
 
-# Update repositories
-echo "$(gettext "Updating package databases...")"
-sudo pacman -Syy >&/dev/null
-check_error_exit
-
 # Install MBROLA binary and voices from F123 archives
 echo "$(gettext "Installing MBROLA binary...")"
-sudo pacman --noconfirm -S --needed mbrola >& /dev/null
+sudo pacman --noconfirm -Syy --needed mbrola >& /dev/null
 check_error
 for v in $voices; do
   echo "$(eval_gettext "Installing ${v} MBROLA voice...")"; echo
