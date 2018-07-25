@@ -110,7 +110,7 @@ show_doc "/usr/share/doc/F123/${LANG}/quickstart.txt"
 [[ "$(yesno "$(gettext "Do you want to change passwords for users of this system?")")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-passwords.sh
 get_internet
 # Synchronize repositories so that installations should go smoothly.
-sudo pacman -Syy >& /dev/null | dialog --progressbox "Configuring system, please wait..." 0 0
+sudo pacman -Syy > /dev/null | dialog --progressbox "Configuring system, please wait..." 0 0
 # Install option speech providers
 for i in mbrola ; do
     [[ "$(yesno "$(gettext "Do you want to install $i voices?")")" == "Yes" ]] && sudo /usr/lib/F123-wrappers/install-${i}.sh
