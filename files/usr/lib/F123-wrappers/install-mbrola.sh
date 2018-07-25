@@ -106,11 +106,11 @@ echo "$(eval_gettext "This script will install MBROLA software with $voices voic
 echo "$(gettext "You may need to enter your password to install software.")"
 
 # Get the password to allow root access
-sudo -p "$(gettext 'Enter your password to continue ')" echo
+#sudo -p "$(gettext 'Enter your password to continue ')" echo
 
 # Install MBROLA binary and voices from F123 archives
 echo "$(gettext "Installing MBROLA binary...")"
-sudo pacman --noconfirm -Syy --needed mbrola >& /dev/null
+sudo pacman --noconfirm -S --needed mbrola >& /dev/null
 check_error
 for v in $voices; do
   echo "$(eval_gettext "Installing ${v} MBROLA voice...")"; echo

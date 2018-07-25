@@ -93,6 +93,8 @@ EOF
 continue_prompt
 }
 
+# Synchronize repositories so that installations should go smoothly.
+sudo pacman -Syy >& /dev/null
 # Make sure basic xdg directory structure is in place:
 xdg-user-dirs-update
 
