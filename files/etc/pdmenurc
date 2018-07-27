@@ -82,6 +82,7 @@ menu:internet:Internet:Internet programs
 menu:media:Media:Multi-media applications
 	exec:_CD Audio Ripper (ripit)::ripit
 	exec:_Music Player (cmus)::cmus
+	exec:_Stringed Instrument Tuner (bashtuner)::bashtuner
 	exec:_Youtube (audio only)::youtube-viewer -novideo
 	group:Youtube (full _video)
         exec:::clear
