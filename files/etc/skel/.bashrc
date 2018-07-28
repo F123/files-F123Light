@@ -25,7 +25,7 @@ else
 fi
 GPG_TTY=$(tty)
 export GPG_TTYA
-export PAGER=w3m
+export PAGER="w3m -o keymap_file=~/.w3m/pager"
 # Don't put commands prefixed with space, or duplicate commands in history
 export HISTCONTROL=ignoreboth
 

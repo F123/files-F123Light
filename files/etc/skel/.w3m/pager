@@ -1,0 +1,3 @@
+keymap	SPC	EXIT
+keymap	"q"	EXIT
+keymap	"\n"	EXIT

@@ -170,8 +170,8 @@ continue_prompt() {
 }
 
 show_doc() {
-    # Displays file in w3m
+    # Displays file in w3m using pager mode
     # Args: path to file.
     # Returns: none.
-    w3m "$1"
+    w3m -o keymap_file=~/.w3m/pager "$1"
 }

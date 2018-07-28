@@ -58,26 +58,6 @@ EOF
     done
 }
 
-configure_mbrola() {
-    if command -v install-mbrola >& /dev/null ; then
-        echo $(gettext "The standard speech synthesizer on F123Light is eSpeak-NG, which is the voice you are hearing right now. However, other options exist and one of them is called MBROLA. Would you like to have MBROLA voices available to you?")
-        while true; do
-            echo "$(gettext "Press enter to install the MBROLA voices, or escape to skip this step. ")"
-            get_keypress key
-            echo
-            case $key in
-                $'\n')
-                    sudo install-mbrola
-                    break
-                ;;
-                $'\e')
-                    break
-                ;;
-		esac
-        done
-    fi
-}
-
 # Load the correct font.
 # Load the correct custom keymap at boot if present
 set_vconsole() {
@@ -129,9 +109,13 @@ systemctl --user mask pulseaudio.socket >& /dev/null
 show_doc "/usr/share/doc/F123/${LANG}/quickstart.txt"
 [[ "$(yesno "$(gettext "Do you want to change passwords for users of this system?")")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-passwords.sh
 get_internet
+# Set and sync timezone
+/usr/lib/F123-wrappers/timezone.sh
+# Synchronize repositories so that installations should go smoothly.
+sudo pacman -Syy > /dev/null | dialog --progressbox "Configuring system, please wait..." 0 0
 # Install option speech providers
 for i in mbrola ; do
-    [[ "$(yesno "$(gettext "Do you want to install $i voices?")")" == "Yes" ]] && /usr/lib/F123-wrappers/install-${i}.sh
+    [[ "$(yesno "$(gettext "Do you want to install $i voices?")")" == "Yes" ]] && sudo /usr/lib/F123-wrappers/install-${i}.sh
 done
 [[ "$(yesno "$(gettext "Do you want to change security options for this system?")")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-security.sh
 setup_complete

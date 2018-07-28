@@ -54,7 +54,7 @@ menu:games:Games:Command line games
 
 # submenu for internet applications.
 menu:internet:Internet:Internet programs
-	exec:_E-Mail::clear;mutt
+	exec:_E-Mail::clear;alpine
 	nop:Web Browsers
 	exec:_Basic Web Browser (W3M)::clear;w3m -v
 	group:Full _Web browser (Firefox)
@@ -82,6 +82,7 @@ menu:internet:Internet:Internet programs
 menu:media:Media:Multi-media applications
 	exec:_CD Audio Ripper (ripit)::ripit
 	exec:_Music Player (cmus)::cmus
+	exec:_Stringed Instrument Tuner (bashtuner)::bashtuner
 	exec:_Youtube (audio only)::youtube-viewer -novideo
 	group:Youtube (full _video)
         exec:::clear
@@ -153,8 +154,8 @@ menu:office:Office:Word processing, calendar, etc
 # submenu for configuring the computer.
 menu:configuration:Configuration:System Configuration
 	exec:_Change Passwords::clear;/usr/lib/F123-wrappers/configure-passwords
-	exec:_Email Configuration::clear;fleacollar
-	exec:_Security Configuration::clear;/usr/lib/F123-wrappers/configure-security.sh
+	#exec:_Email Configuration::clear;fleacollar
+	exec:_Security Configuration::clear;/usr/lib/F123-wrappers/configure-security
 	exec:_Change System Speech::clear;/usr/lib/F123-wrappers/configure-speech.sh
 	exec:_Wireless Internet Connection::clear;sudo configure-wifi
 	nop
