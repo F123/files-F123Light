@@ -24,16 +24,24 @@
 export DIALOGOPTS='--insecure --no-lines --visit-items'
 
 # Get the list of timezones
-mapfile -t zones < <(timedatectl --no-pager list-timezones)
+mapfile -t regions < <(timedatectl --no-pager list-timezones | cut -d '/' -f1 | sort -u)
 
 # Use the same text twice here and just hide the tag field.
-tz=$(dialog --backtitle "Select your timezone" \
+region=$(dialog --backtitle "Select your Region" \
     --no-tags \
     --menu "Use up and down arrow or page-up and page-down to navigate the list." 0 0 0 \
-    $(for i in ${zones[@]} ; do echo "$i";echo "$i";done) --stdout)
+    $(for i in ${regions[@]} ; do echo "$i";echo "$i";done) --stdout)
+
+mapfile -t cities < <(timedatectl --no-pager list-timezones | grep "$region" | cut -d '/' -f2 | sort -u)
+
+# Use the same text twice here and just hide the tag field.
+city=$(dialog --backtitle "Select a city near you" \
+    --no-tags \
+    --menu "Use up and down arrow or page-up and page-down to navigate the list." 0 0 10 \
+    $(for i in ${cities[@]} ; do echo "$i";echo "$i";done) --stdout)
 
 # Set the timezone
-sudo timedatectl set-timezone $tz
+sudo timedatectl set-timezone ${region}/${city}
 # Make sure we are syncing with the internet
 sudo timedatectl set-ntp true
 exit 0
