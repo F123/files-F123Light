@@ -106,7 +106,11 @@ systemctl --user mask pulseaudio.socket >& /dev/null
 # See comments in the functions themselves for details
 [[ -f ~/.firstboot ]] && set_vconsole
 # Show quick start
-show_doc "/usr/share/doc/F123/${LANG}/quickstart.txt"
+if [[ -f "/usr/share/doc/F123/${LANG}/quickstart.txt" ]]; then
+    show_doc "/usr/share/doc/F123/${LANG}/quickstart.txt"
+else
+    show_doc "/usr/share/doc/F123/en_US.UTF-8/quickstart.txt"
+fi
 [[ "$(yesno "$(gettext "Do you want to change passwords for users of this system?")")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-passwords.sh
 get_internet
 # Set and sync timezone
