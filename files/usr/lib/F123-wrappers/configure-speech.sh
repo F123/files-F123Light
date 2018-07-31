@@ -33,10 +33,9 @@ done
 declare -a speechOptions
 # For additional speech options, just add them to the for list
 for i in espeak-ng mbrola ; do
-    command -v $i &> /dev/null && {
-        speechOptions+=("$i");
-        speechOptions+=("|");
-    }
+    # Dialog requires 2 options for the menu, we hide the tags, but it still needs to be sent twice.
+    command -v $i &> /dev/null && \
+        speechOptions+=("$i" "$i")
 done
 
 speechProvider="$(menulist ${speechOptions[@]})"
