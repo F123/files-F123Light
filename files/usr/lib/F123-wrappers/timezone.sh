@@ -41,7 +41,7 @@ city=$(dialog --backtitle "Select a city near you" \
     $(for i in ${cities[@]} ; do echo "$i";echo "$i";done) --stdout)
 
 # Set the timezone
-sudo timedatectl set-timezone ${region}/${city}
+sudo timedatectl set-timezone ${region}/${city} >& /dev/null
 # Make sure we are syncing with the internet
-sudo timedatectl set-ntp true
+sudo timedatectl set-ntp true >& /dev/null
 exit 0

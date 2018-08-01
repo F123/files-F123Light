@@ -68,7 +68,7 @@ set_vconsole() {
     if [[ -f "/usr/share/kbd/keymaps/i386/qwerty/${LANG%%.*}.map.gz" ]]; then
         echo "KEYMAP=${LANG%%.*}" | sudo tee -a "/etc/vconsole.conf" &> /dev/null
     fi
-    sudo systemctl restart systemd-vconsole-setup.service &> /dev/null
+    sudo systemctl -q restart systemd-vconsole-setup.service &> /dev/null
 }
 
 setup_complete() {
@@ -97,9 +97,9 @@ continue_prompt
 xdg-user-dirs-update
 
 # Add any user based systemd service files here. remember to redirect output.
-systemctl --user enable --now recoll.service >& /dev/null
+systemctl -q --user enable --now recoll.service >& /dev/null
 # Stop pulseaudio from autospawning which breaks sound horribly.
-systemctl --user mask pulseaudio.socket >& /dev/null
+systemctl -q --user mask pulseaudio.socket >& /dev/null
 
 # Call the functions that make up this script.
 # I tried to make the functions descriptive as to what they do.
