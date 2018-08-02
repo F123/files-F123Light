@@ -35,7 +35,7 @@ mapfile -t regions < <(timedatectl --no-pager list-timezones | cut -d '/' -f1 | 
 # Use the same text twice here and just hide the tag field.
 region=$(dialog --backtitle "$(gettext "Select your Region")" \
     --no-tags \
-    --menu "$("Use up and down arrow or page-up and page-down to navigate the list.")" 0 0 0 \
+    --menu "$(gettext "Use up and down arrow or page-up and page-down to navigate the list.")" 0 0 0 \
     $(for i in ${regions[@]} ; do echo "$i";echo "$(gettext "$i")";done) --stdout)
 
 mapfile -t cities < <(timedatectl --no-pager list-timezones | grep "$region" | cut -d '/' -f2 | sort -u)
