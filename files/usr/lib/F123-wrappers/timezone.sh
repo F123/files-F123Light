@@ -22,24 +22,29 @@
 #
 #--code-- 
 
+# Setup gettext
+export TEXTDOMAIN=timezone.sh
+export TEXTDOMAINDIR=/usr/share/locale
+. gettext.sh
+
 export DIALOGOPTS='--insecure --no-lines --visit-items'
 
 # Get the list of timezones
 mapfile -t regions < <(timedatectl --no-pager list-timezones | cut -d '/' -f1 | sort -u)
 
 # Use the same text twice here and just hide the tag field.
-region=$(dialog --backtitle "Select your Region" \
+region=$(dialog --backtitle "$(gettext "Select your Region")" \
     --no-tags \
-    --menu "Use up and down arrow or page-up and page-down to navigate the list." 0 0 0 \
-    $(for i in ${regions[@]} ; do echo "$i";echo "$i";done) --stdout)
+    --menu "$("Use up and down arrow or page-up and page-down to navigate the list.")" 0 0 0 \
+    $(for i in ${regions[@]} ; do echo "$i";echo "$(gettext "$i")";done) --stdout)
 
 mapfile -t cities < <(timedatectl --no-pager list-timezones | grep "$region" | cut -d '/' -f2 | sort -u)
 
 # Use the same text twice here and just hide the tag field.
-city=$(dialog --backtitle "Select a city near you" \
+city=$(dialog --backtitle "$(gettext "Select a city near you")" \
     --no-tags \
-    --menu "Use up and down arrow or page-up and page-down to navigate the list." 0 0 10 \
-    $(for i in ${cities[@]} ; do echo "$i";echo "$i";done) --stdout)
+    --menu "$(gettext "Use up and down arrow or page-up and page-down to navigate the list.")" 0 0 10 \
+    $(for i in ${cities[@]} ; do echo "$i";echo "$(gettext "$i")";done) --stdout)
 
 # Set the timezone
 sudo timedatectl set-timezone ${region}/${city} >& /dev/null
