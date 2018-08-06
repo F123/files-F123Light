@@ -54,7 +54,12 @@ menu:games:Games:Command line games
 
 # submenu for internet applications.
 menu:internet:Internet:Internet programs
-	exec:_E-Mail::clear;alpine
+	group:Email (Thunderbird)
+        exec:::clear
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::startx /usr/lib/F123-wrappers/xlauncher thunderbird
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+    endgroup
 	nop:Web Browsers
 	exec:_Basic Web Browser (W3M)::clear;w3m -v
 	group:Full _Web browser (Firefox)
