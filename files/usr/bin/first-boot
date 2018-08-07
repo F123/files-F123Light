@@ -62,6 +62,7 @@ EOF
 # Load the correct custom keymap at boot if present
 set_vconsole() {
     case "${LANG%%.*}" in
+        "ar") fontName="iso06.16";;
         *) fontName="lat2-16";;
     esac
     echo "FONT=${fontName}" | sudo tee "/etc/vconsole.conf" &> /dev/null
