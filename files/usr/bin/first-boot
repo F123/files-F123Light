@@ -62,12 +62,12 @@ EOF
 # Load the correct custom keymap at boot if present
 set_vconsole() {
     case "${LANG%%.*}" in
-        "ar_EG") fontName="iso06.16";;
+        "ar_EG") fontName="/usr/share/kbd/consolefonts/iso06.16.gz";;
         *) fontName="lat2-16";;
     esac
     echo "FONT=${fontName}" | sudo tee "/etc/vconsole.conf" &> /dev/null
     if [[ -f "/usr/share/kbd/keymaps/i386/qwerty/${LANG%%.*}.map.gz" ]]; then
-        echo "KEYMAP=${LANG%%.*}" | sudo tee -a "/etc/vconsole.conf" &> /dev/null
+        echo "KEYMAP=/usr/share/kbd/keymaps/i386/qwerty/${LANG%%.*}.map.gz" | sudo tee -a "/etc/vconsole.conf" &> /dev/null
     fi
     sudo systemctl -q restart systemd-vconsole-setup.service &> /dev/null
 }
