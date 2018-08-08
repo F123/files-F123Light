@@ -7,7 +7,7 @@
 
 [[ $DISPLAY ]] && shopt -s checkwinsize
 
-PS1='\u \w% '
+PS1='[\u \w] \$ '
 
 case ${TERM} in
   xterm*|rxvt*|Eterm|aterm|kterm|gnome*)

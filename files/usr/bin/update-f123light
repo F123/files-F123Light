@@ -33,17 +33,13 @@ set -e
 
 # Due to the nature of system updates, this script may ask for the user's password more than once.
 # Try to minimize user fears with a friendly message.
-msgbox "You are updating your system, which may ask you for your password more than once. Don't be alarmed; this is perfectly normal. Press the enter key to continue."
+msgbox "$(gettext "You are updating your system, which may ask you for your password more than once. Don't be alarmed; this is perfectly normal. Press the enter key to continue.")"
 
 # Update all packages on the system. Start with ALARM provided packages and versioned AUR packages.
-infobox "Updating system software..."
+infobox "$(gettext "Updating system software...")"
 sudo pacman -Syu --noconfirm >& /dev/null
 
-# Since any git version could appear to the system as a downgrade, update these packages whether an update appears to be  available or not.
-infobox "Updating F123Light extra software..."
-sudo pacman -S bicon-git espeak-ng-extended-git speech-dispatcher-git pdmenu-git --noconfirm >& /dev/null
-
-infobox "Updating configuration and other files..."
+infobox "$(gettext "Updating configuration and other files...")"
 
 # Cleanup just in case there is a temporary file repository left behind from a previous update.
 sudo rm -Rf /tmp/F123Light
@@ -57,12 +53,12 @@ shopt -s dotglob
 sudo cp -R /tmp/F123Light/files/* /
 cp -R /etc/skel/* $HOME
 
-# The temporary files downloaded from the F123Light git repository are no longer needed. Delete the clone.
+# The temporary files downloaded from the F123Light git repository are no longer needed. Kill the clone.
 sudo rm -Rf /tmp/F123Light
 
 # Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
 # We will prompt for a keypress. Enter to reboot, escape to exit the script and return to the shell or calling script.
-key=$(yesno "Your system has been updated. Although usually not necessary, it may help to reboot. Would you like to do this now? Press enter to reboot, or escape to finish the update without rebooting.")
+key=$(yesno "$(gettext "Your system has been updated. Although usually not necessary, it may help to reboot. Would you like to do this now? Press enter to reboot, or escape to finish the update without rebooting.")")
 	case $key in
 		"Yes")
 			systemctl reboot
@@ -70,4 +66,4 @@ key=$(yesno "Your system has been updated. Although usually not necessary, it ma
 "No")
 		;;
 	esac
-infobox "Update complete."
+infobox "$(gettext "Update complete.")"

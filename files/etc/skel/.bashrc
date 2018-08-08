@@ -14,7 +14,7 @@ shopt -s autocd
 #Invironment variables
 export QT_ACCESSIBILITY=1
 export QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
-PS1='\$ '
+PS1='[\W] % '
 export DIALOGOPTS='--no-lines --visit-items'
 if [[ -n "$DISPLAY" ]]; then
     export BROWSER=firefox
