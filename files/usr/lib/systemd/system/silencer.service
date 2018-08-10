@@ -1,0 +1,10 @@
+[Unit]
+Description=Silence DMESG messages
+After=sysinit.target
+
+[Service]
+Type=oneshot
+ExecStart=dmesg -n 1
+
+[Install]
+WantedBy=multiuser.target
