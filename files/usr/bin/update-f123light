@@ -56,6 +56,15 @@ cp -R /etc/skel/* $HOME
 # The temporary files downloaded from the F123Light git repository are no longer needed. Kill the clone.
 sudo rm -Rf /tmp/F123Light
 
+# Stolen from the build functions and adapted for a running system
+# Set the language used by speech-dispatcher
+# This will become unnecessary if speech-dispatcher starts handling locales properly.
+case "${LANG::5}" in
+    "en_US") ;&
+    "pt_BR") sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${LANG//_/-}/" -e 's/\(.*Language\) \(.*\)\..*/\1\L\2/' "/etc/speech-dispatcher/speechd.conf" ;;
+    *) sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${LANG::2}/" "/etc/speech-dispatcher/speechd.conf" ;;
+esac
+
 # Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
 # We will prompt for a keypress. Enter to reboot, escape to exit the script and return to the shell or calling script.
 key=$(yesno "$(gettext "Your system has been updated. Although usually not necessary, it may help to reboot. Would you like to do this now? Press enter to reboot, or escape to finish the update without rebooting.")")
