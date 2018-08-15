@@ -45,6 +45,18 @@ menu:games:Games:Command line games
 	exec:_Snake (Not screen reader friendly)::clear;snake
 	exec:_Tetris (Not screen reader friendly)::clear;tetris-bsd
 	exec:_Trek::clear;trek
+	group:Tux Math
+        exec:::clear
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::startx /usr/lib/F123-wrappers/tuxmath --tts
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+    endgroup
+	group:Tux Type
+        exec:::clear
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::startx /usr/lib/F123-wrappers/tuxtype --tts
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+    endgroup
 	exec:_Worm (Not screen reader friendly)::clear;worm
 	exec:_Wumpus::clear;wump
 
