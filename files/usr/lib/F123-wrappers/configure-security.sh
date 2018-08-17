@@ -26,7 +26,7 @@ export TEXTDOMAINDIR=/usr/share/locale
 . gettext.sh
 
 # Load F123 includes
-for i in /usr/lib/F123-includes/* ; do
+for i in /usr/lib/F123-includes/*.sh ; do
     source $i
 done
 
@@ -44,17 +44,19 @@ require_password() {
 }
 
 disable_autologin() {
-    sudo rm "/etc/systemd/system/getty@tty1.service.d/override.conf" 2> /dev/null
+    sudo rm "/etc/systemd/system/getty@tty*.service.d/override.conf" 2> /dev/null
     msgbox "$(gettext "You will need to enter username and password at login for this computer.")"
 }
 
 enable_autologin() {
-cat << DONE | sudo tee "/etc/systemd/system/getty@tty1.service.d/override.conf" &> /dev/null
+for i in {1..12} ; do
+cat << EOF | sudo tee "/etc/systemd/system/getty@tty$i.service.d/override.conf" &> /dev/null
 [Service]
 ExecStart=
 ExecStart=-/usr/bin/agetty --autologin $SUDO_USER --noclear %I $TERM
 Type=idle
-DONE
+EOF
+done
     msgbox "$(gettext "You no longer need to enter username and password at login for this computer.")"
 }
 
