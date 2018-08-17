@@ -34,7 +34,7 @@ done
 CALLED=${0##*/}
 
 soundAction="$(menulist "USB_Soundcard" "$(gettext "USB_Soundcard")" "3MM_Jack" "$(gettext "3MM_Jack")")"
-[[ $? -ne 0 ]] && exit 0
+[[ -n "$soundAction" ]] || exit 0
 
 if [[ "$soundAction" == "USB_Soundcard" ]]; then
     echo "blacklist snd_bcm2835" | sudo tee /etc/modprobe.d/onboard_sound.conf &> /dev/null
