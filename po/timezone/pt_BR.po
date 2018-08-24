@@ -1,0 +1,33 @@
+# Portuguese translations for timezone.sh package
+# Traduções em português brasileiro para o pacote timezone.sh.
+# Copyright (C) 2018 F123 Consulting <info@f123.org>
+# Copyright (C) 2018 Kyle <kyle@free2.ml>
+# Copyright (C) 2018 Roberta Santos <robertasantos1997@gmail.com>
+# This file is distributed under the same license as the files-F123Light package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: files-F 123Light\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-01 23:47-0400\n"
+"PO-Revision-Date: 2018-08-01 23:49-0400\n"
+"Last-Translator: Roberta Santos <robertasantos1997@gmail.com>\n"
+"Language-Team: Brazilian Portuguese\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../files/usr/lib/F123-wrappers/timezone.sh:36
+msgid "Select your Region"
+msgstr ""
+
+#: ../../files/usr/lib/F123-wrappers/timezone.sh:38
+#: ../../files/usr/lib/F123-wrappers/timezone.sh:46
+msgid "Use up and down arrow or page-up and page-down to navigate the list."
+msgstr ""
+
+#: ../../files/usr/lib/F123-wrappers/timezone.sh:44
+msgid "Select a city near you"
+msgstr ""

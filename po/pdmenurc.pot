@@ -1,0 +1,381 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-23 01:21-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pdmenu.sh:30
+msgid "Welcome to F123 Light"
+msgstr ""
+
+#: pdmenu.sh:33
+msgid "F123 Light Main Menu"
+msgstr ""
+
+#: pdmenu.sh:33
+msgid ""
+"Use the up and down arrow keys to select your choice and press the 'Enter' "
+"key to activate it."
+msgstr ""
+
+#: pdmenu.sh:34
+msgid "_Games Menu"
+msgstr ""
+
+#: pdmenu.sh:35
+msgid "_Internet menu"
+msgstr ""
+
+#: pdmenu.sh:36
+msgid "_Media menu"
+msgstr ""
+
+#: pdmenu.sh:37
+msgid "_Office menu"
+msgstr ""
+
+#: pdmenu.sh:38
+msgid "_System Configuration Menu"
+msgstr ""
+
+#: pdmenu.sh:39
+msgid "_Tools Menu"
+msgstr ""
+
+#: pdmenu.sh:41
+msgid "_Power Options"
+msgstr ""
+
+#: pdmenu.sh:43
+msgid "E_xit Menu"
+msgstr ""
+
+#: pdmenu.sh:47
+msgid "Games"
+msgstr ""
+
+#: pdmenu.sh:47
+msgid "Command line games"
+msgstr ""
+
+#: pdmenu.sh:48
+msgid "_Adventure"
+msgstr ""
+
+#: pdmenu.sh:49
+msgid "_Arithmetic"
+msgstr ""
+
+#: pdmenu.sh:50
+msgid "_Air Traffic Controler (Not screen reader friendly)"
+msgstr ""
+
+#: pdmenu.sh:51
+msgid "_Backgammon (Not screen reader friendly)"
+msgstr ""
+
+#: pdmenu.sh:52
+msgid "_Battlestar"
+msgstr ""
+
+#: pdmenu.sh:53
+msgid "_Boggle (Not screen reader friendly)"
+msgstr ""
+
+#: pdmenu.sh:54
+msgid "_Canfield (Not screen reader friendly)"
+msgstr ""
+
+#: pdmenu.sh:55
+msgid "_Cribbage (Not screen reader friendly)"
+msgstr ""
+
+#: pdmenu.sh:56
+msgid "_Go Fish"
+msgstr ""
+
+#: pdmenu.sh:57
+msgid "_Gomoku"
+msgstr ""
+
+#: pdmenu.sh:58
+msgid "_Hangman"
+msgstr ""
+
+#: pdmenu.sh:59
+msgid "_Hunt (Not screen reader friendly)"
+msgstr ""
+
+#: pdmenu.sh:60
+msgid "_Mille Bornes"
+msgstr ""
+
+#: pdmenu.sh:61
+msgid "_Number"
+msgstr ""
+
+#: pdmenu.sh:62
+msgid "_Phantasia"
+msgstr ""
+
+#: pdmenu.sh:63
+msgid "_Phase of the Moon"
+msgstr ""
+
+#: pdmenu.sh:64
+msgid "_Primes"
+msgstr ""
+
+#: pdmenu.sh:65
+msgid "_Robots (Not screen reader friendly)"
+msgstr ""
+
+#: pdmenu.sh:66
+msgid "_Sail"
+msgstr ""
+
+#: pdmenu.sh:67
+msgid "_Snake (Not screen reader friendly)"
+msgstr ""
+
+#: pdmenu.sh:68
+msgid "_Tetris (Not screen reader friendly)"
+msgstr ""
+
+#: pdmenu.sh:69
+msgid "_Trek"
+msgstr ""
+
+#: pdmenu.sh:70
+msgid "_Tux Math"
+msgstr ""
+
+#: pdmenu.sh:76
+msgid "_Tux Type"
+msgstr ""
+
+#: pdmenu.sh:82
+msgid "_Worm (Not screen reader friendly)"
+msgstr ""
+
+#: pdmenu.sh:83
+msgid "_Wumpus"
+msgstr ""
+
+#: pdmenu.sh:86
+msgid "Main menu"
+msgstr ""
+
+#: pdmenu.sh:90
+msgid "Internet"
+msgstr ""
+
+#: pdmenu.sh:90
+msgid "Internet programs"
+msgstr ""
+
+#: pdmenu.sh:91
+msgid "Email (Thunderbird)"
+msgstr ""
+
+#: pdmenu.sh:97
+msgid "Web Browsers"
+msgstr ""
+
+#: pdmenu.sh:98
+msgid "_Basic Web Browser (W3M)"
+msgstr ""
+
+#: pdmenu.sh:99
+msgid "Full _Web browser (Firefox)"
+msgstr ""
+
+#: pdmenu.sh:105
+msgid "Communication"
+msgstr ""
+
+#: pdmenu.sh:106
+msgid "Instant Messenger (_Pidgin)"
+msgstr ""
+
+#: pdmenu.sh:112
+msgid "Voice Chat (_Mumble)"
+msgstr ""
+
+#: pdmenu.sh:119 pdmenu.sh:145 pdmenu.sh:190 pdmenu.sh:202 pdmenu.sh:213
+#: pdmenu.sh:219
+msgid "_Main menu"
+msgstr ""
+
+#: pdmenu.sh:121
+msgid "Media"
+msgstr ""
+
+#: pdmenu.sh:121
+msgid "Multi-media applications"
+msgstr ""
+
+#: pdmenu.sh:122
+msgid "_CD Audio Ripper (ripit)"
+msgstr ""
+
+#: pdmenu.sh:123
+msgid "_Music Player (cmus)"
+msgstr ""
+
+#: pdmenu.sh:124
+msgid "_Stringed Instrument Tuner (bashtuner)"
+msgstr ""
+
+#: pdmenu.sh:125
+msgid "_Youtube (audio only)"
+msgstr ""
+
+#: pdmenu.sh:126
+msgid "Youtube (full _video)"
+msgstr ""
+
+#: pdmenu.sh:132
+msgid "Book Readers"
+msgstr ""
+
+#: pdmenu.sh:133
+msgid "Read Books in _Epub Format"
+msgstr ""
+
+#: pdmenu.sh:135
+msgid "Epub"
+msgstr ""
+
+#: pdmenu.sh:135
+msgid "Select book to read"
+msgstr ""
+
+#: pdmenu.sh:140
+msgid "Back to Media Menu"
+msgstr ""
+
+#: pdmenu.sh:148
+msgid "Office"
+msgstr ""
+
+#: pdmenu.sh:148
+msgid "Word processing, calendar, etc"
+msgstr ""
+
+#: pdmenu.sh:149
+msgid "_Month Calendar"
+msgstr ""
+
+#: pdmenu.sh:150
+msgid "_Year Calendar"
+msgstr ""
+
+#: pdmenu.sh:151
+msgid "Text _Editor"
+msgstr ""
+
+#: pdmenu.sh:152
+msgid "Office Suite"
+msgstr ""
+
+#: pdmenu.sh:153
+msgid "Database"
+msgstr ""
+
+#: pdmenu.sh:159
+msgid "Diagrams"
+msgstr ""
+
+#: pdmenu.sh:165
+msgid "Formula Editor"
+msgstr ""
+
+#: pdmenu.sh:171
+msgid "Presentation"
+msgstr ""
+
+#: pdmenu.sh:177
+msgid "Spreadsheet"
+msgstr ""
+
+#: pdmenu.sh:183
+msgid "Word Processor"
+msgstr ""
+
+#: pdmenu.sh:194
+msgid "Configuration"
+msgstr ""
+
+#: pdmenu.sh:194
+msgid "System Configuration"
+msgstr ""
+
+#: pdmenu.sh:195
+msgid "_Change Passwords"
+msgstr ""
+
+#: pdmenu.sh:196
+msgid "_Email Configuration"
+msgstr ""
+
+#: pdmenu.sh:197
+msgid "_Security Configuration"
+msgstr ""
+
+#: pdmenu.sh:198
+msgid "_Change System Speech"
+msgstr ""
+
+#: pdmenu.sh:199
+msgid "_Change Soundcard"
+msgstr ""
+
+#: pdmenu.sh:200
+msgid "_Wireless Internet Connection"
+msgstr ""
+
+#: pdmenu.sh:204
+msgid "Tools"
+msgstr ""
+
+#: pdmenu.sh:204
+msgid "System Tools"
+msgstr ""
+
+#: pdmenu.sh:205
+msgid "Bluetooth manager"
+msgstr ""
+
+#: pdmenu.sh:211
+msgid "_Search"
+msgstr ""
+
+#: pdmenu.sh:215
+msgid "Shutdown or Restart Your Computer"
+msgstr ""
+
+#: pdmenu.sh:215
+msgid "Shutdown or restart your computer"
+msgstr ""
+
+#: pdmenu.sh:216
+msgid "_Power Off"
+msgstr ""
+
+#: pdmenu.sh:217
+msgid "_Restart"
+msgstr ""
