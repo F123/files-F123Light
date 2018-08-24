@@ -53,7 +53,7 @@ for i in {1..12} ; do
 cat << EOF | sudo tee "/etc/systemd/system/getty@tty$i.service.d/override.conf" &> /dev/null
 [Service]
 ExecStart=
-ExecStart=/usr/bin/agetty --autologin $SUDO_USER --noclear %I $TERM
+ExecStart=/usr/bin/agetty --autologin $SUDO_USER --noclear %I \$TERM
 Type=idle
 EOF
 done
