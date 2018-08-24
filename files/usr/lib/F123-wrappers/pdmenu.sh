@@ -22,6 +22,7 @@
 #
 #--code--
 
+# Remember to make this script executable so pdmenu can access it.
 export TEXTDOMAIN=pdmenurc
 export TEXTDOMAINDIR=/usr/share/locale
 . gettext.sh
