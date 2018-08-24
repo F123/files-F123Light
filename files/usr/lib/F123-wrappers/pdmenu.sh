@@ -150,30 +150,6 @@ menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
 	exec:$(gettext "_Year Calendar"):pause:clear;ncal -y
 	exec:$(gettext "Text _Editor")::clear;${EDITOR:-nano}
 	nop:$(gettext "Office Suite")
-	group:$(gettext "Database")
-        exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
-        exec:::startx /usr/lib/F123-wrappers/xlauncher lobase
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
-    endgroup
-	group:$(gettext "Diagrams")
-        exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
-        exec:::startx /usr/lib/F123-wrappers/xlauncher lodraw
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
-    endgroup
-	group:$(gettext "Formula Editor")
-        exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
-        exec:::startx /usr/lib/F123-wrappers/xlauncher lomath
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
-    endgroup
-	group:$(gettext "Presentation")
-        exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
-        exec:::startx /usr/lib/F123-wrappers/xlauncher loimpress
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
-    endgroup
 	group:$(gettext "Spreadsheet")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
@@ -184,6 +160,12 @@ menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher lowriter
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+    endgroup
+	group:$(gettext "Libre Office (All Applications)")
+        exec:::clear
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::startx /usr/lib/F123-wrappers/xlauncher soffice
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 	nop
