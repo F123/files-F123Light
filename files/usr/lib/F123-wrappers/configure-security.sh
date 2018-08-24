@@ -44,7 +44,7 @@ require_password() {
 }
 
 disable_autologin() {
-    sudo rm "/etc/systemd/system/getty@tty*.service.d/override.conf" 2> /dev/null
+    sudo rm -f /etc/systemd/system/getty@tty*.service.d/override.conf 2> /dev/null
     msgbox "$(gettext "You will need to enter username and password at login for this computer.")"
 }
 
@@ -53,7 +53,7 @@ for i in {1..12} ; do
 cat << EOF | sudo tee "/etc/systemd/system/getty@tty$i.service.d/override.conf" &> /dev/null
 [Service]
 ExecStart=
-ExecStart=-/usr/bin/agetty --autologin $SUDO_USER --noclear %I $TERM
+ExecStart=/usr/bin/agetty --autologin $SUDO_USER --noclear %I $TERM
 Type=idle
 EOF
 done
