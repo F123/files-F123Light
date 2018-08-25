@@ -96,7 +96,7 @@ menu:internet:$(gettext "Internet"):$(gettext "Internet programs")
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 	nop:$(gettext "Web Browsers")
-	exec:$(gettext "_Basic Web Browser (W3M)")::clear;w3m -v
+	exec:$(gettext "_Basic Web Browser (W3M)")::clear;w3m
 	group:$(gettext "Full _Web browser (Firefox)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
