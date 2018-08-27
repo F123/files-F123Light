@@ -1,0 +1,102 @@
+#!/bin/bash
+#
+# Copyright 2018, F123 Consulting, <information@f123.org>
+# Copyright 2018, Kyle, <kyle@free2.ml>
+#
+# This is free software; you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 3, or (at your option) any later
+# version.
+#
+# This software is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this package; see the file COPYING.  If not, write to the Free
+# Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA.
+#
+#--code--
+
+# the gettext essentials
+export TEXTDOMAIN=build-f123light
+export TEXTDOMAINDIR=/usr/share/locale
+
+. gettext.sh
+
+# Import the standard F123Light functions
+. ../lib/F123-includes/script_functions.sh
+
+# Defaults
+branch=master
+language=${LANG%%.*}
+version=
+
+# Get command line options
+if ! options=$(getopt -o b:l:v: -l branch:,language:,version: -n "build-f123light" -- "$@"); then
+	exit 1
+fi
+
+eval set -- "$options"
+
+while test $# -gt 0; do
+	case $1 in
+		-b|--branch) branch="$2"; shift 2
+		;;
+		-l|--language) language="$2"; shift 2
+		;;
+		-v|--version) version="$2"; shift 2
+		;;
+		(--) shift
+		;;
+		(*) echo $(basename $0): $1 $(gettext "not recognized") 1>&2; exit 1
+		;;
+	esac
+done
+
+# The build must run as root. Get password if necessary.
+sudo true
+
+# Check for and clone if necessary or pull the latest version of the build system
+if test -d $HOME/F123Light; then
+	cd $HOME/F123Light/build
+	gettext "Updating F123Light build system..."
+	git pull &> /dev/null
+	clear
+else
+	gettext "Downloading F123Light build system..."
+	git clone https://github.com/F123/F123Light.git $HOME/F123Light &> /dev/null
+	cd $HOME/F123Light/build
+	clear
+fi
+
+# We can only build from a branch that exists in the remote git repository.
+if git show-ref --verify --quiet refs/remotes/origin/$branch; then
+	git checkout $branch &> /dev/null
+else
+msgbox "$(eval_gettext "No branch named \$branch exists.")"; exit 1
+fi
+
+# We want a temporary configuration file, because a pull will not overwrite a local file
+# if it hasn't been updated remotely, or will force a stash.
+cp F123Light-${language}.conf build.conf
+
+# Override the version if needed. Unfortunately, the imagename and
+# rootlabel will also need to be rewritten, but we can just
+# get these values from the file and rewrite them at the end.
+if test $version; then
+	echo version=$version >> build.conf
+	echo "$(grep imagename build.conf)" >> build.conf
+	echo "$(grep rootlabel build.conf)" >> build.conf
+fi
+
+# Run the build as root.
+eval_gettext "Building F123Light for \$language from the \$branch branch..."
+	sudo ./build.sh build.conf &> build.log || \
+	msgbox "$(gettext "Something went wrong with the build.\n\n$(tail build.log)")"
+
+# cleanup
+rm -f build.log build.conf
+exit 0
