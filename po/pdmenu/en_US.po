@@ -1,0 +1,148 @@
+# English translations for files-F package.
+# Copyright (C) 2018 Joey Hess <pdmenu@joeyh.name>
+# Copyright (C) 2018 F123 Consultin <info@f123.org>
+# Copyright (C) 2018 Kyle <kyle@free2.ml>
+# This file is distributed under the same license as the Pdmenu package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: files-F 123Light\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-11 11:17-0400\n"
+"PO-Revision-Date: 2018-07-30 19:03-0400\n"
+"Last-Translator:  <kyle@free2.ml>\n"
+"Language-Team: English\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/actions.c:96
+msgid "Please wait..."
+msgstr "Please wait..."
+
+#: src/actions.c:109
+msgid "Press Esc to close window."
+msgstr "Press Esc to close window."
+
+#: src/actions.c:201
+msgid "Command returned no output"
+msgstr "Command returned no output"
+
+#: src/actions.c:346
+msgid "Press Enter to return to Pdmenu."
+msgstr "Press Enter to return to Pdmenu."
+
+#: src/screen.c:141
+msgid "Unable to initialize key mappings."
+msgstr "Unable to initialize key mappings."
+
+#: src/screen.c:187
+msgid "Error: The screen is too small."
+msgstr "Error: The screen is too small."
+
+#: src/error.c:31
+#, c-format
+msgid "pdmenu error: "
+msgstr "pdmenu error: "
+
+#: src/menu.c:447
+msgid "Arrow keys move, Esc exits current menu, Enter runs program"
+msgstr "Arrow keys move, Esc exits current menu, Enter runs program"
+
+#: src/menu.c:478
+#, c-format
+msgid "Attempt to remove menu \"%s\" failed: menu is on screen."
+msgstr "Attempt to remove menu \"%s\" failed: menu is on screen."
+
+#: src/rc.c:186
+#, c-format
+msgid "%s:%i Invalid screen part name, \"%s\"."
+msgstr "%s:%i Invalid screen part name, \"%s\"."
+
+#: src/rc.c:197
+#, c-format
+msgid "%s:%i \"endgroup\" found outside of group block."
+msgstr "%s:%i \"endgroup\" found outside of group block."
+
+#: src/rc.c:201
+#, c-format
+msgid "%s:%i Invalid or misplaced keyword, \"%s\"."
+msgstr "%s:%i Invalid or misplaced keyword, \"%s\"."
+
+#: src/rc.c:241
+#, c-format
+msgid "%s:%i Nested \"group\" commands."
+msgstr "%s:%i Nested \"group\" commands."
+
+#: src/rc.c:333
+#, c-format
+msgid "%s: \"group\" command used without \"endgroup\"."
+msgstr "%s: \"group\" command used without \"endgroup\"."
+
+#: src/inputbox.c:53 src/inputbox.c:77
+msgid "Press Enter when done, or Esc to cancel"
+msgstr "Press Enter when done, or Esc to cancel"
+
+#: src/pdmenu.c:29
+#, c-format
+msgid ""
+"Usage: pdmenu [options] [menufiles ..]\n"
+"\tmenufiles                 the rc files to read instead of\n"
+"\t                          ~/.pdmenurc or %spdmenurc\n"
+"\t-h        --help          display this help\n"
+"\t-s        --superhot      enable super hot keys\n"
+"\t-c        --color         enable color\n"
+"\t-u        --unpark        cursor moves to current selection\n"
+"\t-q        --quit          'q' key does not exit program\n"
+"\t-mmenuid  --menu=menuid   display menu with this menuid on startup\n"
+"\t-v        --version       show version information\n"
+"\t-r        --retro         draw menus using old style\n"
+"\t-l        --lowbit        do not use high bit line drawing characters\n"
+"\t-b        --borderspace   draw borders with spaces, not lines\n"
+"\t-n        --numeric       do not use 8 and 2 for moving up and down\n"
+msgstr ""
+"Usage: pdmenu [options] [menufiles ..]\n"
+"\tmenufiles                 the rc files to read instead of\n"
+"\t                          ~/.pdmenurc or %spdmenurc\n"
+"\t-h        --help          display this help\n"
+"\t-s        --superhot      enable super hot keys\n"
+"\t-c        --color         enable color\n"
+"\t-u        --unpark        cursor moves to current selection\n"
+"\t-q        --quit          'q' key does not exit program\n"
+"\t-mmenuid  --menu=menuid   display menu with this menuid on startup\n"
+"\t-v        --version       show version information\n"
+"\t-r        --retro         draw menus using old style\n"
+"\t-l        --lowbit        do not use high bit line drawing characters\n"
+"\t-b        --borderspace   draw borders with spaces, not lines\n"
+"\t-n        --numeric       do not use 8 and 2 for moving up and down\n"
+
+#: src/pdmenu.c:46
+msgid "(Long options are disabled.)"
+msgstr "(Long options are disabled.)"
+
+#: src/pdmenu.c:53
+#, c-format
+msgid ""
+"Pdmenu %s GPL Copyright (C) 1995-2018 by Joey Hess <pdmenu@joeyh.name>\n"
+msgstr ""
+"Pdmenu %s GPL Copyright (C) 1995-2018 by Joey Hess <pdmenu@joeyh.name>\n"
+
+#: src/pdmenu.c:169
+msgid "Unable to find any pdmenurc files, or all pdmenurc files are empty."
+msgstr "Unable to find any pdmenurc files, or all pdmenurc files are empty."
+
+#: src/pdmenu.c:180
+#, c-format
+msgid "Menu \"%s\" is not defined."
+msgstr "Menu \"%s\" is not defined."
+
+#: src/pdmenu.c:207
+msgid "Pdmenu"
+msgstr "Pdmenu"
+
+#: src/window.c:37
+#, c-format
+msgid "Welcome to Pdmenu %s by Joey Hess <pdmenu@joeyh.name>"
+msgstr "Welcome to Pdmenu %s by Joey Hess <pdmenu@joeyh.name>"

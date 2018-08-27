@@ -1,0 +1,44 @@
+#!/bin/bash
+# xlauncher
+#
+# Copyright 2018, F123 Consulting, <information@f123.org>
+# Copyright 2018, Storm Dragon, <storm_dragon@linux-a11y.org>
+#
+# This is free software; you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 3, or (at your option) any later
+# version.
+#
+# This software is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this package; see the file COPYING.  If not, write to the Free
+# Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+# 02110-1301, USA.
+#
+#--code-- 
+
+# Check for required programs
+for i in jwm orca startx ; do
+    command -v "$i" || {
+        echo "Please install $i and run $0 again."
+        exit 1
+    }
+done
+
+if [[ $# == 0 ]]; then
+    echo "Usage $0 \"program name\" optional arguments."
+    exit 1
+fi
+
+export GTK_MODULES=gail:atk-bridge
+export GNOME_ACCESSIBILITY=1
+export QT_ACCESSIBILITY=1
+export QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
+command jwm &
+command xbindkeys &
+command "tuxmath" $@
+exit 0

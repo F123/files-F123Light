@@ -19,4 +19,6 @@ case ${TERM} in
     ;;
 esac
 
+export WWW_HOME=https://f123.org
+
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion

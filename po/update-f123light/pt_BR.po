@@ -1,0 +1,46 @@
+# update-f123light
+# Copyright (C) 2018 F123 Consulting <info@f123.org>
+# Copyright (C) 2018 Kyle <kyle@free2.ml>
+# Copyright (C) 2018 Roberta Santos <robertasantos1997@gmail.com>
+# This file is distributed under the same license as the files-F123Light package.
+#  <kyle@free2.ml>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: update-f 123light\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-02 00:00-0400\n"
+"PO-Revision-Date: 2018-08-02 00:06-0400\n"
+"Last-Translator: Roberta Santos <robertasantos1997@gmail.com>\n"
+"Language-Team: Brazilian Portuguese\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../../files/usr/bin/update-f123light:36
+msgid ""
+"You are updating your system, which may ask you for your password more than "
+"once. Don't be alarmed; this is perfectly normal. Press the enter key to "
+"continue."
+msgstr ""
+
+#: ../../files/usr/bin/update-f123light:39
+msgid "Updating system software..."
+msgstr ""
+
+#: ../../files/usr/bin/update-f123light:42
+msgid "Updating configuration and other files..."
+msgstr ""
+
+#: ../../files/usr/bin/update-f123light:61
+msgid ""
+"Your system has been updated. Although usually not necessary, it may help to "
+"reboot. Would you like to do this now? Press enter to reboot, or escape to "
+"finish the update without rebooting."
+msgstr ""
+
+#: ../../files/usr/bin/update-f123light:69
+msgid "Update complete."
+msgstr ""
