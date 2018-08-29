@@ -185,6 +185,7 @@ menu:configuration:$(gettext "Configuration"):$(gettext "System Configuration")
 	exit:$(gettext "_Main menu")..
 
 menu:tools:$(gettext "Tools"):$(gettext "System Tools")
+	exec:$(gettext "File _Browser")::clear;mc -K /etc/mc/mc.keymap
 	group:$(gettext "Bluetooth manager")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
