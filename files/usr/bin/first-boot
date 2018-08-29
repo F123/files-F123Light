@@ -99,8 +99,6 @@ xdg-user-dirs-update
 
 # Add any user based systemd service files here. remember to redirect output.
 systemctl -q --user enable --now recoll.service >& /dev/null
-# Stop pulseaudio from autospawning which breaks sound horribly.
-systemctl -q --user mask pulseaudio.socket >& /dev/null
 
 # Call the functions that make up this script.
 # I tried to make the functions descriptive as to what they do.
