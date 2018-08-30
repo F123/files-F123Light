@@ -61,8 +61,8 @@ sudo rm -Rf /tmp/F123Light
 # This will become unnecessary if speech-dispatcher starts handling locales properly.
 case "${LANG::5}" in
     "en_US") ;&
-    "pt_BR") sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${LANG//_/-}/" -e 's/\(.*Language\) \(.*\)\..*/\1\L\2/' "/etc/speech-dispatcher/speechd.conf" ;;
-    *) sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${LANG::2}/" "/etc/speech-dispatcher/speechd.conf" ;;
+    "pt_BR") sudo sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${LANG//_/-}/" -e 's/\(.*Language\) \(.*\)\..*/\1\L\2/' "/etc/speech-dispatcher/speechd.conf" ;;
+    *) sudo sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${LANG::2}/" "/etc/speech-dispatcher/speechd.conf" ;;
 esac
 
 # Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
