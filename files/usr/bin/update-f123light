@@ -67,6 +67,11 @@ esac
 # Reload speech-dispatcher configuration
 sudo pkill -1 speech-dispatch
 
+# It seems that anything that runs after this point is executed as soon
+# as it is pushed to the repository. We shouldn't need to make the user run this script twice.
+# Test some newly pushed code
+msgbox "This is a quick test. If you see this message, then we can push code to f123light any time after files-f123light is cloned and copied, and it will be executed automatically, even if your copy of /usr/bin/update-f123light was old. For example, if this worked, update-f123light should fix its own speech-dispatcher issues on its own, without the need to run it a second time. If you're seeing this, it should be fixed already."
+
 # Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
 # We will prompt for a keypress. Enter to reboot, escape to exit the script and return to the shell or calling script.
 key=$(yesno "$(gettext "Your system has been updated. Although usually not necessary, it may help to reboot. Would you like to do this now? Press enter to reboot, or escape to finish the update without rebooting.")")
