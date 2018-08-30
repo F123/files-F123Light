@@ -64,6 +64,8 @@ case "${LANG::5}" in
     "pt_BR") sudo sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${LANG//_/-}/" -e 's/\(.*Language\) \(.*\)\..*/\1\L\2/' "/etc/speech-dispatcher/speechd.conf" ;;
     *) sudo sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${LANG::2}/" "/etc/speech-dispatcher/speechd.conf" ;;
 esac
+# Reload speech-dispatcher configuration
+pkill -1 speech-dispatch
 
 # Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
 # We will prompt for a keypress. Enter to reboot, escape to exit the script and return to the shell or calling script.
