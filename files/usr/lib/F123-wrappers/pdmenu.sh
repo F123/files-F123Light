@@ -197,8 +197,8 @@ exec:$(gettext "_Search"):edit,pause:recoll -t ~Search for what? :~
 	exit:$(gettext "_Main menu")..
 
 menu:power:$(gettext "Shutdown or Restart Your Computer"):$(gettext "Shutdown or restart your computer")
-	exec:$(gettext "_Power Off")::poweroff
-	exec:$(gettext "_Restart")::reboot
+	exec:$(gettext "_Power Off")::poweroff &> /dev/null || sudo poweroff
+	exec:$(gettext "_Restart")::reboot &> /dev/null || sudo reboot
 	nop
 	exit:$(gettext "_Main menu")..
 EOF
