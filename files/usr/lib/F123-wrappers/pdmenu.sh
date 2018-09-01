@@ -38,6 +38,7 @@ menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow
 	show:$(gettext "_Office menu")..::office
 	show:$(gettext "_System Configuration Menu")..::configuration
 	show:$(gettext "_Tools Menu")..::tools
+	show:$(gettext "_Help Menu")..::help
 	nop
 	show:$(gettext "_Power Options")..::power
 	nop
@@ -193,6 +194,11 @@ menu:tools:$(gettext "Tools"):$(gettext "System Tools")
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 exec:$(gettext "_Search"):edit,pause:recoll -t ~Search for what? :~
+	nop
+	exit:$(gettext "_Main menu")..
+
+menu:help:$(gettext "Get Help with F123 Light"):$(gettext "Get Help with F123 Light")
+	exec:$(gettext "_Chat Bot")::tt++ /etc/chatbot.tin
 	nop
 	exit:$(gettext "_Main menu")..
 
