@@ -194,7 +194,9 @@ menu:tools:$(gettext "Tools"):$(gettext "System Tools")
 		for i in \$(find /media -maxdepth 1 -type d) ; do \
 			j="\${i/\/media\//}"; \
 			echo "exec:_\$j::mc '\$i'"; \
+			echo "exec:$(gettext "Safely remove") _\$j::sudo umount '\$i'"; \
 		done; \
+		[[ -z "$i" ]] && echo "exec:$(gettext "No external drives found"):pause:$(gettext "No external drives found")"; \
 		echo "exit:$(gettext "Back to Tools Menu").."
 		show:::external
 		remove:::external
