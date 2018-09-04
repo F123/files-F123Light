@@ -190,13 +190,15 @@ menu:tools:$(gettext "Tools"):$(gettext "System Tools")
 	group:$(gettext "Browse External Drives")
 		exec::makemenu: \
 		echo "menu:external:$(gettext "External"):$(gettext "Select Drive")"; \
-		rmdir /media/* &. /dev/null; \
-		for i in \$(find /media -maxdepth 1 -type d) ; do \
+		rmdir /media/* &> /dev/null; \
+		c=0; \
+		for i in \$(find /media -maxdepth 1 ! -path /media -type d) ; do \
+			((c++)); \
 			j="\${i/\/media\//}"; \
 			echo "exec:_\$j::mc '\$i'"; \
 			echo "exec:$(gettext "Safely remove") _\$j::sudo umount '\$i'"; \
 		done; \
-		[[ -z "$i" ]] && echo "exec:$(gettext "No external drives found"):pause:$(gettext "No external drives found")"; \
+		[[ \$c -gt 0 ]] && echo "exec:\$(gettext "No external drives found"):pause:\$(gettext "No external drives found")"; \
 		echo "exit:$(gettext "Back to Tools Menu").."
 		show:::external
 		remove:::external
