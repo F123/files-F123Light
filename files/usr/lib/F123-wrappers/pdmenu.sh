@@ -187,6 +187,18 @@ menu:configuration:$(gettext "Configuration"):$(gettext "System Configuration")
 
 menu:tools:$(gettext "Tools"):$(gettext "System Tools")
 	exec:$(gettext "File _Browser")::clear;mc -K /etc/mc/mc.keymap
+	group:$(gettext "Browse External Drives")
+		exec::makemenu: \
+		echo "menu:external:$(gettext "External"):$(gettext "Select Drive")"; \
+		rmdir /media/* &. /dev/null; \
+		for i in \$(find /media -maxdepth 1 -type d) ; do \
+			j="\${i/\/media\//}"; \
+			echo "exec:_\$j::mc '\$i'"; \
+		done; \
+		echo "exit:$(gettext "Back to Tools Menu").."
+		show:::external
+		remove:::external
+	endgroup
 	group:$(gettext "Bluetooth manager")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
