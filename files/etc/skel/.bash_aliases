@@ -8,4 +8,4 @@ alias uptime="utime"
 alias irssi='irssi 2> /dev/null'
 alias xclip="xclip -selection clipboard"
 alias userctl="systemctl --user "
-alias pdmenu="pdmenu -bun"
+alias pdmenu="pdmenu -un"
