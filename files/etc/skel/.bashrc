@@ -41,3 +41,7 @@ test $SHLVL -eq 1 && test -e ${HOME}/.firstboot && test -e $(command -v first-bo
 
 # Load Pdmenu , but only if this is the first shell
 test $SHLVL -eq 1 && pdmenu -un
+
+### Added by surfraw. To remove use surfraw-update-path -remove
+    export PATH=$PATH:/usr/lib/surfraw
+### End surfraw addition.
