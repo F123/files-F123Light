@@ -39,6 +39,9 @@ menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow
 	show:$(gettext "_System Configuration Menu")..::configuration
 	show:$(gettext "_Tools Menu")..::tools
 	show:$(gettext "_Help Menu")..::help
+	nop:Search
+    exec:$(gettext "_Find things on your computer"):edit,pause:recoll -t ~Search for what? :~
+    exec:$(gettext "_Search the internet"):edit,pause:google ~Search for what? :~
 	nop
 	show:$(gettext "_Power Options")..::power
 	nop
@@ -190,15 +193,15 @@ menu:tools:$(gettext "Tools"):$(gettext "System Tools")
 	group:$(gettext "Browse External Drives")
 		exec::makemenu: \
 		echo "menu:external:$(gettext "External"):$(gettext "Select Drive")"; \
-		rmdir /media/* &> /dev/null; \
+		sudo rmdir /media/* &> /dev/null; \
 		c=0; \
 		for i in \$(find /media -maxdepth 1 ! -path /media -type d) ; do \
-			((c++)); \
+			[[ -n "\$i" ]] && ((c++)); \
 			j="\${i/\/media\//}"; \
 			echo "exec:_\$j::mc '\$i'"; \
 			echo "exec:$(gettext "Safely remove") _\$j::sudo umount '\$i'"; \
 		done; \
-		[[ \$c -gt 0 ]] && echo "exec:\$(gettext "No external drives found"):pause:\$(gettext "No external drives found")"; \
+		[[ \$c -eq 0 ]] && echo "exec:\$(gettext "No external drives found"):pause:echo \"\$(gettext "No external drives found")\""; \
 		echo "exit:$(gettext "Back to Tools Menu").."
 		show:::external
 		remove:::external
@@ -209,7 +212,6 @@ menu:tools:$(gettext "Tools"):$(gettext "System Tools")
         exec:::startx /usr/lib/F123-wrappers/xlauncher blueman-assistant
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
-exec:$(gettext "_Search"):edit,pause:recoll -t ~Search for what? :~
 	nop
 	exit:$(gettext "_Main menu")..
 
