@@ -47,23 +47,26 @@ sudo rm -Rf /tmp/F123Light
 # Clone the files-F123Light git repository.
 git clone -q https://github.com/F123/files-F123Light.git /tmp/F123Light
 
- # Copy in the files. All files are to be copied for now, and then /etc/skel should be recopied to the user's $HOME.
-# This will only copy to the $HOME of the user running this update script.
+ # Copy in the files. Only the files under files/usr should be copied
+# to the system to avoid resetting configs modified by the system menu.
 shopt -s dotglob
-sudo cp -R /tmp/F123Light/files/* /
-cp -R /etc/skel/* $HOME
+sudo cp -R /tmp/F123Light/files/usr/* /
 
-# The temporary files downloaded from the F123Light git repository are no longer needed. Kill the clone.
+# The temporary files downloaded from the F123Light git repository are no longer needed.
+# Kill the clone.
 sudo rm -Rf /tmp/F123Light
 
-# Stolen from the build functions and adapted for a running system
-# Set the language used by speech-dispatcher
-# This will become unnecessary if speech-dispatcher starts handling locales properly.
-case "${LANG::5}" in
-    "en_US") ;&
-    "pt_BR") sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${LANG//_/-}/" -e 's/\(.*Language\) \(.*\)\..*/\1\L\2/' "/etc/speech-dispatcher/speechd.conf" ;;
-    *) sed -i -e "s/^[#[:space:]]*DefaultLanguage [[:space:]]*\S*$/ DefaultLanguage   ${LANG::2}/" "/etc/speech-dispatcher/speechd.conf" ;;
-esac
+##### BEGIN INCREMENTAL UPDATE SECTION
+##### Incremental updates may install or remove packages, manipulate system
+##### configurations or even download other scripts.
+##### Be careful with this section. It can break the systems of all F123Light users.
+##### Still, it's better than resetting all configurations after every system update.
+##### TODO: For each incremental update, perform the update only if its name is not in the list.
+##### TODO: Add a function that will look for its parameter in the list file ... for readability.
+##### Add incremental updates below this line
+
+
+##### END INCREMENTAL UPDATE SECTION
 
 # Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
 # We will prompt for a keypress. Enter to reboot, escape to exit the script and return to the shell or calling script.
