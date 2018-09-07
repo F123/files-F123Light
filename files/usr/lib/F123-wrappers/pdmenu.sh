@@ -33,11 +33,11 @@ title:$(gettext "Welcome to F123Light")
 # Define the main menu.
 menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow keys to select your choice and press the 'Enter' key to activate it.")
 	show:$(gettext "_Games Menu")..::games
-	show:$(gettext "_Internet Menu")..::internet
-	show:$(gettext "_Media Menu")..::media
-	show:$(gettext "_Office Menu")..::office
-	exec:$(gettext "File _Browser")::clear;mc -K /etc/mc/mc.keymap
-	group:$(gettext "Browse External Drives")
+	show:$(gettext "_Internet Menu")..:$(gettext "Browser, e-mail and chat applications"):internet
+	show:$(gettext "_Media Menu")..:$(gettext "Book reading, music and video applications"):media
+	show:$(gettext "_Office Menu")..:$(gettext "text, calendar and spreadsheet applications"):office
+	exec:$(gettext "_File Manager"):$(gettext "Copy, move and delete files"):clear;mc -K /etc/mc/mc.keymap
+	group:$(gettext "Manage External _Drives")
 		exec::makemenu: \
 		echo "menu:external:$(gettext "External"):$(gettext "Select Drive")"; \
 		rmdir /media/* &> /dev/null; \
@@ -45,26 +45,26 @@ menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow
 		for i in \$(find /media -maxdepth 1 ! -path /media -type d) ; do \
 			((c++)); \
 			j="\${i/\/media\//}"; \
-			echo "exec:_\$j::mc '\$i'"; \
+			echo "exec:_\$j::mc -K /etc/mc/mc.keymap '\$i'"; \
 			echo "exec:$(gettext "Safely remove") _\$j::sudo umount '\$i'"; \
 		done; \
-		[[ \$c -gt 0 ]] && echo "exec:\$(gettext "No external drives found"):pause:\$(gettext "No external drives found")"; \
-		echo "exit:$(gettext "Back to Tools Menu").."
+		[[ \$c -gt 0 ]] && echo "exec:\$(gettext "No external drives found")::clear; \
+		echo "exit:$(gettext "Main Menu").."
 		show:::external
 		remove:::external
 	endgroup
 	nop:$(gettext "Search")
-    exec:$(gettext "_Find things on your computer"):edit,pause:recoll -t ~Search for what? :~
-    exec:$(gettext "_Search the internet"):edit,pause:google ~Search for what? :~
+    exec:$(gettext "Search This _Computer"):edit,pause:recoll -t ~Search for what? :~
+    exec:$(gettext "Search the _Web"):edit,pause:google ~Search for what? :~
 	nop
-	show:$(gettext "_Settings Menu")..::settings
-	show:$(gettext "_Help Menu")..::help
-	show:$(gettext "Turn Off or Restart _Computer")..::power
+	show:$(gettext "_Settings Menu")..:$(gettext "Configure this computer"):settings
+	show:$(gettext "_Help Menu")..:$(gettext "Get Help with F123Light"):help
+	show:$(gettext "_Turn Off or Restart Computer")..::power
 	nop
 	exit:$(gettext "E_xit to Command Line")
 
 # Submenu for games.
-menu:games:$(gettext "Games"):$(gettext "Command line games")
+menu:games:$(gettext "Games")):
 	exec:$(gettext "_Adventure")::clear;adventure
 	exec:$(gettext "_Arithmetic Challenge!")::clear;arithmetic
 	#exec:$(gettext "_Air Traffic Controler (Not screen reader friendly)")::clear;atc
@@ -106,7 +106,7 @@ menu:games:$(gettext "Games"):$(gettext "Command line games")
 
 # submenu for internet applications.
 menu:internet:$(gettext "Internet"):$(gettext "Internet programs")
-	group:$(gettext "E-mail (T_hunderbird)")
+	group:$(gettext "_E-_mail (Thunderbird)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher thunderbird
@@ -140,15 +140,15 @@ menu:media:$(gettext "Media"):$(gettext "Multi-media applications")
 	exec:$(gettext "_CD Audio Ripper (ripit)")::ripit
 	exec:$(gettext "_Music Player (cmus)")::cmus
 	exec:$(gettext "_Stringed Instrument Tuner (bashtuner)")::bashtuner
-	exec:$(gettext "_Youtube (audio only)")::youtube-viewer -novideo
-	group:$(gettext "Youtube (full _video)")
+	exec:$(gettext "Youtube (_Audio Only)")::youtube-viewer -novideo
+	group:$(gettext "Youtube (Full _Video)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher lxterminal -e youtube-viewer
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
 	nop:$(gettext "Book Readers")
-	group:$(gettext "Read Books in _Epub Format")
+	group:$(gettext "_Book Reader")
 		exec::makemenu: \
 		echo "menu:epub:$(gettext "Epub"):$(gettext "Select book to read")"; \
 		for i in \$(find \$HOME -type f -iname "*.epub") ; do \
@@ -179,7 +179,7 @@ menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
         exec:::startx /usr/lib/F123-wrappers/xlauncher lowriter
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
-	group:$(gettext "Libre Office (All Applications)")
+	group:$(gettext "_Libre Office (All Applications)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher soffice
@@ -188,21 +188,20 @@ menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
 	nop
 	exit:$(gettext "_Main Menu")..
 
-
 # submenu for configuring the computer.
 menu:settings:$(gettext "Settings"):$(gettext "System configuration")
 	exec:$(gettext "_Change Passwords")::clear;/usr/lib/F123-wrappers/configure-passwords
-	exec:$(gettext "_E-mail Configuration")::clear;fleacollar
-	exec:$(gettext "_Security Configuration")::clear;/usr/lib/F123-wrappers/configure-security.sh
+	exec:$(gettext "E-_mail Configuration")::clear;fleacollar
+	exec:$(gettext "Securit_y Configuration")::clear;/usr/lib/F123-wrappers/configure-security.sh
 	exec:$(gettext "Change System S_peech")::clear;/usr/lib/F123-wrappers/configure-speech.sh
 	exec:$(gettext "Change _Sound Output")::clear;/usr/lib/F123-wrappers/configure-sound.sh
-	group:$(gettext "Bluetooth manager")
+	#group:$(gettext "_Bluetooth manager")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
         exec:::startx /usr/lib/F123-wrappers/xlauncher blueman-assistant
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
     endgroup
-	exec:$(gettext "Setup _Wifi")::clear;sudo configure-wifi
+	exec:$(gettext "Configure _Wifi")::clear;sudo configure-wifi
 	nop
 	exit:$(gettext "_Main Menu")..
 
