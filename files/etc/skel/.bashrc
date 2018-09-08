@@ -40,7 +40,7 @@ test $SHLVL -eq 1 && test -e ${HOME}/.firstboot && test -e $(command -v first-bo
 [[ -L "$HOME/.config/systemd/user/pulseaudio.socket" ]] || systemctl -q --user mask pulseaudio.socket >& /dev/null 
 
 # Load Pdmenu , but only if this is the first shell
-test $SHLVL -eq 1 && pdmenu -un
+test $SHLVL -eq 1 && pdmenu -sun
 
 ### Added by surfraw. To remove use surfraw-update-path -remove
     export PATH=$PATH:/usr/lib/surfraw
