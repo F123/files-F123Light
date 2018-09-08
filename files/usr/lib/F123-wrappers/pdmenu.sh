@@ -150,14 +150,15 @@ menu:media:$(gettext "Media"):$(gettext "Multi-media applications")
 	nop:$(gettext "Book Readers")
 	group:$(gettext "_Book Reader")
 		exec::makemenu: \
-		echo "menu:epub:$(gettext "Epub"):$(gettext "Select book to read")"; \
-		for i in \$(find \$HOME -type f -iname "*.epub") ; do \
-			j="\$(basename "\$i" .epub)"; \
-			echo "exec:_\$j::epub2txt -p 80 '\$i' | w3m"; \
+		echo "menu:books:$(gettext "Books"):$(gettext "Select book to read")"; \
+		find \$HOME -type f \( -iname "*.epub" -o -iname "*.pdf" \) -print0 | while read -d \$'\0' i ; do \
+			j="\$(basename "\$i")"; \
+			echo "exec:_\${j%%.*}::/usr/lib/F123-wrappers/bookreader.sh '\$i'"; \
 		done; \
-		echo "exit:$(gettext "Back to Media Menu").."
-		show:::epub
-		remove:::epub
+		echo nop; \
+		echo "exit:$(gettext "Media Menu").."
+		show:::books
+		remove:::books
 	endgroup
 	nop
 	exit:$(gettext "_Main Menu")..
@@ -196,11 +197,11 @@ menu:settings:$(gettext "Settings"):$(gettext "System configuration")
 	exec:$(gettext "Change System S_peech")::clear;/usr/lib/F123-wrappers/configure-speech.sh
 	exec:$(gettext "Change _Sound Output")::clear;/usr/lib/F123-wrappers/configure-sound.sh
 	#group:$(gettext "_Bluetooth manager")
-        exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
-        exec:::startx /usr/lib/F123-wrappers/xlauncher blueman-assistant
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
-    endgroup
+        #exec:::clear
+        #exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        #exec:::startx /usr/lib/F123-wrappers/xlauncher blueman-assistant
+        #exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+    #endgroup
 	exec:$(gettext "Configure _Wifi")::clear;sudo configure-wifi
 	nop
 	exit:$(gettext "_Main Menu")..
