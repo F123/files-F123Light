@@ -4,7 +4,5 @@ set echo-control-characters off
 "\e[B": history-search-forward
 
 #Macros
-# Alt+f1 load text menu
-# Bug in bash and keymapping means we have to bind a nonexistant key, then map alt+f1 to it.
-"\201":"\C-k \C-u/usr/bin/kies\n"
-"\eOP":'$'"\201"
+# F10 load text menu
+"^[[21~":"\C-k \C-u/usr/bin/pdmenu -sun\n"
