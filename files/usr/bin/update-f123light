@@ -51,7 +51,8 @@ git clone -q https://github.com/F123/files-F123Light.git /tmp/F123Light
 # to the system to avoid resetting configs modified by the system menu.
 shopt -s dotglob
 sudo cp -a /tmp/F123Light/files/usr/* /usr
-sudo cp -a /tmp/F123Light/files/boot/* /boot
+/boot is a special case, as it's an old-style DOS partition on a Raspberry Pi
+sudo cp -Rf /tmp/F123Light/files/boot/* /boot
 
 # The temporary files downloaded from the F123Light git repository are no longer needed.
 # Kill the clone.
