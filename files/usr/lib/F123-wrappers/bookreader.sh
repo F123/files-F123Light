@@ -32,9 +32,11 @@ type=${book##*.}
 # Extract the book and pipe the result into w3m depending on its type
 # New types may be added here at any time.
 case $type in
-	epub) epub2txt -w 80 $book | w3m
+	epub|Epub|EPUB) epub2txt -w 80 "$book" | w3m
 	;;
-	pdf) pdftotext -layout $book - | w3m
+	pdf|Pdf|PDF) pdftotext -layout "$book" - | w3m
+	;;
+	txt|Txt|TXT) w3m "$book"
 	;;
 	# Insert new formats above this line
 	*) exit 1
