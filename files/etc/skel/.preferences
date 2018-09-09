@@ -1,0 +1,4 @@
+declare -Ag preferences (
+[emailClient]="mutt"
+[searchEngine]="google"
+)

@@ -35,5 +35,13 @@ grep "^$(date '+%-m/%-e')" ~/calendar &> /dev/null && calendar | w3m
 # Run a first-boot script, only if this is the top level shell, only if ~/.firstboot exists and only if a first-boot script exists.
 test $SHLVL -eq 1 && test -e ${HOME}/.firstboot && test -e $(command -v first-boot) && command first-boot
 
+# Make sure user based systemd stuff is working.
+# Stop pulseaudio from autospawning which breaks sound horribly.
+[[ -L "$HOME/.config/systemd/user/pulseaudio.socket" ]] || systemctl -q --user mask pulseaudio.socket >& /dev/null 
+
 # Load Pdmenu , but only if this is the first shell
-test $SHLVL -eq 1 && pdmenu -bun
+test $SHLVL -eq 1 && pdmenu -sun
+
+### Added by surfraw. To remove use surfraw-update-path -remove
+    export PATH=$PATH:/usr/lib/surfraw
+### End surfraw addition.
