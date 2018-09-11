@@ -1,390 +1,424 @@
-# Arabic translations for pdmenurc.
-# Copyright (C) 2018 THE PDMENU'S COPYRIGHT HOLDER
+# Arabic translations for generatedF123Light system menu
 # Copyright (C) 2018 F123 Consulting <info@f123.org>
 # Copyright (C) 2018 Kyle <kyle@free2.ml>
 # Copyright (C) 2018 Shaimaa Ibrahim <Shamse1@gmail.com>
 # Arabic text is fully diacratized as per request from F123 team.
-# This file is distributed under the same license as the Pdmenu package.
-#
-# Special note for translators:
-# These messages will be used to generate a menu system. You will notice underscore characters in
-# many of the translatable messages. The underscore character in the untranslated message
-# immediately preceeds the default shortcut key. Translators are allowed to place this underscore
-# character before any letter or symbol in the translation that they want to become the shortcut key
-# for the translated message.
+# This file is distributed under the same license as files-F123Light.
+# FIRST AUTHOR Kyle <kyle@free2.ml>, 2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: files-F 123Light\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-23 01:21-0400\n"
-"PO-Revision-Date: 2018-08-23 01:21-0400\n"
-"Last-Translator: Shaimaa Ibrahim <Shamse1@gmail.com>\n"
+"POT-Creation-Date: 2018-09-08 23:10-0400\n"
+"PO-Revision-Date: 2018-09-11 16:13+0200\n"
+"Last-Translator: <kyle@free2.ml>\n"
 "Language-Team: Arabic\n"
 "Language: ar_EG\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
 
-#: pdmenu.sh:30
-msgid "Welcome to F123 Light"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:31
+msgid "Welcome to F123Light"
+msgstr "مَرْحبًا بِكُم فِي إف123لايت"
 
-#: pdmenu.sh:33
+#: files/usr/lib/F123-wrappers/pdmenu.sh:34
 msgid "F123 Light Main Menu"
-msgstr ""
+msgstr "قَائِمةُ إف123لايت الرَّئِيسِيَّة"
 
-#: pdmenu.sh:33
-msgid ""
-"Use the up and down arrow keys to select your choice and press the 'Enter' "
-"key to activate it."
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:34
+msgid "Use the up and down arrow keys to select your choice and press the 'Enter' key to activate it."
+msgstr "اِسْتَخْدِمْ السَّهْمَ الْأعْلَى وَالسَّهْمَ الْأَسْفَلَ لِاِخْتِيَارِ الْعُنْصُرِ الْمُرَاد، ثُمَّ اِضْغَطْ مِفْتَاحَ الْإدْخَالِ لِلتَّنْشِيط."
 
-#: pdmenu.sh:34
+#: files/usr/lib/F123-wrappers/pdmenu.sh:35
 msgid "_Games Menu"
-msgstr ""
+msgstr "قَائِ_مَةُ الْأَلْعَاب"
 
-#: pdmenu.sh:35
-msgid "_Internet menu"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:36
+msgid "_Internet Menu"
+msgstr "_قَائِمَةُ الْإِنْتَرنِت"
 
-#: pdmenu.sh:36
-msgid "_Media menu"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:36
+msgid "Browser, e-mail and chat applications"
+msgstr "تَطْبِيقَاتُ الدَّرْدَشَة، الْبَريد الْإلِكْتُرونِي، الْمُتَصَفِّح"
 
-#: pdmenu.sh:37
-msgid "_Office menu"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:37
+msgid "_Media Menu"
+msgstr "قَائِ_مَةُ الْوَسَائِط"
 
-#: pdmenu.sh:38
-msgid "_System Configuration Menu"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:37
+msgid "Book reading, music and video applications"
+msgstr "تَطْبِيقَاتُ قِرَاءةِ الْكُتُبِ، وَتَطْبِيقَاتُ الْمُوسِيقَى وَالْفِيدْيُو"
 
-#: pdmenu.sh:39
-msgid "_Tools Menu"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:38
+msgid "_Office Menu"
+msgstr "قَ_ائِمَةُ الْمَكْتَب"
 
-#: pdmenu.sh:41
-msgid "_Power Options"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:38
+msgid "text, calendar and spreadsheet applications"
+msgstr "تَطْبِيقَاتُ النُّصُوصِ، التَّقْويم، جَدَاوِلُ الْبَيَانَات"
 
-#: pdmenu.sh:43
-msgid "E_xit Menu"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:39
+msgid "_File Manager"
+msgstr "مُد_ِيرُ الْمَلَفَّات"
 
-#: pdmenu.sh:47
+#: files/usr/lib/F123-wrappers/pdmenu.sh:39
+msgid "Copy, move and delete files"
+msgstr "نَقْلُ وَنَسخُ وَحَذْفُ الْمَلَفَّات"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:40
+msgid "Manage External _Drives"
+msgstr "إِدَارَةُ _مُحَرِّكَاتِ الْأَقْرَاصِ الْخَارِجِيَّة"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:42
+msgid "External"
+msgstr "خَارِجِيٌّ"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:42
+msgid "Select Drive"
+msgstr "اِخْتَرْ مُحَرِّكَ الْأَقْرَاص"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:49
+msgid "Safely remove"
+msgstr "إِزَالَةُ الْجِهَازِ بِأَمَان"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:52
+#: files/usr/lib/F123-wrappers/pdmenu.sh:105
+msgid "Main Menu"
+msgstr "الْقَائِمَةُ الرَّئِيسِيَّة"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:56
+msgid "Search"
+msgstr "الْبَحْثْ"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:57
+msgid "Search This _Computer"
+msgstr "الْبَحْثُ فِي هَذَا الْ_حَاسوب"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:58
+msgid "Search the _Web"
+msgstr "الْبَحْثُ عَلَى الْإِ_نْتَرْنِت"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:60
+msgid "_Settings Menu"
+msgstr "_قَائِمةُ الْإِعْدَادَات"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:60
+msgid "Configure this computer"
+msgstr "تَكْوِينُ هَذَا الْحَاسُوب"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:61
+msgid "_Help Menu"
+msgstr "_قَائِمَةُ الْمُسَاعَدَة"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:61
+#: files/usr/lib/F123-wrappers/pdmenu.sh:210
+msgid "Get Help with F123Light"
+msgstr "الْحُصُولُ عَلَى الْمُسَاعَدَةِ الْخَاصَّةِ بإف123لايت"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:62
+msgid "_Turn Off or Restart Computer"
+msgstr "إِيْقَا_فُ أَوْ إِعَادَةُ تَشْغِيلِ الْحَاسوب"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:64
+msgid "E_xit to Command Line"
+msgstr "ال_خُرُوجُ مِنْ سَطْرِ الْأَوَامِر"
+
+#: files/usr/lib/F123-wrappers/pdmenu.sh:67
 msgid "Games"
-msgstr ""
+msgstr "الْأَلْعَابُ"
 
-#: pdmenu.sh:47
-msgid "Command line games"
-msgstr ""
-
-#: pdmenu.sh:48
+#: files/usr/lib/F123-wrappers/pdmenu.sh:68
 msgid "_Adventure"
-msgstr ""
+msgstr "الْمُ_غَامَرَة"
 
-#: pdmenu.sh:49
-msgid "_Arithmetic"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:69
+msgid "_Arithmetic Challenge!"
+msgstr "_تَحَدِّي الْحِسَابْ"
 
-#: pdmenu.sh:50
+#: files/usr/lib/F123-wrappers/pdmenu.sh:70
 msgid "_Air Traffic Controler (Not screen reader friendly)"
-msgstr ""
+msgstr "مُرَا_قِبُ الْحَرَكَةِ الْجَوِّيَّة (غَيْرُ مُتَوَافِقَةٍ مَعَ بَرَامِجِ قِرَاءةِ الشَّاشَة)"
 
-#: pdmenu.sh:51
+#: files/usr/lib/F123-wrappers/pdmenu.sh:71
 msgid "_Backgammon (Not screen reader friendly)"
-msgstr ""
+msgstr "ال_طَّاوْلة (غَيْرُ مُتَوَافِقَةٍ مَعَ بَرَامِجِ قِرَاءةِ الشَّاشَة)"
 
-#: pdmenu.sh:52
+#: files/usr/lib/F123-wrappers/pdmenu.sh:72
 msgid "_Battlestar"
-msgstr ""
+msgstr "نَ_جْمُ الْمَعْرَكَة"
 
-#: pdmenu.sh:53
+#: files/usr/lib/F123-wrappers/pdmenu.sh:73
 msgid "_Boggle (Not screen reader friendly)"
-msgstr ""
+msgstr "لُ_عْبَةُ بوجل (غَيْرُ مُتَوَافِقَةٍ مَعَ بَرَامِجِ قِرَاءةِ الشَّاشَة)"
 
-#: pdmenu.sh:54
+#: files/usr/lib/F123-wrappers/pdmenu.sh:74
 msgid "_Canfield (Not screen reader friendly)"
-msgstr ""
+msgstr "_لُعْبَةُ كانفِيلْد (غَيْرُ مُتَوَافِقَةٍ مَعَ بَرَامِجِ قِرَاءةِ الشَّاشَة)"
 
-#: pdmenu.sh:55
+#: files/usr/lib/F123-wrappers/pdmenu.sh:75
 msgid "_Cribbage (Not screen reader friendly)"
-msgstr ""
+msgstr "لُعْ_بَةُ الكريبج (غَيْرُ مُتَوَافِقَةٍ مَعَ بَرَامِجِ قِرَاءةِ الشَّاشَة)"
 
-#: pdmenu.sh:56
+#: files/usr/lib/F123-wrappers/pdmenu.sh:76
 msgid "_Go Fish"
-msgstr ""
+msgstr "_صَيدُ السَّمَك"
 
-#: pdmenu.sh:57
+#: files/usr/lib/F123-wrappers/pdmenu.sh:77
 msgid "_Gomoku"
-msgstr ""
+msgstr "لُ_عْبَةُ الْجُومُوكو"
 
-#: pdmenu.sh:58
+#: files/usr/lib/F123-wrappers/pdmenu.sh:78
 msgid "_Hangman"
-msgstr ""
+msgstr "_الرَّجُلُ الْمَشْنُوق"
 
-#: pdmenu.sh:59
+#: files/usr/lib/F123-wrappers/pdmenu.sh:79
 msgid "_Hunt (Not screen reader friendly)"
-msgstr ""
+msgstr "_لُعْبَةُ الصَّيد (غَيْرُ مُتَوَافِقَةٍ مَعَ بَرَامِجِ قِرَاءةِ الشَّاشَة)"
 
-#: pdmenu.sh:60
+#: files/usr/lib/F123-wrappers/pdmenu.sh:80
 msgid "_Mille Bornes"
-msgstr ""
+msgstr "لُ_عْبَةُ مِيلْبُوْرْنز"
 
-#: pdmenu.sh:61
+#: files/usr/lib/F123-wrappers/pdmenu.sh:81
 msgid "_Number"
-msgstr ""
+msgstr "لُعْ_بَةُ الْأَرْقَام"
 
-#: pdmenu.sh:62
+#: files/usr/lib/F123-wrappers/pdmenu.sh:82
 msgid "_Phantasia"
-msgstr ""
+msgstr "_لُعْبَةُ فَنْتَازِيَا"
 
-#: pdmenu.sh:63
+#: files/usr/lib/F123-wrappers/pdmenu.sh:83
 msgid "_Phase of the Moon"
-msgstr ""
+msgstr "_مَرَاحِلُ الْقَمَر"
 
-#: pdmenu.sh:64
+#: files/usr/lib/F123-wrappers/pdmenu.sh:84
 msgid "_Primes"
-msgstr ""
+msgstr "لُعْ_بَةُ بِرَايمْز"
 
-#: pdmenu.sh:65
+#: files/usr/lib/F123-wrappers/pdmenu.sh:85
 msgid "_Robots (Not screen reader friendly)"
-msgstr ""
+msgstr "_لُعْبَةُ الرُّوْبُوت (غَيْرُ مُتَوَافِقَةٍ مَعَ بَرَامِجِ قِرَاءةِ الشَّاشَة)"
 
-#: pdmenu.sh:66
+#: files/usr/lib/F123-wrappers/pdmenu.sh:86
 msgid "_Sail"
-msgstr ""
+msgstr "لُ_عْبَةُ الْإبْحَار"
 
-#: pdmenu.sh:67
+#: files/usr/lib/F123-wrappers/pdmenu.sh:87
 msgid "_Snake (Not screen reader friendly)"
-msgstr ""
+msgstr "ال_ثُّعْبَان (غَيْرُ مُتَوَافِقَةٍ مَعَ بَرَامِجِ قِرَاءةِ الشَّاشَة)"
 
-#: pdmenu.sh:68
+#: files/usr/lib/F123-wrappers/pdmenu.sh:88
 msgid "_Tetris (Not screen reader friendly)"
-msgstr ""
+msgstr "_لُعْبَةُ تِتْرِس (غَيْرُ مُتَوَافِقَةٍ مَعَ بَرَامِجِ قِرَاءةِ الشَّاشَة)"
 
-#: pdmenu.sh:69
+#: files/usr/lib/F123-wrappers/pdmenu.sh:89
 msgid "_Trek"
-msgstr ""
+msgstr "_لُعْبَةُ تِرِيك"
 
-#: pdmenu.sh:70
+#: files/usr/lib/F123-wrappers/pdmenu.sh:90
 msgid "_Tux Math"
-msgstr ""
+msgstr "_لُعْبَةُ تَقْس مَاث"
 
-#: pdmenu.sh:76
+#: files/usr/lib/F123-wrappers/pdmenu.sh:96
 msgid "_Tux Type"
-msgstr ""
+msgstr "_لُعْبَةُ تَقْس تَايب"
 
-#: pdmenu.sh:82
+#: files/usr/lib/F123-wrappers/pdmenu.sh:102
 msgid "_Worm (Not screen reader friendly)"
-msgstr ""
+msgstr "ال_دُّودَة (غَيْرُ مُتَوَافِقَةٍ مَعَ بَرَامِجِ قِرَاءةِ الشَّاشَة)"
 
-#: pdmenu.sh:83
+#: files/usr/lib/F123-wrappers/pdmenu.sh:103
 msgid "_Wumpus"
-msgstr ""
+msgstr "_لُعْبَةُ وَمْبَس"
 
-#: pdmenu.sh:86
-msgid "Main menu"
-msgstr ""
-
-#: pdmenu.sh:90
+#: files/usr/lib/F123-wrappers/pdmenu.sh:108
 msgid "Internet"
-msgstr ""
+msgstr "الْإِنْتَرْنِت"
 
-#: pdmenu.sh:90
+#: files/usr/lib/F123-wrappers/pdmenu.sh:108
 msgid "Internet programs"
-msgstr ""
+msgstr "بَرَامِجُ الإنترنت"
 
-#: pdmenu.sh:91
-msgid "Email (Thunderbird)"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:109
+msgid "_E-_mail (Thunderbird)"
+msgstr "_بَرْنَامَجُ الْبَريدِ الْإلِكْتُرونِي ( ثَنْدَرْبِيرْد)"
 
-#: pdmenu.sh:97
+#: files/usr/lib/F123-wrappers/pdmenu.sh:115
 msgid "Web Browsers"
-msgstr ""
+msgstr "مُتَصَفِّحَاتُ الْوِيب"
 
-#: pdmenu.sh:98
+#: files/usr/lib/F123-wrappers/pdmenu.sh:116
 msgid "_Basic Web Browser (W3M)"
-msgstr ""
+msgstr "مُ_تَصَفِّحُ وِيب بَسيط (W3M)"
 
-#: pdmenu.sh:99
-msgid "Full _Web browser (Firefox)"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:117
+msgid "_Full Web Browser (Firefox)"
+msgstr "_مُتَصَفِّحُ وِيب مُتَكَامِل (فَايَرفُوكس)"
 
-#: pdmenu.sh:105
+#: files/usr/lib/F123-wrappers/pdmenu.sh:123
 msgid "Communication"
-msgstr ""
+msgstr "التَّوَاصُل"
 
-#: pdmenu.sh:106
-msgid "Instant Messenger (_Pidgin)"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:124
+msgid "_Text Chat (Pidgin)"
+msgstr "ال_دَّرْدَشَةُ النَّصِّيَّةُ( بِيدْجِين)"
 
-#: pdmenu.sh:112
-msgid "Voice Chat (_Mumble)"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:130
+msgid "_Voice Chat (Mumble)"
+msgstr "الدَّ_رْدَشَةُ الصَّوْتِيَّةُ( مَامْبِل)"
 
-#: pdmenu.sh:119 pdmenu.sh:145 pdmenu.sh:190 pdmenu.sh:202 pdmenu.sh:213
-#: pdmenu.sh:219
-msgid "_Main menu"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:137
+#: files/usr/lib/F123-wrappers/pdmenu.sh:165
+#: files/usr/lib/F123-wrappers/pdmenu.sh:191
+#: files/usr/lib/F123-wrappers/pdmenu.sh:208
+#: files/usr/lib/F123-wrappers/pdmenu.sh:213
+#: files/usr/lib/F123-wrappers/pdmenu.sh:219
+msgid "_Main Menu"
+msgstr "_الْقَائِمَةُ الرَّئِيسِيَّة"
 
-#: pdmenu.sh:121
+#: files/usr/lib/F123-wrappers/pdmenu.sh:139
 msgid "Media"
-msgstr ""
+msgstr "الْوَسَائِط"
 
-#: pdmenu.sh:121
+#: files/usr/lib/F123-wrappers/pdmenu.sh:139
 msgid "Multi-media applications"
-msgstr ""
+msgstr "تَطْبِيقَاتُ الْوَسَائِطِ الْمُتَعَدِّدَة"
 
-#: pdmenu.sh:122
+#: files/usr/lib/F123-wrappers/pdmenu.sh:140
 msgid "_CD Audio Ripper (ripit)"
-msgstr ""
+msgstr "مُ_حَوِّلُ أَقْرَاصِ الصَّوْتِ الْمَضْغُوطَة (رِيبِيت)"
 
-#: pdmenu.sh:123
+#: files/usr/lib/F123-wrappers/pdmenu.sh:141
 msgid "_Music Player (cmus)"
-msgstr ""
+msgstr "مُشَ_غِّلُ الْمُوسِيقَى (cmus)"
 
-#: pdmenu.sh:124
+#: files/usr/lib/F123-wrappers/pdmenu.sh:142
 msgid "_Stringed Instrument Tuner (bashtuner)"
-msgstr ""
+msgstr "مُؤَ_لِّفُ الْآلَاتِ الْوَتَرِيَّة (بَاشتِيوْنَر)"
 
-#: pdmenu.sh:125
-msgid "_Youtube (audio only)"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:143
+msgid "Youtube (_Audio Only)"
+msgstr "يوتيوب لَايِت (_صَوْتٌ فَقَطْ)"
 
-#: pdmenu.sh:126
-msgid "Youtube (full _video)"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:144
+msgid "Youtube (Full _Video)"
+msgstr "يوتيوب (فْول _فِيدِيو)"
 
-#: pdmenu.sh:132
+#: files/usr/lib/F123-wrappers/pdmenu.sh:150
 msgid "Book Readers"
-msgstr ""
+msgstr "بَرَامِجُ قِرَاءةِ الْكُتُب"
 
-#: pdmenu.sh:133
-msgid "Read Books in _Epub Format"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:151
+msgid "_Book Reader"
+msgstr "_قَارِئُ الْكُتُب"
 
-#: pdmenu.sh:135
-msgid "Epub"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:153
+msgid "Books"
+msgstr "الْكُتُبْ"
 
-#: pdmenu.sh:135
+#: files/usr/lib/F123-wrappers/pdmenu.sh:153
 msgid "Select book to read"
-msgstr ""
+msgstr "اِخْتَرْ كِتَابًا لِلْقِرَاءة"
 
-#: pdmenu.sh:140
-msgid "Back to Media Menu"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:160
+msgid "Media Menu"
+msgstr "قَائِمَةُ الْوَسَائِط"
 
-#: pdmenu.sh:148
+#: files/usr/lib/F123-wrappers/pdmenu.sh:167
 msgid "Office"
-msgstr ""
+msgstr "الْمَكْتَب"
 
-#: pdmenu.sh:148
+#: files/usr/lib/F123-wrappers/pdmenu.sh:167
 msgid "Word processing, calendar, etc"
-msgstr ""
+msgstr "مُعَالَجَةُ الْكَلِمَات، التَّقْويمُ، إِلَى آخِرِهِ"
 
-#: pdmenu.sh:149
+#: files/usr/lib/F123-wrappers/pdmenu.sh:168
 msgid "_Month Calendar"
-msgstr ""
+msgstr "_تَقْويمُ الشَّهْر"
 
-#: pdmenu.sh:150
+#: files/usr/lib/F123-wrappers/pdmenu.sh:169
 msgid "_Year Calendar"
-msgstr ""
+msgstr "تَ_قْويمُ السَّنَة"
 
-#: pdmenu.sh:151
-msgid "Text _Editor"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:170
+msgid "_Text Editor"
+msgstr "مُ_حَرِّرُ النُّصُوص"
 
-#: pdmenu.sh:152
+#: files/usr/lib/F123-wrappers/pdmenu.sh:171
 msgid "Office Suite"
-msgstr ""
+msgstr "_أوفيس سُوِيت"
 
-#: pdmenu.sh:153
-msgid "Database"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:172
+msgid "_Spreadsheet"
+msgstr "_جَدَاوِلُ الْبَيَانَات"
 
-#: pdmenu.sh:159
-msgid "Diagrams"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:178
+msgid "_Word Processor"
+msgstr "مُ_عَالِجُ الْكَلِمَاتِ"
 
-#: pdmenu.sh:165
-msgid "Formula Editor"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:184
+msgid "_Libre Office (All Applications)"
+msgstr "_ليبر أوفيس (جَمِيعُ التَّطْبِيقَات)"
 
-#: pdmenu.sh:171
-msgid "Presentation"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:194
+msgid "Settings"
+msgstr "الْإِعْدَادَات"
 
-#: pdmenu.sh:177
-msgid "Spreadsheet"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:194
+msgid "System configuration"
+msgstr "تَكْوِينُ النِّظَام"
 
-#: pdmenu.sh:183
-msgid "Word Processor"
-msgstr ""
-
-#: pdmenu.sh:194
-msgid "Configuration"
-msgstr ""
-
-#: pdmenu.sh:194
-msgid "System Configuration"
-msgstr ""
-
-#: pdmenu.sh:195
+#: files/usr/lib/F123-wrappers/pdmenu.sh:195
 msgid "_Change Passwords"
-msgstr ""
+msgstr "_تَغْيِيرُ كَلِمَاتِ الْمُرُور"
 
-#: pdmenu.sh:196
-msgid "_Email Configuration"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:196
+msgid "E-_mail Configuration"
+msgstr "تَكْوِينُ الْ_بَريدِ الْإلِكْتُرونِي"
 
-#: pdmenu.sh:197
-msgid "_Security Configuration"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:197
+msgid "Securit_y Configuration"
+msgstr "تَكْوِينُ الأَمَا_ن"
 
-#: pdmenu.sh:198
-msgid "_Change System Speech"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:198
+msgid "Change System S_peech"
+msgstr "تَغْيِيرُ نَاط_ِقِ النِّظَام"
 
-#: pdmenu.sh:199
-msgid "_Change Soundcard"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:199
+msgid "Change _Sound Output"
+msgstr "تَغْيِيرُإِ_خْرَاجِ الصَّوْت"
 
-#: pdmenu.sh:200
-msgid "_Wireless Internet Connection"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:200
+msgid "_Bluetooth manager"
+msgstr "_مُدِيرُ الْبُلُوتُوث"
 
-#: pdmenu.sh:204
-msgid "Tools"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:206
+msgid "Configure _Wifi"
+msgstr "تَكْوِينُ ال_شَّبَكَةِ اللَّاسِلْكِيَّة"
 
-#: pdmenu.sh:204
-msgid "System Tools"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:210
+msgid "Get Help with F123 Light"
+msgstr "الحُصُولُ عَلَى المُسَاعَدَةِ الخَاصَّةِ بِإف123لايت"
 
-#: pdmenu.sh:205
-msgid "Bluetooth manager"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:211
+msgid "_Chat Bot"
+msgstr "_رُوبُوتُ الدَّرْدَشَة"
 
-#: pdmenu.sh:211
-msgid "_Search"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:215
+msgid "Turn off or Restart Computer"
+msgstr "إِيقَافُ أَوْ إِعَادَةُ تَشْغِيلِ الحَاسُوب"
 
-#: pdmenu.sh:215
-msgid "Shutdown or Restart Your Computer"
-msgstr ""
-
-#: pdmenu.sh:215
+#: files/usr/lib/F123-wrappers/pdmenu.sh:215
 msgid "Shutdown or restart your computer"
-msgstr ""
+msgstr "إِيقَافُ أَوْ إِعَادَةُ تَشْغِيلِ الحَاسُوب الخَاصِّ بِكَ"
 
-#: pdmenu.sh:216
-msgid "_Power Off"
-msgstr ""
+#: files/usr/lib/F123-wrappers/pdmenu.sh:216
+msgid "Turn _Off"
+msgstr "إِ_يقَاف"
 
-#: pdmenu.sh:217
+#: files/usr/lib/F123-wrappers/pdmenu.sh:217
 msgid "_Restart"
-msgstr ""
+msgstr "إِ_عَادَةُ تَشْغِيلْ"
