@@ -35,7 +35,7 @@ set -e
 # Try to minimize user fears with a friendly message.
 msgbox "$(gettext "You are updating your system, which may ask you for your password more than once. Don't be alarmed; this is perfectly normal. Press the enter key to continue.")"
 
-# Update all packages on the system. Start with ALARM provided packages and versioned AUR packages.
+# Update all ALARM and F123 maintained packages on the system.
 infobox "$(gettext "Updating system software...")"
 sudo pacman -Syu --noconfirm >& /dev/null
 
