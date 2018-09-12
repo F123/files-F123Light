@@ -31,6 +31,18 @@ set -e
 # Import the standard F123Light functions
 . /usr/lib/F123-includes/script_functions.sh
 
+# Incremental update timestamp function
+# Determine whether to perform the update that calls this function.
+# Return false if the time in yymmddhhmm format is not later than /etc/build-timestamp
+# Otherwise write the new timestamp and return 0 so that the update is performed.
+# on the calling system.
+update () {
+	local updateTime=$1
+	local lastUpdated=$(cat /etc/build-timestamp
+	test $updateTime -gt $lastUpdate && echo $updateTime > /etc/build-timestamp || return 100
+	return 0
+}
+
 clear
 
 # Due to the nature of system updates, this script may ask for the user's password more than once.
@@ -64,18 +76,17 @@ clear
 
 infobox "$(gettext "Performing incremental updates...")"
 
-##### BEGIN INCREMENTAL UPDATE SECTION
-##### Incremental updates may install or remove packages, manipulate system
-##### configurations or even download other scripts.
-##### Be careful with this section. It can break the systems of all F123Light users.
-##### Still, it's better than resetting all configurations after every system update.
-##### TODO: For each incremental update, perform the update only if its name is not in the list.
-##### TODO: Add a function that will look for its parameter in the list file ... for readability.
-##### Add incremental updates below this line
+# ----- BEGIN INCREMENTAL UPDATE SECTION -----
+# Incremental updates are only to be performed if their timestamp is later than
+# /etc/build-timestamp on the calling system.
+# Each update should be in the format
+# update yymmddhh && {
+# 	do-something here
+# 	do-something-else here
+# }
 
 
-##### END INCREMENTAL UPDATE SECTION
-
+# ----- END INCREMENTAL UPDATE SECTION -----
 clear
 
 # Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
