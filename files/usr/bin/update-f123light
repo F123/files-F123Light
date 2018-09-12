@@ -31,6 +31,8 @@ set -e
 # Import the standard F123Light functions
 . /usr/lib/F123-includes/script_functions.sh
 
+clear
+
 # Due to the nature of system updates, this script may ask for the user's password more than once.
 # Try to minimize user fears with a friendly message.
 msgbox "$(gettext "You are updating your system, which may ask you for your password more than once. Don't be alarmed; this is perfectly normal. Press the enter key to continue.")"
@@ -38,6 +40,7 @@ msgbox "$(gettext "You are updating your system, which may ask you for your pass
 # Update all ALARM and F123 maintained packages on the system.
 infobox "$(gettext "Updating system software...")"
 yes | sudo pacman -Syu --noconfirm >& /dev/null
+clear
 
 infobox "$(gettext "Updating configuration and other files...")"
 
@@ -57,6 +60,9 @@ sudo cp -R /tmp/F123Light/files/boot/* /boot
 # The temporary files downloaded from the F123Light git repository are no longer needed.
 # Kill the clone.
 sudo rm -Rf /tmp/F123Light
+clear
+
+infobox "$(gettext "Performing incremental updates...")"
 
 ##### BEGIN INCREMENTAL UPDATE SECTION
 ##### Incremental updates may install or remove packages, manipulate system
@@ -69,6 +75,8 @@ sudo rm -Rf /tmp/F123Light
 
 
 ##### END INCREMENTAL UPDATE SECTION
+
+clear
 
 # Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
 # We will prompt for a keypress. Enter to reboot, escape to exit the script and return to the shell or calling script.
