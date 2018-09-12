@@ -37,7 +37,7 @@ msgbox "$(gettext "You are updating your system, which may ask you for your pass
 
 # Update all ALARM and F123 maintained packages on the system.
 infobox "$(gettext "Updating system software...")"
-sudo pacman -Syu --noconfirm >& /dev/null
+yes | sudo pacman -Syu --noconfirm >& /dev/null
 
 infobox "$(gettext "Updating configuration and other files...")"
 
