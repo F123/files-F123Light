@@ -43,6 +43,42 @@ update () {
 	return 0
 }
 
+# Default git branch to be cloned
+branch=master
+
+# Get command line options
+if ! options=$(getopt -o b:h -l branch:,help, -n "update-f123light" -- "$@"); then
+	exit 1
+fi
+
+eval set -- "$options"
+
+while test $# -gt 0; do
+	case $1 in
+		-b|--branch)
+			branch="$2"
+			shift 2
+		;;
+		-h|--help)
+			cat <<-HELP
+				$(gettext "Usage")
+				$(eval_gettext "\$name [options...]")
+				$(gettext "Options")
+				-h, --help: $(gettext "Print this help message and exit")
+				-b <branch>, --branch=<branch>: $(eval_gettext "Get files and updates from the specified git branch, default: \$branch")
+			HELP
+			exit 0
+		;;
+		(--)
+			shift
+		;;
+		(*)
+			echo $(basename $0): $1 $(gettext "not recognized") 1>&2
+			exit 1
+		;;
+	esac
+done
+
 clear
 
 # Due to the nature of system updates, this script may ask for the user's password more than once.
