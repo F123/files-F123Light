@@ -208,7 +208,7 @@ menu:settings:$(gettext "Settings"):$(gettext "System configuration")
 	exit:$(gettext "_Main Menu")..
 
 menu:help:$(gettext "Get Help with F123 Light"):$(gettext "Get Help with F123Light")
-	exec:$(gettext "_Chat Bot")::tt++ /etc/chatbot.tin
+	exec:$(gettext "_Chat Bot")::/usr/bin/chatbot-client
 	nop
 	exit:$(gettext "_Main Menu")..
 
