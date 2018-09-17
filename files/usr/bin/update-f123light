@@ -43,7 +43,7 @@ update () {
 	return 0
 }
 
-# Default git branch to be cloned
+# Default files-F123Light git branch to be cloned
 branch=master
 
 # Get command line options
@@ -65,7 +65,7 @@ while test $# -gt 0; do
 				$(eval_gettext "\$name [options...]")
 				$(gettext "Options")
 				-h, --help: $(gettext "Print this help message and exit")
-				-b <branch>, --branch=<branch>: $(eval_gettext "Get files and updates from the specified git branch, default: \$branch")
+				-b <branch>, --branch=<branch>: $(eval_gettext "Get files from the specified git branch, default: \$branch")
 			HELP
 			exit 0
 		;;
@@ -123,6 +123,7 @@ infobox "$(gettext "Performing incremental updates...")"
 
 
 # ----- END INCREMENTAL UPDATE SECTION -----
+
 clear
 
 # Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
