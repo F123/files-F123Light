@@ -38,7 +38,7 @@ set -e
 # on the calling system.
 update () {
 	local updateTime=$1
-	local lastUpdated=$(cat /etc/build-timestamp
+	local lastUpdated=$(cat /etc/build-timestamp)
 	test $updateTime -gt $lastUpdate && echo $updateTime > /etc/build-timestamp || return 100
 	return 0
 }
