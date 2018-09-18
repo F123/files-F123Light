@@ -48,7 +48,7 @@ menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow
 			echo "exec:_\$j::mc -K /etc/mc/mc.keymap '\$i'"; \
 			echo "exec:$(gettext "Safely remove") _\$j::sudo umount '\$i'"; \
 		done; \
-		[[ \$c -gt 0 ]] && echo "exec:\$(gettext "No external drives found")::clear; \
+		[[ \$c -gt 0 ]] && echo "exec:\$(gettext "No external drives found")::clear"; \
 		echo "exit:$(gettext "Main Menu").."
 		show:::external
 		remove:::external
