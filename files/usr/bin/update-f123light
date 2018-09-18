@@ -38,8 +38,10 @@ set -e
 # on the calling system.
 update () {
 	local updateTime=$1
-	local lastUpdated=$(cat /etc/build-timestamp)
-	test $updateTime -gt $lastUpdate && echo $updateTime > /etc/build-timestamp || return 100
+	local lastUpdated=$(cat /etc/timestamp-F123Light)
+	test $updateTime -gt $lastUpdate &&
+		echo $updateTime | sudo dd of=/etc/timestamp-F123Light status=none ||
+		return 100
 	return 0
 }
 
