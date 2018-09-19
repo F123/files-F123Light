@@ -9,3 +9,4 @@ alias irssi='irssi 2> /dev/null'
 alias xclip="xclip -selection clipboard"
 alias userctl="systemctl --user "
 alias menu="pdmenu -sun"
+alias pdmenu="pdmenu -sun"

@@ -5,4 +5,4 @@ set echo-control-characters off
 
 #Macros
 # F10 load text menu
-"^[[21~":"\C-k \C-u/usr/bin/pdmenu -sun\n"
+"\e[21~":"\C-k \C-u/usr/bin/pdmenu -sun\n"
