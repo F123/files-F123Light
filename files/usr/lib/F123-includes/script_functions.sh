@@ -131,16 +131,11 @@ radiolist() {
     # Args: minimum group 2, multiples of 2, "tag" "choice"
     # returns: single selected tag
     # The description with & as the first letter is checked by default (optional).
-    if [[ $((${#@} / 2)) -gt $((lines - 5)) ]]; then
-        local optionSize=$((lines - 5))
-    else
-        local optionSize=$((${#@} / 2))
-    fi
     ifs="$IFS"
     IFS=$'\n'
         dialog --backtitle "$(gettext "Choose Single selection: Please choose one by arrowing to the option and pressing space. The checked item will have an asterisk (*).")" \
         --no-tags \
-        --radiolist "$(gettext "Please select one")" $((lines - 5)) $cols $optionSize $(
+        --radiolist "$(gettext "Please select one")" 0 0 10 $(
         while [[ $# -gt 0 ]]; do
             echo "$1"
             shift
