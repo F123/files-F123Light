@@ -66,7 +66,7 @@ menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow
 # Submenu for games.
 menu:games:$(gettext "Games")):
 	exec:$(gettext "_Adventure"):pause:clear;command $([[ $DEMOMODE ]] && echo -n '-v') adventure
-	exec:$(gettext "_Arithmetic Challenge!")::clear;command $([[ $DEMOMODE ]] && echo -n '-v') arithmetic
+	exec:$(gettext "_Arithmetic Challenge!"):pause:clear;command $([[ $DEMOMODE ]] && echo -n '-v') arithmetic
 	#exec:$(gettext "_Air Traffic Controler (Not screen reader friendly)")::clear;command $([[ $DEMOMODE ]] && echo '-v') atc
 	#exec:$(gettext "_Backgammon (Not screen reader friendly)")::clear;command $([[ $DEMOMODE ]] && echo '-v') backgammon
 	exec:$(gettext "_Battlestar")::clear;command $([[ $DEMOMODE ]] && echo '-v') battlestar
