@@ -98,7 +98,7 @@ infobox "$(gettext "Updating configuration and other files...")"
 sudo rm -Rf /tmp/F123Light
 
 # Clone the files-F123Light git repository.
-git clone -q https://github.com/F123/files-F123Light.git /tmp/F123Light
+git clone -q -b $branch https://github.com/F123/files-F123Light.git /tmp/F123Light
 
  # Copy in the files. Only the files under files/usr should be copied
 # to the system to avoid resetting configs modified by the system menu.
