@@ -139,6 +139,7 @@ radiolist() {
     ifs="$IFS"
     IFS=$'\n'
         dialog --backtitle "$(gettext "Choose Single selection: Please choose one by arrowing to the option and pressing space. The checked item will have an asterisk (*).")" \
+        --no-tags \
         --radiolist "$(gettext "Please select one")" $((lines - 5)) $cols $optionSize $(
         while [[ $# -gt 0 ]]; do
             echo "$1"
