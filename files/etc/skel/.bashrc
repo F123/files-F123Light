@@ -11,6 +11,7 @@ shopt -s autocd
 #load Aliases and functions
 [[ -f ".bash_aliases" ]] && . .bash_aliases
 [[ -f ".bash_functions" ]] && . .bash_functions
+[[ -f ".preferences" ]] && . .preferences
 #Invironment variables
 export QT_ACCESSIBILITY=1
 export QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
