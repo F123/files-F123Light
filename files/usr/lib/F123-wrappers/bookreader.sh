@@ -36,7 +36,7 @@ case $type in
 	;;
 	pdf|Pdf|PDF) pdftotext -layout "$book" - | w3m
 	;;
-	txt|Txt|TXT) w3m "$book"
+	txt|Txt|TXT|HTML|Html|html) w3m "$book"
 	;;
 	# Insert new formats above this line
 	*) exit 1

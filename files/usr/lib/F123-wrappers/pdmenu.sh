@@ -151,7 +151,7 @@ menu:media:$(gettext "Media"):$(gettext "Multi-media applications")
 	group:$(gettext "_Book Reader")
 		exec::makemenu: \
 		echo "menu:books:$(gettext "Books"):$(gettext "Select book to read")"; \
-		find \$HOME -type f \( -iname "*.epub" -o -iname "*.pdf" -o -iname "*.txt" \) -print0 |\
+		find \$HOME -type f \( -iname "*.epub" -o -iname "*.pdf" -o -iname "*.txt" -o iname "*.html" \) -print0 |\
 		 while read -d \$'\0' i ; do \
 			j="\$(basename "\$i")"; \
 			echo "exec:_\${j%%.*}::/usr/lib/F123-wrappers/bookreader.sh '\$i'"; \
