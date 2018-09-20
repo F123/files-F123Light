@@ -26,8 +26,6 @@ export TEXTDOMAINDIR=/usr/share/locale
 
 . gettext.sh
 
-set -e
-
 # Import the standard F123Light functions
 . /usr/lib/F123-includes/script_functions.sh
 
