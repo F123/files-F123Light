@@ -1,4 +1,4 @@
-declare -Ag preferences (
+declare -Ag preferences=(
 [emailClient]="mutt"
 [searchEngine]="google"
 )
