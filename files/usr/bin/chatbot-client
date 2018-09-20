@@ -23,7 +23,7 @@
 
 serverAddress='198.50.174.200/bot.php'
 query_server() {
-curl --data-urlencode "query=${@}" ${serverAddress}/bot.php
+curl -s --data-urlencode "query=${@}" ${serverAddress}/bot.php | fold -sw70
 }
 
 while : ; do
