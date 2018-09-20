@@ -26,6 +26,9 @@ query_server() {
 curl -s --data-urlencode "query=${@}" ${serverAddress}/bot.php | fold -sw70
 }
 
+# Greet the server:
+query_server Hello
+
 while : ; do
     read -re query
     query_server "$query"
