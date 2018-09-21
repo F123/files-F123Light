@@ -23,6 +23,7 @@
 #--code--
 
 # Remember to make this script executable so pdmenu can access it.
+# Remember for subshells and variables that need to be sent instead of used put a backslash before the dollar sign
 export TEXTDOMAIN=pdmenurc
 export TEXTDOMAINDIR=/usr/share/locale
 . gettext.sh
@@ -90,14 +91,18 @@ menu:games:$(gettext "Games")):
 	group:$(gettext "_Tux Math")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
         exec:::startx /usr/lib/F123-wrappers/tuxmath --tts
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	group:$(gettext "_Tux Type")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
         exec:::startx /usr/lib/F123-wrappers/tuxtype --tts
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	#exec:$(gettext "_Worm (Not screen reader friendly)")::clear;command $([[ $DEMOMODE ]] && echo '-v') worm
 	exec:$(gettext "_Wumpus")::clear;command $([[ $DEMOMODE ]] && echo '-v') wump
@@ -109,29 +114,37 @@ menu:internet:$(gettext "Internet"):$(gettext "Internet programs")
 	group:$(gettext "_E-_mail (Thunderbird)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
         exec:::startx /usr/lib/F123-wrappers/xlauncher thunderbird
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop:$(gettext "Web Browsers")
 	exec:$(gettext "_Basic Web Browser (W3M)")::clear;command $([[ $DEMOMODE ]] && echo '-v') w3m
 	group:$(gettext "_Full Web Browser (Firefox)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
         exec:::startx /usr/lib/F123-wrappers/xlauncher firefox
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop:$(gettext "Communication")
 	group:$(gettext "_Text Chat (Pidgin)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
         exec:::startx /usr/lib/F123-wrappers/xlauncher pidgin
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	group:$(gettext "_Voice Chat (Mumble)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
         exec:::startx /usr/lib/F123-wrappers/xlauncher mumble
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop
 	exit:$(gettext "_Main Menu")..
@@ -144,8 +157,10 @@ menu:media:$(gettext "Media"):$(gettext "Multi-media applications")
 	group:$(gettext "Youtube (Full _Video)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
         exec:::startx /usr/lib/F123-wrappers/xlauncher lxterminal -e youtube-viewer
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop:$(gettext "Book Readers")
 	group:$(gettext "_Book Reader")
@@ -172,20 +187,26 @@ menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
 	group:$(gettext "_Spreadsheet")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
         exec:::startx /usr/lib/F123-wrappers/xlauncher localc
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	group:$(gettext "_Word Processor")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
         exec:::startx /usr/lib/F123-wrappers/xlauncher lowriter
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	group:$(gettext "_Libre Office (All Applications)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
         exec:::startx /usr/lib/F123-wrappers/xlauncher soffice
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop
 	exit:$(gettext "_Main Menu")..
@@ -200,8 +221,10 @@ menu:settings:$(gettext "Settings"):$(gettext "System configuration")
 	#group:$(gettext "_Bluetooth manager")
         #exec:::clear
         #exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        #exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
         #exec:::startx /usr/lib/F123-wrappers/xlauncher blueman-assistant
         #exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        #exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     #endgroup
 	exec:$(gettext "Configure _Wifi")::clear;sudo configure-wifi
 	nop
