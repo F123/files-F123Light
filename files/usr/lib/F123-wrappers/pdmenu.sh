@@ -37,7 +37,7 @@ menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow
 	show:$(gettext "_Internet Menu")..:$(gettext "Browser, e-mail and chat applications"):internet
 	show:$(gettext "_Media Menu")..:$(gettext "Book reading, music and video applications"):media
 	show:$(gettext "_Office Menu")..:$(gettext "text, calendar and spreadsheet applications"):office
-	exec:$(gettext "_File Manager"):$(gettext "Copy, move and delete files"):clear;mc -K /etc/mc/mc.keymap
+	exec:$(gettext "_File Manager"):$(gettext "Copy, move and delete files"):clear;command $([[ -n $DEMOMODE ]] && echo '-v') mc -K /etc/mc/mc.keymap
 	group:$(gettext "Manage External _Drives")
 		exec::makemenu: \
 		echo "menu:external:$(gettext "External"):$(gettext "Select Drive")"; \
@@ -57,8 +57,8 @@ menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow
 		remove:::external
 	endgroup
 	nop:$(gettext "Search")
-    exec:$(gettext "Search This _Computer"):edit,pause:recoll -t ~Search for what? :~
-    exec:$(gettext "Search the _Web"):edit,pause:google ~Search for what? :~
+    exec:$(gettext "Search This _Computer"):edit,pause:command $([[ -n $DEMOMODE ]] && echo '-v') recoll -t ~Search for what? :~
+    exec:$(gettext "Search the _Web"):edit,pause:command $([[ -n $DEMOMODE ]] && echo '-v') ${preferences[searchEngine]} ~Search for what? :~
 	nop
 	show:$(gettext "_Settings Menu")..:$(gettext "Configure this computer"):settings
 	show:$(gettext "_Help Menu")..:$(gettext "Get Help with F123Light"):help
@@ -168,13 +168,15 @@ menu:media:$(gettext "Media"):$(gettext "Multi-media applications")
 	group:$(gettext "_Book Reader")
 		exec::makemenu: \
 		echo "menu:books:$(gettext "Books"):$(gettext "Select book to read")"; \
+		if [ -z "$DEMOMODE" ]; then \
 		find \$HOME -type f \( -iname "*.epub" -o -iname "*.pdf" -o -iname "*.txt" -o -iname "*.html" \) -print0 |\
 		 while read -d \$'\0' i ; do \
 			j="\$(basename "\$i")"; \
 			echo "exec:_\${j%%.*}::/usr/lib/F123-wrappers/bookreader.sh '\$i'"; \
 		done; \
 		echo nop; \
-		echo "exit:$(gettext "Media Menu").."
+		echo "exit:$(gettext "Media Menu").."; \
+		fi
 		show:::books
 		remove:::books
 	endgroup
