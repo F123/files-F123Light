@@ -41,16 +41,18 @@ menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow
 	group:$(gettext "Manage External _Drives")
 		exec::makemenu: \
 		echo "menu:external:$(gettext "External"):$(gettext "Select Drive")"; \
+		if [ -z $DEMOMODE ]; then \
 		rmdir /media/* &> /dev/null; \
 		c=0; \
-		for i in \$(find /media -maxdepth 1 ! -path /media -type d) ; do \
+		for i in \$(find /media -maxdepth 1 ! -path /media -type d 2> /dev/null) ; do \
 			((c++)); \
 			j="\${i/\/media\//}"; \
 			echo "exec:_\$j::mc -K /etc/mc/mc.keymap '\$i'"; \
 			echo "exec:$(gettext "Safely remove") _\$j::sudo umount '\$i'"; \
 		done; \
-		[[ \$c -gt 0 ]] && echo "exec:\$(gettext "No external drives found")::clear; \
-		echo "exit:$(gettext "Main Menu").."
+		[[ \$c -gt 0 ]] && echo "exec:\$(gettext "No external drives found")::clear"; \
+		echo "exit:$(gettext "Main Menu").."; \
+	fi
 		show:::external
 		remove:::external
 	endgroup
