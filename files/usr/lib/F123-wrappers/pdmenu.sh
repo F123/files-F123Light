@@ -66,46 +66,46 @@ menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow
 
 # Submenu for games.
 menu:games:$(gettext "Games")):
-	exec:$(gettext "_Adventure"):pause:clear;command $([[ $DEMOMODE ]] && echo -n '-v') adventure
-	exec:$(gettext "_Arithmetic Challenge!"):pause:clear;command $([[ $DEMOMODE ]] && echo -n '-v') arithmetic
-	#exec:$(gettext "_Air Traffic Controler (Not screen reader friendly)")::clear;command $([[ $DEMOMODE ]] && echo '-v') atc
-	#exec:$(gettext "_Backgammon (Not screen reader friendly)")::clear;command $([[ $DEMOMODE ]] && echo '-v') backgammon
-	exec:$(gettext "_Battlestar")::clear;command $([[ $DEMOMODE ]] && echo '-v') battlestar
-	#exec:$(gettext "_Boggle (Not screen reader friendly)")::clear;command $([[ $DEMOMODE ]] && echo '-v') boggle
-	#exec:$(gettext "_Canfield (Not screen reader friendly)")::clear;command $([[ $DEMOMODE ]] && echo '-v') canfield
-	#exec:$(gettext "_Cribbage (Not screen reader friendly)")::clear;command $([[ $DEMOMODE ]] && echo '-v') cribbage
-	exec:$(gettext "_Go Fish"):pause:clear;command $([[ $DEMOMODE ]] && echo '-v') go-fish
-	exec:$(gettext "_Gomoku")::clear;command $([[ $DEMOMODE ]] && echo '-v') gomoku
-	exec:$(gettext "_Hangman")::clear;command $([[ $DEMOMODE ]] && echo '-v') hangman
-	#exec:$(gettext "_Hunt (Not screen reader friendly)")::clear;command $([[ $DEMOMODE ]] && echo '-v') hunt
-	exec:$(gettext "_Mille Bornes")::clear;command $([[ $DEMOMODE ]] && echo '-v') mille
-	exec:$(gettext "_Number")::clear;command $([[ $DEMOMODE ]] && echo '-v') number
-	exec:$(gettext "_Phantasia")::clear;command $([[ $DEMOMODE ]] && echo '-v') phantasia
-	exec:$(gettext "_Phase of the Moon"):pause:clear;command $([[ $DEMOMODE ]] && echo '-v') pom
-	exec:$(gettext "_Primes")::clear;command $([[ $DEMOMODE ]] && echo '-v') primes
-	#exec:$(gettext "_Robots (Not screen reader friendly)")::clear;command $([[ $DEMOMODE ]] && echo '-v') robots
-	exec:$(gettext "_Sail")::clear;command $([[ $DEMOMODE ]] && echo '-v') sail
-	#exec:$(gettext "_Snake (Not screen reader friendly)")::clear;command $([[ $DEMOMODE ]] && echo '-v') snake
-	#exec:$(gettext "_Tetris (Not screen reader friendly)")::clear;command $([[ $DEMOMODE ]] && echo '-v') tetris-bsd
-	exec:$(gettext "_Trek")::clear;command $([[ $DEMOMODE ]] && echo '-v') trek
+	exec:$(gettext "_Adventure"):pause:clear;command $([[ -n $DEMOMODE ]] && echo -n '-v') adventure
+	exec:$(gettext "_Arithmetic Challenge!"):pause:clear;command $([[ -n $DEMOMODE ]] && echo -n '-v') arithmetic
+	#exec:$(gettext "_Air Traffic Controler (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') atc
+	#exec:$(gettext "_Backgammon (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') backgammon
+	exec:$(gettext "_Battlestar")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') battlestar
+	#exec:$(gettext "_Boggle (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') boggle
+	#exec:$(gettext "_Canfield (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') canfield
+	#exec:$(gettext "_Cribbage (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') cribbage
+	exec:$(gettext "_Go Fish"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') go-fish
+	exec:$(gettext "_Gomoku")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') gomoku
+	exec:$(gettext "_Hangman")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') hangman
+	#exec:$(gettext "_Hunt (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') hunt
+	exec:$(gettext "_Mille Bornes")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') mille
+	exec:$(gettext "_Number")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') number
+	exec:$(gettext "_Phantasia")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') phantasia
+	exec:$(gettext "_Phase of the Moon"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') pom
+	exec:$(gettext "_Primes")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') primes
+	#exec:$(gettext "_Robots (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') robots
+	exec:$(gettext "_Sail")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') sail
+	#exec:$(gettext "_Snake (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') snake
+	#exec:$(gettext "_Tetris (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') tetris-bsd
+	exec:$(gettext "_Trek")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') trek
 	group:$(gettext "_Tux Math")
         exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
-        exec:::startx /usr/lib/F123-wrappers/tuxmath --tts
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::command $([[ -n $DEMOMODE ]] && echo '-v') startx /usr/lib/F123-wrappers/tuxmath --tts
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	group:$(gettext "_Tux Type")
         exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
-        exec:::startx /usr/lib/F123-wrappers/tuxtype --tts
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::command $([[ -n $DEMOMODE ]] && echo '-v') startx /usr/lib/F123-wrappers/tuxtype --tts
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
-	#exec:$(gettext "_Worm (Not screen reader friendly)")::clear;command $([[ $DEMOMODE ]] && echo '-v') worm
-	exec:$(gettext "_Wumpus")::clear;command $([[ $DEMOMODE ]] && echo '-v') wump
+	#exec:$(gettext "_Worm (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') worm
+	exec:$(gettext "_Wumpus")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') wump
 	nop
 	exit:$(gettext "Main Menu")..
 
@@ -113,53 +113,53 @@ menu:games:$(gettext "Games")):
 menu:internet:$(gettext "Internet"):$(gettext "Internet programs")
 	group:$(gettext "_E-_mail (Thunderbird)")
         exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
-        exec:::startx /usr/lib/F123-wrappers/xlauncher thunderbird
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::command $([[ -n $DEMOMODE ]] && echo '-v') startx /usr/lib/F123-wrappers/xlauncher thunderbird
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop:$(gettext "Web Browsers")
-	exec:$(gettext "_Basic Web Browser (W3M)")::clear;command $([[ $DEMOMODE ]] && echo '-v') w3m
+	exec:$(gettext "_Basic Web Browser (W3M)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') w3m
 	group:$(gettext "_Full Web Browser (Firefox)")
         exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
-        exec:::startx /usr/lib/F123-wrappers/xlauncher firefox
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::command $([[ -n $DEMOMODE ]] && echo '-v') startx /usr/lib/F123-wrappers/xlauncher firefox
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop:$(gettext "Communication")
 	group:$(gettext "_Text Chat (Pidgin)")
         exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
-        exec:::startx /usr/lib/F123-wrappers/xlauncher pidgin
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::command $([[ -n $DEMOMODE ]] && echo '-v') startx /usr/lib/F123-wrappers/xlauncher pidgin
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	group:$(gettext "_Voice Chat (Mumble)")
         exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
-        exec:::startx /usr/lib/F123-wrappers/xlauncher mumble
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::command $([[ -n $DEMOMODE ]] && echo '-v') startx /usr/lib/F123-wrappers/xlauncher mumble
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop
 	exit:$(gettext "_Main Menu")..
 
 menu:media:$(gettext "Media"):$(gettext "Multi-media applications")
-	exec:$(gettext "_CD Audio Ripper (ripit)")::command $([[ $DEMOMODE ]] && echo '-v') ripit
-	exec:$(gettext "_Music Player (cmus)")::command $([[ $DEMOMODE ]] && echo '-v') cmus
-	exec:$(gettext "_Stringed Instrument Tuner (bashtuner)")::command $([[ $DEMOMODE ]] && echo '-v') bashtuner
-	exec:$(gettext "Youtube (_Audio Only)")::command $([[ $DEMOMODE ]] && echo '-v') youtube-viewer -novideo
+	exec:$(gettext "_CD Audio Ripper (ripit)")::command $([[ -n $DEMOMODE ]] && echo '-v') ripit
+	exec:$(gettext "_Music Player (cmus)")::command $([[ -n $DEMOMODE ]] && echo '-v') cmus
+	exec:$(gettext "_Stringed Instrument Tuner (bashtuner)")::command $([[ -n $DEMOMODE ]] && echo '-v') bashtuner
+	exec:$(gettext "Youtube (_Audio Only)")::command $([[ -n $DEMOMODE ]] && echo '-v') youtube-viewer -novideo
 	group:$(gettext "Youtube (Full _Video)")
         exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
-        exec:::startx /usr/lib/F123-wrappers/xlauncher lxterminal -e youtube-viewer
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::command $([[ -n $DEMOMODE ]] && echo '-v') startx /usr/lib/F123-wrappers/xlauncher lxterminal -e youtube-viewer
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop:$(gettext "Book Readers")
@@ -180,32 +180,32 @@ menu:media:$(gettext "Media"):$(gettext "Multi-media applications")
 	exit:$(gettext "_Main Menu")..
 
 menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
-	exec:$(gettext "_Month Calendar"):pause:clear;command $([[ $DEMOMODE ]] && echo '-v') ncal
-	exec:$(gettext "_Year Calendar"):pause:clear;command $([[ $DEMOMODE ]] && echo '-v') ncal -y
-	exec:$(gettext "_Text Editor")::clear;command $([[ $DEMOMODE ]] && echo '-v') ${EDITOR:-nano}
+	exec:$(gettext "_Month Calendar"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') ncal
+	exec:$(gettext "_Year Calendar"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') ncal -y
+	exec:$(gettext "_Text Editor")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') ${EDITOR:-nano}
 	nop:$(gettext "Office Suite")
 	group:$(gettext "_Spreadsheet")
         exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
-        exec:::startx /usr/lib/F123-wrappers/xlauncher localc
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::command $([[ -n $DEMOMODE ]] && echo '-v') startx /usr/lib/F123-wrappers/xlauncher localc
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	group:$(gettext "_Word Processor")
         exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
-        exec:::startx /usr/lib/F123-wrappers/xlauncher lowriter
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::command $([[ -n $DEMOMODE ]] && echo '-v') startx /usr/lib/F123-wrappers/xlauncher lowriter
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	group:$(gettext "_Libre Office (All Applications)")
         exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
-        exec:::startx /usr/lib/F123-wrappers/xlauncher soffice
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        exec:::command $([[ -n $DEMOMODE ]] && echo '-v') startx /usr/lib/F123-wrappers/xlauncher soffice
+        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop
@@ -214,16 +214,16 @@ menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
 # submenu for configuring the computer.
 menu:settings:$(gettext "Settings"):$(gettext "System configuration")
 	exec:$(gettext "_Change Passwords")::clear;/usr/lib/F123-wrappers/configure-passwords
-	exec:$(gettext "E-_mail Configuration")::clear;command $([[ $DEMOMODE ]] && echo '-v') fleacollar
+	exec:$(gettext "E-_mail Configuration")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') fleacollar
 	exec:$(gettext "Securit_y Configuration")::clear;/usr/lib/F123-wrappers/configure-security.sh
 	exec:$(gettext "Change System S_peech")::clear;/usr/lib/F123-wrappers/configure-speech.sh
 	exec:$(gettext "Change _Sound Output")::clear;/usr/lib/F123-wrappers/configure-sound.sh
 	#group:$(gettext "_Bluetooth manager")
         #exec:::clear
-        #exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen
+        #exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         #exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
-        #exec:::startx /usr/lib/F123-wrappers/xlauncher blueman-assistant
-        #exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen
+        #exec:::command $([[ -n $DEMOMODE ]] && echo '-v') startx /usr/lib/F123-wrappers/xlauncher blueman-assistant
+        #exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         #exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     #endgroup
 	exec:$(gettext "Configure _Wifi")::clear;sudo configure-wifi
@@ -231,7 +231,7 @@ menu:settings:$(gettext "Settings"):$(gettext "System configuration")
 	exit:$(gettext "_Main Menu")..
 
 menu:help:$(gettext "Get Help with F123 Light"):$(gettext "Get Help with F123Light")
-	exec:$(gettext "_Chat Bot")::command $([[ $DEMOMODE ]] && echo '-v') /usr/bin/chatbot-client
+	exec:$(gettext "_Chat Bot")::command $([[ -n $DEMOMODE ]] && echo '-v') /usr/bin/chatbot-client
 	nop
 	exit:$(gettext "_Main Menu")..
 
