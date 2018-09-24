@@ -240,6 +240,7 @@ menu:help:$(gettext "Get Help with F123 Light"):$(gettext "Get Help with F123Lig
 	exit:$(gettext "_Main Menu")..
 
 menu:power:$(gettext "Turn off or Restart Computer"):$(gettext "Shutdown or restart your computer")
+	exec:$(gettext "_Lock")::vlock -a
 	exec:$(gettext "Turn _Off")::poweroff &> /dev/null || sudo poweroff
 	exec:$(gettext "_Restart")::reboot &> /dev/null || sudo reboot
 	nop
