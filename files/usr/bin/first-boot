@@ -90,7 +90,11 @@ To change speech options run
 configure-speech")
 EOF
 # remove the firstboot file if it exists.
-[[ -e ~/.firstboot ]] && rm ~/.firstboot
+[[ -e ~/.firstboot ]] &&  {
+    rm ~/.firstboot;
+    echo "Your computer will restart to complete the setup process.";
+continue_prompt;
+}
 continue_prompt
 }
 
