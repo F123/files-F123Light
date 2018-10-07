@@ -5,4 +5,4 @@ set echo-control-characters off
 
 #Macros
 # F10 load text menu
-"\e[21~":"\C-k \C-u/usr/bin/pdmenu -sun\n"
+"\e[21~":"\C-k \C-u/usr/bin/pdmenu -squn\n;dialog --infobox \"Press F10 to return to the menu\"\n"
