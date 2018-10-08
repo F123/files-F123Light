@@ -1,6 +1,6 @@
 #!/bin/bash
 # mail-launcher.sh
-# Description
+# Description Launch the correct mail client as specified in preferences.
 #
 # Copyright 2018, F123 Consulting, <information@f123.org>
 # Copyright 2018, Storm Dragon, <storm_dragon@linux-a11y.org>
@@ -22,6 +22,7 @@
 #
 #--code--
  
+source ~/.preferences
 case "${preferences[mailClient]}" in
     "mutt") command mutt;;
     "thunderbird")
