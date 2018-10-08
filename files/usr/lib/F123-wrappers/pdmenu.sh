@@ -113,13 +113,8 @@ menu:games:$(gettext "Games")):
 
 # submenu for internet applications.
 menu:internet:$(gettext "Internet"):$(gettext "Internet programs")
-	group:$(gettext "_E-_mail (Thunderbird)")
-        exec:::clear
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
-        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
-        exec:::command $([[ -n $DEMOMODE ]] && echo '-v') startx /usr/lib/F123-wrappers/xlauncher thunderbird
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
-        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
+	group:$(gettext "_E-_mail")
+        \$(/usr/lib/F123-wrappers/mail-launcher.sh)
     endgroup
 	nop:$(gettext "Web Browsers")
 	exec:$(gettext "_Basic Web Browser (W3M)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') w3m
