@@ -23,7 +23,7 @@
 #--code--
  
 source ~/.preferences
-case "${preferences[mailClient]}" in
+case "${preferences[emailClient]}" in
     "mutt") command mutt;;
     "thunderbird")
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null

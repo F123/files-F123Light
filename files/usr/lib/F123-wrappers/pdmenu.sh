@@ -114,7 +114,7 @@ menu:games:$(gettext "Games")):
 # submenu for internet applications.
 menu:internet:$(gettext "Internet"):$(gettext "Internet programs")
 	group:$(gettext "_E-_mail")
-        \$(/usr/lib/F123-wrappers/mail-launcher.sh)
+        $(/usr/lib/F123-wrappers/mail-launcher.sh)
     endgroup
 	nop:$(gettext "Web Browsers")
 	exec:$(gettext "_Basic Web Browser (W3M)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') w3m
