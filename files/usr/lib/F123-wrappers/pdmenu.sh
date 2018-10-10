@@ -213,7 +213,7 @@ menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
 # submenu for configuring the computer.
 menu:settings:$(gettext "Settings"):$(gettext "System configuration")
 	exec:$(gettext "_Change Passwords")::clear;/usr/lib/F123-wrappers/configure-passwords
-	exec:$(gettext "E-_mail Configuration")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') fleacollar
+	exec:$(gettext "E-_mail Configuration")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') configure-email
 	exec:$(gettext "Securit_y Configuration")::clear;/usr/lib/F123-wrappers/configure-security.sh
 	exec:$(gettext "Change System S_peech")::clear;/usr/lib/F123-wrappers/configure-speech.sh
 	exec:$(gettext "Change _Sound Output")::clear;/usr/lib/F123-wrappers/configure-sound.sh
