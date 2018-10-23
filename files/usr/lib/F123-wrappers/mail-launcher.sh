@@ -23,14 +23,14 @@
 #--code--
  
 source ~/.preferences
-case "${preferences[mailClient]}" in
-    "mutt") command mutt;;
+case "${preferences[emailClient]}" in
+    "mutt") echo "exec:::command mutt";;
     "thunderbird")
-        exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
+        echo 'exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
         exec:::command $([[ -n $DEMOMODE ]] && echo '-v') startx /usr/lib/F123-wrappers/xlauncher thunderbird
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
-        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/ fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock;;
+        exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/ fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock';;
     *) /usr/lib/F123-wrappers/configure-email.sh
 esac
 

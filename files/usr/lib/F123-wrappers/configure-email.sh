@@ -34,7 +34,7 @@ clientList=(
 client="$(menulist $(for i in ${clientList[@]} ; do echo "$i $i"; done))"
 
 # Set the new selection as the client in preferences
-sed -i "s/\[emailClient\]=.*/[emailclient=$client/"  ~/.preferences
+sed -i "s/\[emailClient\]=.*/[emailClient]=\"$client\"/"  ~/.preferences
 
 # Open or configure the selected client.
 case "${client}" in
