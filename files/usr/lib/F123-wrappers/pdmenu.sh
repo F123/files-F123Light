@@ -127,6 +127,7 @@ menu:internet:$(gettext "Internet"):$(gettext "Internet programs")
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop:$(gettext "Communication")
+	exec:$(gettext "Google _Hangouts")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') hangups
 	group:$(gettext "_Text Chat (Pidgin)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
