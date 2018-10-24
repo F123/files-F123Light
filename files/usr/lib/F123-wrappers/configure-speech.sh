@@ -3,6 +3,7 @@
 #
 # Copyright 2018, F123 Consulting, <information@f123.org>
 # Copyright 2018, Storm Dragon, <storm_dragon@linux-a11y.org>
+# Copyright 2018, Kyle, <kyle@free2.ml>
 #
 # This is free software; you can redistribute it and/or modify it under the
 # terms of the GNU General Public License as published by the Free
