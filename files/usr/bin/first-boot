@@ -120,9 +120,5 @@ get_internet
 /usr/lib/F123-wrappers/timezone.sh
 # Synchronize repositories so that installations should go smoothly.
 sudo pacman -Syy > /dev/null | dialog --progressbox "Configuring system, please wait..." 0 0
-# Install option speech providers
-for i in mbrola ; do
-    [[ "$(yesno "$(gettext "Do you want to install $i voices?")")" == "Yes" ]] && sudo /usr/lib/F123-wrappers/install-${i}.sh
-done
 [[ "$(yesno "$(gettext "Do you want to change security options for this system?")")" == "Yes" ]] && /usr/lib/F123-wrappers/configure-security.sh
 setup_complete
