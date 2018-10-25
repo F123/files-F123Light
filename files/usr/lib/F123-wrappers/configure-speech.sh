@@ -35,8 +35,7 @@ declare -a speechOptions
 # For additional speech options, just add them to the for list
 for i in espeak-ng mbrola pico; do
     # Dialog requires 2 options for the menu, we hide the tags, but it still needs to be sent twice.
-    command -v $i &> /dev/null && \
-        speechOptions+=("$i" "$i")
+    speechOptions+=("$i" "$i")
 done
 
 speechProvider="$(menulist ${speechOptions[@]})"
@@ -47,6 +46,7 @@ case "$speechProvider" in
 esac
 
 # Set the  chosen speech provider option.
+test -z speechProvider && exit 0
 sudo sed -i.bak "s/^[[:space:]]*DefaultModule [[:space:]]*\S*$/ DefaultModule   $speechProvider/" /etc/speech-dispatcher/speechd.conf
 
 # Clear any keypresses in the buffer:
