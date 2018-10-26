@@ -231,7 +231,7 @@ menu:settings:$(gettext "Settings"):$(gettext "System configuration")
 	exit:$(gettext "_Main Menu")..
 
 menu:help:$(gettext "Get Help with F123 Light"):$(gettext "Get Help with F123Light")
-	exec:$(gettext "_Chat Bot")::command $([[ -n $DEMOMODE ]] && echo '-v') /usr/bin/chatbot-client
+	exec:$(gettext "_Get Help"):pause:command $([[ -n $DEMOMODE ]] && echo '-v') echo -e "For help please subscribe to the F123 visual email list\nhttps://groups.io/g/F123-Visual-English"
 	nop
 	exit:$(gettext "_Main Menu")..
 
