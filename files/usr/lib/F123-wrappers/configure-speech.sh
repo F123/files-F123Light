@@ -20,7 +20,7 @@
 # Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301, USA.
 #
-#--code-- 
+#--code--
 
 export TEXTDOMAIN=configure-security
 export TEXTDOMAINDIR=/usr/share/locale
@@ -46,7 +46,7 @@ case "$speechProvider" in
 esac
 
 # Set the  chosen speech provider option.
-test -z speechProvider && exit 0
+test -z $speechProvider && exit 0
 sudo sed -i.bak "s/^[[:space:]]*DefaultModule [[:space:]]*\S*$/ DefaultModule   $speechProvider/" /etc/speech-dispatcher/speechd.conf
 
 # Clear any keypresses in the buffer:
