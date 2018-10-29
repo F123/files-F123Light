@@ -38,7 +38,9 @@ sed -i "s/\[emailClient\]=.*/[emailClient]=\"$client\"/"  ~/.preferences
 
 # Open or configure the selected client.
 case "${client}" in
-    "mutt") command mutt;;
+    "mutt")
+        [[ ! -d ~/.mutt ]] && command fleacollar
+        command mutt;;
     "thunderbird") 
         python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
