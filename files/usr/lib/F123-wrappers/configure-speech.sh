@@ -39,7 +39,7 @@ for i in espeak-ng mbrola pico; do
     case $i in
         espeak-ng) languages=('af_ZA' 'ar_EG' 'de_DE' 'en_US' 'es_ES' 'fr_FR' 'hi_IN' 'hu_HU' 'id_ID' 'pl_PL' 'pt_BR' 'sw_TZ' 'tr_TR' 'vi_VN' 'zh_CN');;
         mbrola) languages=('af_ZA' 'ar_EG' 'de_DE' 'en_US' 'es_ES' 'fr_FR' 'hi_IN' 'hu_HU' 'id_ID' 'pl_PL' 'pt_BR' 'tr_TR' 'zh_CN');;
-        pico languages=('de_DE' 'en_US' 'es_ES' 'fr_FR');;
+        pico) languages=('de_DE' 'en_US' 'es_ES' 'fr_FR');;
     esac
     # Only add a speech provider option if it has at least one voice to speak the current language
     for l in $languages; do
