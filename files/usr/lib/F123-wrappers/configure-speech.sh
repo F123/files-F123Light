@@ -42,7 +42,7 @@ for i in espeak-ng mbrola pico; do
         pico) languages=('de_DE' 'en_US' 'es_ES' 'fr_FR');;
     esac
     # Only add a speech provider option if it has at least one voice to speak the current language
-    for l in $languages; do
+    for l in ${languages[@]}; do
         if test $l = ${LANG::5}; then
             # Dialog requires 2 options for the menu, we hide the tags, but it still needs to be sent twice.
             speechOptions+=("$i" "$i")
