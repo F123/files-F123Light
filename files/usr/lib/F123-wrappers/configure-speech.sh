@@ -31,11 +31,23 @@ for i in /usr/lib/F123-includes/*.sh ; do
     source $i
 done
 
-declare -a speechOptions
-# For additional speech options, just add them to the for list
+# For additional speech options, add them to the for list, then add the available languages
+# to a line in the case below matching the option
+# Note that espeak-ng supports the most languages, so other case lines
+# can start with espeak-ng and remove unsupported languages
 for i in espeak-ng mbrola pico; do
-    # Dialog requires 2 options for the menu, we hide the tags, but it still needs to be sent twice.
-    speechOptions+=("$i" "$i")
+    case $i in
+        espeak-ng) languages=('af_ZA' 'ar_EG' 'de_DE' 'en_US' 'es_ES' 'fr_FR' 'hi_IN' 'hu_HU' 'id_ID' 'pl_PL' 'pt_BR' 'sw_TZ' 'tr_TR' 'vi_VN' 'zh_CN');;
+        mbrola) languages=('af_ZA' 'ar_EG' 'de_DE' 'en_US' 'es_ES' 'fr_FR' 'hi_IN' 'hu_HU' 'id_ID' 'pl_PL' 'pt_BR' 'tr_TR' 'zh_CN');;
+        pico languages=('de_DE' 'en_US' 'es_ES' 'fr_FR');;
+    esac
+    # Only add a speech provider option if it has at least one voice to speak the current language
+    for l in $languages; do
+        if test $l = ${LANG::5}; then
+            # Dialog requires 2 options for the menu, we hide the tags, but it still needs to be sent twice.
+            speechOptions+=("$i" "$i")
+        fi
+    done
 done
 
 speechProvider="$(menulist ${speechOptions[@]})"
@@ -45,8 +57,11 @@ case "$speechProvider" in
     "mbrola") speechProvider="espeak-ng-mbrola-generic";;
 esac
 
-# Set the  chosen speech provider option.
+# Exit if speechProvider remains unset, i.e.
+# if the user has pressed the escape key to close the menu
 test -z $speechProvider && exit 0
+
+# Set the  chosen speech provider option.
 sudo sed -i.bak "s/^[[:space:]]*DefaultModule [[:space:]]*\S*$/ DefaultModule   $speechProvider/" /etc/speech-dispatcher/speechd.conf
 
 # Clear any keypresses in the buffer:
