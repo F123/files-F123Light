@@ -33,12 +33,12 @@ title:$(gettext "Welcome to F123Light")
 
 # Define the main menu.
 menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow keys to select your choice and press the 'Enter' key to activate it.")
-	show:$(gettext "_Games Menu")..::games
-	show:$(gettext "_Internet Menu")..:$(gettext "Browser, e-mail and chat applications"):internet
-	show:$(gettext "_Media Menu")..:$(gettext "Book reading, music and video applications"):media
-	show:$(gettext "_Office Menu")..:$(gettext "text, calendar and spreadsheet applications"):office
-	exec:$(gettext "_File Manager"):$(gettext "Copy, move and delete files"):clear;command $([[ -n $DEMOMODE ]] && echo '-v') filestorm
-	group:$(gettext "Manage External _Drives")
+	show:$(gettext "_Games Menu (G)")..::games
+	show:$(gettext "_Internet Menu (I)")..:$(gettext "Browser, e-mail and chat applications"):internet
+	show:$(gettext "_Media Menu (M)")..:$(gettext "Book reading, music and video applications"):media
+	show:$(gettext "_Office Menu (O)")..:$(gettext "text, calendar and spreadsheet applications"):office
+	exec:$(gettext "_File Manager (F)"):$(gettext "Copy, move and delete files"):clear;command $([[ -n $DEMOMODE ]] && echo '-v') filestorm
+	group:$(gettext "Manage External _Drives (D)")
 		exec::makemenu: \
 		echo "menu:external:$(gettext "External"):$(gettext "Select Drive")"; \
 		if [ -z $DEMOMODE ]; then \
@@ -57,40 +57,40 @@ menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow
 		remove:::external
 	endgroup
 	nop:$(gettext "Search")
-    exec:$(gettext "Search This _Computer"):edit,pause:command $([[ -n $DEMOMODE ]] && echo '-v') recoll -t ~Search for what? :~
-    exec:$(gettext "Search the _Web"):edit,pause:command $([[ -n $DEMOMODE ]] && echo '-v') ${preferences[searchEngine]} ~Search for what? :~
+    exec:$(gettext "Search This _Computer (C)"):edit,pause:command $([[ -n $DEMOMODE ]] && echo '-v') recoll -t ~Search for what? :~
+    exec:$(gettext "Search the _Web (W)"):edit,pause:command $([[ -n $DEMOMODE ]] && echo '-v') ${preferences[searchEngine]} ~Search for what? :~
 	nop
-	show:$(gettext "_Settings Menu")..:$(gettext "Configure this computer"):settings
-	show:$(gettext "_Help Menu")..:$(gettext "Get Help with F123Light"):help
-	show:$(gettext "_Turn Off or Restart Computer")..::power
+	show:$(gettext "_Settings Menu (S)")..:$(gettext "Configure this computer"):settings
+	show:$(gettext "_Help Menu (H)")..:$(gettext "Get Help with F123Light"):help
+	show:$(gettext "_Turn Off or Restart Computer (T)")..::power
 	nop
 	exit:$(gettext "E_xit to Command Line")
 
 # Submenu for games.
 menu:games:$(gettext "Games")):
-	exec:$(gettext "_Adventure"):pause:clear;command $([[ -n $DEMOMODE ]] && echo -n '-v') adventure
-	exec:$(gettext "_Arithmetic Challenge!"):pause:clear;command $([[ -n $DEMOMODE ]] && echo -n '-v') arithmetic
-	#exec:$(gettext "_Air Traffic Controler (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') atc
-	#exec:$(gettext "_Backgammon (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') backgammon
-	exec:$(gettext "_Battlestar")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') battlestar
-	#exec:$(gettext "_Boggle (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') boggle
-	#exec:$(gettext "_Canfield (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') canfield
-	#exec:$(gettext "_Cribbage (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') cribbage
-	exec:$(gettext "_Go Fish"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') go-fish
-	exec:$(gettext "_Gomoku")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') gomoku
-	exec:$(gettext "_Hangman")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') hangman
-	#exec:$(gettext "_Hunt (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') hunt
-	exec:$(gettext "_Mille Bornes")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') mille
-	exec:$(gettext "_Number")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') number
-	exec:$(gettext "_Phantasia")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') phantasia
-	exec:$(gettext "_Phase of the Moon"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') pom
-	exec:$(gettext "_Primes")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') primes
-	#exec:$(gettext "_Robots (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') robots
-	exec:$(gettext "_Sail")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') sail
-	#exec:$(gettext "_Snake (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') snake
-	#exec:$(gettext "_Tetris (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') tetris-bsd
-	exec:$(gettext "_Trek")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') trek
-	group:$(gettext "_Tux Math")
+	exec:$(gettext "_Adventure (A)"):pause:clear;command $([[ -n $DEMOMODE ]] && echo -n '-v') adventure
+	exec:$(gettext "_Arithmetic Challenge! (A)"):pause:clear;command $([[ -n $DEMOMODE ]] && echo -n '-v') arithmetic
+	#exec:$(gettext "_Air Traffic Controler (Not screen reader friendly) (A)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') atc
+	#exec:$(gettext "_Backgammon (Not screen reader friendly) (B)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') backgammon
+	exec:$(gettext "_Battlestar (B)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') battlestar
+	#exec:$(gettext "_Boggle (Not screen reader friendly) (B)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') boggle
+	#exec:$(gettext "_Canfield (Not screen reader friendly) (C)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') canfield
+	#exec:$(gettext "_Cribbage (Not screen reader friendly) (C)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') cribbage
+	exec:$(gettext "_Go Fish (G)"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') go-fish
+	exec:$(gettext "_Gomoku (G)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') gomoku
+	exec:$(gettext "_Hangman (H)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') hangman
+	#exec:$(gettext "_Hunt (Not screen reader friendly) (H)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') hunt
+	exec:$(gettext "_Mille Bornes (M)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') mille
+	exec:$(gettext "_Number (N)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') number
+	exec:$(gettext "_Phantasia (P)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') phantasia
+	exec:$(gettext "_Phase of the Moon (P)"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') pom
+	exec:$(gettext "_Primes (P)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') primes
+	#exec:$(gettext "_Robots (Not screen reader friendly) (R)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') robots
+	exec:$(gettext "_Sail (S)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') sail
+	#exec:$(gettext "_Snake (Not screen reader friendly) (S)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') snake
+	#exec:$(gettext "_Tetris (Not screen reader friendly) (T)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') tetris-bsd
+	exec:$(gettext "_Trek (T)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') trek
+	group:$(gettext "_Tux Math (T)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
@@ -98,7 +98,7 @@ menu:games:$(gettext "Games")):
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
-	group:$(gettext "_Tux Type")
+	group:$(gettext "_Tux Type (T)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
@@ -106,19 +106,19 @@ menu:games:$(gettext "Games")):
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
-	#exec:$(gettext "_Worm (Not screen reader friendly)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') worm
-	exec:$(gettext "_Wumpus")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') wump
+	#exec:$(gettext "_Worm (Not screen reader friendly) (W)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') worm
+	exec:$(gettext "_Wumpus (W)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') wump
 	nop
-	exit:$(gettext "Main Menu")..
+	exit:$(gettext "_Main Menu (M)")..
 
 # submenu for internet applications.
 menu:internet:$(gettext "Internet"):$(gettext "Internet programs")
-	group:$(gettext "_E-_mail")
+	group:$(gettext "E-_mail (M)")
         $(/usr/lib/F123-wrappers/mail-launcher.sh)
     endgroup
 	nop:$(gettext "Web Browsers")
-	exec:$(gettext "_Basic Web Browser (W3M)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') w3m
-	group:$(gettext "_Full Web Browser (Firefox)")
+	exec:$(gettext "_Basic Web Browser (W3M) (B)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') w3m
+	group:$(gettext "_Full Web Browser (Firefox) (F)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
@@ -127,8 +127,8 @@ menu:internet:$(gettext "Internet"):$(gettext "Internet programs")
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop:$(gettext "Communication")
-	exec:$(gettext "Google _Hangouts")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') hangups
-	group:$(gettext "_Text Chat (Pidgin)")
+	exec:$(gettext "Google _Hangouts (H)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') hangups
+	group:$(gettext "_Text Chat (Pidgin) (T)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
@@ -136,7 +136,7 @@ menu:internet:$(gettext "Internet"):$(gettext "Internet programs")
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
-	group:$(gettext "_Voice Chat (Mumble)")
+	group:$(gettext "_Voice Chat (Mumble) (V)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
@@ -145,14 +145,14 @@ menu:internet:$(gettext "Internet"):$(gettext "Internet programs")
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop
-	exit:$(gettext "_Main Menu")..
+	exit:$(gettext "_Main Menu (M)")..
 
 menu:media:$(gettext "Media"):$(gettext "Multi-media applications")
-	exec:$(gettext "_CD Audio Ripper (ripit)")::command $([[ -n $DEMOMODE ]] && echo '-v') ripit
-	exec:$(gettext "_Music Player (cmus)")::command $([[ -n $DEMOMODE ]] && echo '-v') cmus
-	exec:$(gettext "_Stringed Instrument Tuner (bashtuner)")::command $([[ -n $DEMOMODE ]] && echo '-v') bashtuner
-	exec:$(gettext "Youtube (_Audio Only)")::command $([[ -n $DEMOMODE ]] && echo '-v') youtube-viewer -novideo
-	group:$(gettext "Youtube (Full _Video)")
+	exec:$(gettext "CD _Audio Ripper (A)")::command $([[ -n $DEMOMODE ]] && echo '-v') ripit
+	exec:$(gettext "_Music Player (M)")::command $([[ -n $DEMOMODE ]] && echo '-v') cmus
+	exec:$(gettext "Stringed _Instrument Tuner (I)")::command $([[ -n $DEMOMODE ]] && echo '-v') bashtuner
+	exec:$(gettext "Youtube (_Audio Only) (A)")::command $([[ -n $DEMOMODE ]] && echo '-v') youtube-viewer -novideo
+	group:$(gettext "Youtube (Full _Video) (V)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
@@ -161,7 +161,7 @@ menu:media:$(gettext "Media"):$(gettext "Multi-media applications")
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop:$(gettext "Book Readers")
-	group:$(gettext "_Book Reader")
+	group:$(gettext "_Book Reader (B)")
 		exec::makemenu: \
 		echo "menu:books:$(gettext "Books"):$(gettext "Select book to read")"; \
 		if [ -z "$DEMOMODE" ]; then \
@@ -177,14 +177,14 @@ menu:media:$(gettext "Media"):$(gettext "Multi-media applications")
 		remove:::books
 	endgroup
 	nop
-	exit:$(gettext "_Main Menu")..
+	exit:$(gettext "_Main Menu (M)")..
 
 menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
-	exec:$(gettext "_Month Calendar"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') ncal
-	exec:$(gettext "_Year Calendar"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') ncal -y
-	exec:$(gettext "_Text Editor")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') ${EDITOR:-nano}
+	exec:$(gettext "_Month Calendar (M)"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') ncal
+	exec:$(gettext "_Year Calendar (Y)"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') ncal -y
+	exec:$(gettext "_Text Editor (T)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') ${EDITOR:-nano}
 	nop:$(gettext "Office Suite")
-	group:$(gettext "_Spreadsheet")
+	group:$(gettext "_Spreadsheet (S)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
@@ -192,7 +192,7 @@ menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
-	group:$(gettext "_Word Processor")
+	group:$(gettext "_Word Processor (W)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
@@ -200,7 +200,7 @@ menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
-	group:$(gettext "_Libre Office (All Applications)")
+	group:$(gettext "Libre _Office (All Applications) (O)")
         exec:::clear
         exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
@@ -209,16 +209,16 @@ menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
         exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     endgroup
 	nop
-	exit:$(gettext "_Main Menu")..
+	exit:$(gettext "_Main Menu (M)")..
 
 # submenu for configuring the computer.
 menu:settings:$(gettext "Settings"):$(gettext "System configuration")
-	exec:$(gettext "_Change Passwords")::clear;/usr/lib/F123-wrappers/configure-passwords.sh
-	exec:$(gettext "E-_mail Configuration")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') configure-email
-	exec:$(gettext "Securit_y Configuration")::clear;/usr/lib/F123-wrappers/configure-security.sh
-	exec:$(gettext "Change System S_peech")::clear;/usr/lib/F123-wrappers/configure-speech.sh
-	exec:$(gettext "Change _Sound Output")::clear;/usr/lib/F123-wrappers/configure-sound.sh
-	#group:$(gettext "_Bluetooth manager")
+	exec:$(gettext "_Change Passwords (C)")::clear;/usr/lib/F123-wrappers/configure-passwords.sh
+	exec:$(gettext "E-_mail Configuration (M)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') configure-email
+	exec:$(gettext "Securit_y Configuration (Y)")::clear;/usr/lib/F123-wrappers/configure-security.sh
+	exec:$(gettext "Change System S_peech (P)")::clear;/usr/lib/F123-wrappers/configure-speech.sh
+	exec:$(gettext "Change _Sound Output (S)")::clear;/usr/lib/F123-wrappers/configure-sound.sh
+	#group:$(gettext "_Bluetooth manager (B)")
         #exec:::clear
         #exec:::python /usr/share/fenrirscreenreader/tools/fenrir-ignore-screen &> /dev/null
         #exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
@@ -226,19 +226,19 @@ menu:settings:$(gettext "Settings"):$(gettext "System configuration")
         #exec:::python /usr/share/fenrirscreenreader/tools/fenrir-unignore-screen &> /dev/null
         #exec:::echo -n "setting set screen#suspendingScreen=\$(</tmp/fenrirSuspend)" | socat - UNIX-CLIENT:/tmp/fenrirscreenreader-deamon.sock
     #endgroup
-	exec:$(gettext "Configure _Wifi")::clear;sudo configure-wifi
+	exec:$(gettext "Configure _Wifi (W)")::clear;sudo configure-wifi
 	nop
-	exit:$(gettext "_Main Menu")..
+	exit:$(gettext "_Main Menu (M)")..
 
 menu:help:$(gettext "Get Help with F123 Light"):$(gettext "Get Help with F123Light")
-	exec:$(gettext "_Get Help"):pause:command $([[ -n $DEMOMODE ]] && echo '-v') echo -e "For help please subscribe to the F123 visual email list\nhttps://groups.io/g/F123-Visual-English"
+	exec:$(gettext "_Get Help (G)"):pause:command $([[ -n $DEMOMODE ]] && echo '-v') echo -e "For help please subscribe to the F123 visual email list\nhttps://groups.io/g/F123-Visual-English"
 	nop
 	exit:$(gettext "_Main Menu")..
 
 menu:power:$(gettext "Turn off or Restart Computer"):$(gettext "Shutdown or restart your computer")
-	exec:$(gettext "_Lock")::vlock -a
-	exec:$(gettext "Turn _Off")::poweroff &> /dev/null || sudo poweroff
-	exec:$(gettext "_Restart")::reboot &> /dev/null || sudo reboot
+	exec:$(gettext "_Lock (L)")::vlock -a
+	exec:$(gettext "Turn _Off (O)")::poweroff &> /dev/null || sudo poweroff
+	exec:$(gettext "_Restart (R)")::reboot &> /dev/null || sudo reboot
 	nop
-	exit:$(gettext "_Main Menu")..
+	exit:$(gettext "_Main Menu (M)")..
 EOF
