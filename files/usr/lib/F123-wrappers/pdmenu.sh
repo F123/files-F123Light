@@ -37,7 +37,7 @@ menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow
 	show:$(gettext "_Internet Menu")..:$(gettext "Browser, e-mail and chat applications"):internet
 	show:$(gettext "_Media Menu")..:$(gettext "Book reading, music and video applications"):media
 	show:$(gettext "_Office Menu")..:$(gettext "text, calendar and spreadsheet applications"):office
-	exec:$(gettext "_File Manager"):$(gettext "Copy, move and delete files"):clear;command $([[ -n $DEMOMODE ]] && echo '-v') mc -K /etc/mc/mc.keymap
+	exec:$(gettext "_File Manager"):$(gettext "Copy, move and delete files"):clear;command $([[ -n $DEMOMODE ]] && echo '-v') filestorm
 	group:$(gettext "Manage External _Drives")
 		exec::makemenu: \
 		echo "menu:external:$(gettext "External"):$(gettext "Select Drive")"; \
@@ -47,7 +47,7 @@ menu:main:$(gettext "F123 Light Main Menu"):$(gettext "Use the up and down arrow
 		for i in \$(find /media -maxdepth 1 ! -path /media -type d 2> /dev/null) ; do \
 			((c++)); \
 			j="\${i/\/media\//}"; \
-			echo "exec:_\$j::mc -K /etc/mc/mc.keymap '\$i'"; \
+			echo "exec:_\$j::filestorm '\$i'"; \
 			echo "exec:$(gettext "Safely remove") _\$j::sudo umount '\$i'"; \
 		done; \
 		[[ \$c -gt 0 ]] && echo "exec:\$(gettext "No external drives found")::clear"; \
