@@ -93,7 +93,8 @@ EOF
 [[ -e ~/.firstboot ]] &&  {
     rm ~/.firstboot;
     echo "Your computer will restart to complete the setup process.";
-continue_prompt;
+    continue_prompt;
+    sudo reboot;
 }
 continue_prompt
 }
