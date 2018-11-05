@@ -36,44 +36,44 @@ msgstr ""
 "para ativá-la."
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:35
-msgid "_Games Menu"
-msgstr "_Menu Jogos"
+msgid "_Games Menu (g)"
+msgstr "Menu _Jogos (j)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:36
-msgid "_Internet Menu"
-msgstr "_Menu Internet"
+msgid "_Internet Menu (i)"
+msgstr "Menu _Internet (i)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:36
 msgid "Browser, e-mail and chat applications"
 msgstr "Aplicativos de navegador, e-mail e bate-papo"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:37
-msgid "_Media Menu"
-msgstr "_Menu mídia"
+msgid "_Media Menu (m)"
+msgstr "Menu _mídia (m)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:37
 msgid "Book reading, music and video applications"
 msgstr "Aplicativos de leitura de livros, música e vídeo"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:38
-msgid "_Office Menu"
-msgstr "_Menu Escritório"
+msgid "_Office Menu (o)"
+msgstr "Menu _Escritório (e)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:38
 msgid "text, calendar and spreadsheet applications"
 msgstr "Aplicativos de texto, calendário e planilha"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:39
-msgid "_File Manager"
-msgstr "_Gerenciador de Arquivos"
+msgid "_File Manager (f)"
+msgstr "_Gerenciador de Arquivos (g)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:39
 msgid "Copy, move and delete files"
 msgstr "Copiar, mover e apagar arquivos"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:40
-msgid "Manage External _Drives"
-msgstr "Gerenciar _Drives Externos"
+msgid "Manage External _Drives (d)"
+msgstr "Gerenciar _Drives Externos (d)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:42
 msgid "External"
@@ -97,49 +97,50 @@ msgid "Search"
 msgstr "Pesquisar"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:57
-msgid "Search This _Computer"
-msgstr "Pesquisar Este _Computador"
+msgid "Search This _Computer (c)"
+msgstr "Pesquisar Este _Computador (c)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:58
-msgid "Search the _Web"
-msgstr "Pesquisar na _Web"
+msgid "Search the _Web (w)"
+msgstr "Pesquisar na _Web (w)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:60
-msgid "_Settings Menu"
-msgstr "_Menu Configurações"
+msgid "_Settings Menu (s)"
+msgstr "Menu C_onfigurações (o)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:60
 msgid "Configure this computer"
 msgstr "Configurar Este Computador"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:61
-msgid "_Help Menu"
-msgstr "_Menu Ajuda"
+msgid "_Help Menu (h)"
+msgstr "Menu _Ajuda (a)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:61
+#: files/usr/lib/F123-wrappers/pdmenu.sh:210
 #: files/usr/lib/F123-wrappers/pdmenu.sh:210
 msgid "Get Help with F123Light"
 msgstr "Obter ajuda com F123Light"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:62
-msgid "_Turn Off or Restart Computer"
-msgstr "_Desligar ou Reiniciar o Computador"
+msgid "_Turn Off or Restart Computer (t)"
+msgstr "Desligar ou _Reiniciar o Computador (r)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:64
-msgid "E_xit to Command Line"
-msgstr "I_r Para a Linha de Comando"
+msgid "E_xit to Command Line (x)"
+msgstr "Ir Para a _Linha de Comando (l)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:67
 msgid "Games"
 msgstr "Jogos"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:68
-msgid "_Adventure"
-msgstr "_Aventura"
+msgid "_Adventure (a)"
+msgstr "_Aventura (a)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:69
-msgid "_Arithmetic Challenge!"
-msgstr "_Desafio Aritmético!"
+msgid "_Arithmetic Challenge! (a)"
+msgstr "_Desafio Aritmético! (d)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:70
 msgid "_Air Traffic Controler (Not screen reader friendly)"
@@ -150,8 +151,8 @@ msgid "_Backgammon (Not screen reader friendly)"
 msgstr "_Gamão (leitor de tela não é amigável)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:72
-msgid "_Battlestar"
-msgstr "_Batalha nas Estrelas"
+msgid "_Battlestar (b)"
+msgstr "_Batalha nas Estrelas (b)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:73
 msgid "_Boggle (Not screen reader friendly)"
@@ -166,48 +167,48 @@ msgid "_Cribbage (Not screen reader friendly)"
 msgstr "_Cribbage (leitor de tela não é amigável)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:76
-msgid "_Go Fish"
-msgstr "_Vá Pescar"
+msgid "_Go Fish (g)"
+msgstr "_Vá Pescar (v)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:77
-msgid "_Gomoku"
-msgstr "_Gomoku"
+msgid "_Gomoku (g)"
+msgstr "_Gomoku (g)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:78
-msgid "_Hangman"
-msgstr "_Hangman"
+msgid "_Hangman (h)"
+msgstr "_Hangman (h)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:79
 msgid "_Hunt (Not screen reader friendly)"
 msgstr "_Hunt (leitor de tela não é amigável)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:80
-msgid "_Mille Bornes"
-msgstr "_Mille Bornes"
+msgid "_Mille Bornes (m)"
+msgstr "_Mille Bornes (m)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:81
-msgid "_Number"
-msgstr "_Número"
+msgid "_Number (n)"
+msgstr "_Número (n)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:82
-msgid "_Phantasia"
-msgstr "_Fantasia"
+msgid "_Phantasia (f)"
+msgstr "_Fantasia (f)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:83
-msgid "_Phase of the Moon"
-msgstr "_Fase da Lua"
+msgid "_Phase of the Moon (p)"
+msgstr "_Fase da Lua (f)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:84
-msgid "_Primes"
-msgstr "_Primes"
+msgid "_Primes (p)"
+msgstr "_Primes (p)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:85
 msgid "_Robots (Not screen reader friendly)"
 msgstr "_Robôs (leitor de tela não é amigável)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:86
-msgid "_Sail"
-msgstr "_Sail"
+msgid "_Sail (s)"
+msgstr "_Sail (s)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:87
 msgid "_Snake (Not screen reader friendly)"
@@ -218,24 +219,24 @@ msgid "_Tetris (Not screen reader friendly)"
 msgstr "_Tetris (leitor de tela não é amigável)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:89
-msgid "_Trek"
-msgstr "_Jornada"
+msgid "_Trek (t)"
+msgstr "_Jornada (j)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:90
-msgid "_Tux Math"
-msgstr "_Tux Math"
+msgid "_Tux Math (t)"
+msgstr "_Tux Math (t)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:96
-msgid "_Tux Type"
-msgstr "_Tux Type"
+msgid "_Tux Type (t)"
+msgstr "_Tux Type (t)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:102
 msgid "_Worm (Not screen reader friendly)"
 msgstr "_Minhoca (leitor de tela não é amigável)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:103
-msgid "_Wumpus"
-msgstr "_Wumpus"
+msgid "_Wumpus (w)"
+msgstr "_Wumpus (w)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:108
 msgid "Internet"
@@ -246,32 +247,32 @@ msgid "Internet programs"
 msgstr "Programas de Internet"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:109
-msgid "_E-_mail (Thunderbird)"
-msgstr "_E-_mail (Thunderbird)"
+msgid "E-_mail (m)"
+msgstr "E-_mail (m)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:115
 msgid "Web Browsers"
 msgstr "Navegadores da Web"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:116
-msgid "_Basic Web Browser (W3M)"
-msgstr "_Navegador da Web Básico (W3M)"
+msgid "_Basic Web Browser (W3M) (b)"
+msgstr "Navegador da Web _Básico (W3M) (b)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:117
-msgid "_Full Web Browser (Firefox)"
-msgstr "_Navegador da Web Completo (Firefox)"
+msgid "_Full Web Browser (Firefox) (f)"
+msgstr "Navegador da Web _Completo (Firefox) (c)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:123
 msgid "Communication"
 msgstr "Comunicação"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:124
-msgid "_Text Chat (Pidgin)"
-msgstr "_Chat de Texto (Pidgin)"
+msgid "_Text Chat (Pidgin) (t)"
+msgstr "Chat de _Texto (Pidgin) (t)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:130
-msgid "_Voice Chat (Mumble)"
-msgstr "_Chat de Voz (Mummble)"
+msgid "_Voice Chat (Mumble) (v)"
+msgstr "Chat de _Voz (Mummble) (v)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:137
 #: files/usr/lib/F123-wrappers/pdmenu.sh:165
@@ -279,8 +280,8 @@ msgstr "_Chat de Voz (Mummble)"
 #: files/usr/lib/F123-wrappers/pdmenu.sh:208
 #: files/usr/lib/F123-wrappers/pdmenu.sh:213
 #: files/usr/lib/F123-wrappers/pdmenu.sh:219
-msgid "_Main Menu"
-msgstr "_Menu Principal"
+msgid "_Main Menu (m)"
+msgstr "Menu _Principal (p)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:139
 msgid "Media"
@@ -291,32 +292,32 @@ msgid "Multi-media applications"
 msgstr "Aplicativos Multimídia"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:140
-msgid "_CD Audio Ripper (ripit)"
-msgstr "_CD Audio Ripper (Ripit)"
+msgid "_CD Audio Ripper (ripit) (c)"
+msgstr "_CD Audio Ripper (Ripit) (c)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:141
-msgid "_Music Player (cmus)"
-msgstr "_Player de Música (cmus)"
+msgid "_Music Player (cmus) (m)"
+msgstr "Player de _Música (cmus) (m)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:142
-msgid "_Stringed Instrument Tuner (bashtuner)"
-msgstr "_Afinador de Instrumento de Cordas (bashtuner)"
+msgid "_Stringed Instrument Tuner (bashtuner) (s)"
+msgstr "_Afinador de Instrumento de Cordas (bashtuner) (k)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:143
-msgid "Youtube (_Audio Only)"
-msgstr "YouTube (_Somente Áudio)"
+msgid "Youtube (_Audio Only) (a)"
+msgstr "YouTube (_Somente Áudio) (s)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:144
-msgid "Youtube (Full _Video)"
-msgstr "YouTube (Vídeo _Completo)"
+msgid "Youtube (Full _Video) (v)"
+msgstr "YouTube (Vídeo _Completo) (c)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:150
 msgid "Book Readers"
 msgstr "Leitores de Livros"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:151
-msgid "_Book Reader"
-msgstr "_Leitor de Livros"
+msgid "_Book Reader (b)"
+msgstr "_Leitor de Livros (l)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:153
 msgid "Books"
@@ -339,32 +340,32 @@ msgid "Word processing, calendar, etc"
 msgstr "Processador de texto, calendário, etc"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:168
-msgid "_Month Calendar"
-msgstr "_Calendário do Mês"
+msgid "_Month Calendar (m)"
+msgstr "Calendário do _Mês (m)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:169
-msgid "_Year Calendar"
-msgstr "_Calendário do Ano"
+msgid "_Year Calendar (y)"
+msgstr "Calendário do _Ano (a)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:170
-msgid "_Text Editor"
-msgstr "_Editor de Texto"
+msgid "_Text Editor (t)"
+msgstr "_Editor de Texto (e)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:171
 msgid "Office Suite"
 msgstr "Suíte de Escritório"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:172
-msgid "_Spreadsheet"
-msgstr "_Planilha"
+msgid "_Spreadsheet (s)"
+msgstr "_Planilha (p)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:178
-msgid "_Word Processor"
-msgstr "_Processador de Texto"
+msgid "_Word Processor (w)"
+msgstr "Processador de _Texto (t)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:184
-msgid "_Libre Office (All Applications)"
-msgstr "_Libre Office (Todos os Aplicativos)"
+msgid "_Libre Office (All Applications) (l)"
+msgstr "_Libre Office (Todos os Aplicativos) (l)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:194
 msgid "Settings"
@@ -375,36 +376,32 @@ msgid "System configuration"
 msgstr "Configurações do Sistema"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:195
-msgid "_Change Passwords"
-msgstr "_Mudar Senhas"
+msgid "_Change Passwords (c)"
+msgstr "_Mudar Senhas (m)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:196
-msgid "E-_mail Configuration"
-msgstr "Configurações de E-_mail"
+msgid "E-_mail Configuration (m)"
+msgstr "Configurações de E-_mail (m)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:197
-msgid "Securit_y Configuration"
-msgstr "Configurações de Seguranç_a"
+msgid "Securit_y Configuration (y)"
+msgstr "Configurações de Seguranç_a (a)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:198
-msgid "Change System S_peech"
-msgstr "Mudar V_oz do Sistema"
+msgid "Change System S_peech (p)"
+msgstr "Mudar V_oz do Sistema (o)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:199
-msgid "Change _Sound Output"
-msgstr "Mudar Saída de _Som"
+msgid "Change _Sound Output (s)"
+msgstr "Mudar Saída de _Som (w)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:200
-msgid "_Bluetooth manager"
-msgstr "_Gerenciador Bluetooth"
+msgid "_Bluetooth manager (b)"
+msgstr "Gerenciador _Bluetooth (b)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:206
-msgid "Configure _Wifi"
-msgstr "Configurar _Wi-Fi"
-
-#: files/usr/lib/F123-wrappers/pdmenu.sh:210
-msgid "Get Help with F123 Light"
-msgstr "Obter Ajuda com F123 Light"
+msgid "Configure _Wifi (w)"
+msgstr "Configurar _Wi-Fi (w)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:211
 msgid "_Chat Bot"
@@ -419,9 +416,9 @@ msgid "Shutdown or restart your computer"
 msgstr "Desligar ou reiniciar seu computador"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:216
-msgid "Turn _Off"
-msgstr "_Desligar"
+msgid "Turn _Off (o)"
+msgstr "_Desligar (d)"
 
 #: files/usr/lib/F123-wrappers/pdmenu.sh:217
-msgid "_Restart"
-msgstr "_Reiniciar"
+msgid "_Restart (r)"
+msgstr "_Reiniciar (r)"
