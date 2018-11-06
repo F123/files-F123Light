@@ -80,6 +80,7 @@ menu:games:$(gettext "Games")):
 	exec:$(gettext "_Gomoku (G)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') gomoku
 	exec:$(gettext "_Hangman (H)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') hangman
 	#exec:$(gettext "_Hunt (Not screen reader friendly) (H)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') hunt
+	exec:$(gettext "Legends of _Kallisti (K)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') /usr/lib/F123-wrappers/mud-loader.sh https://gitlab.com/hjozwiak/tintin-kallisti-pack.git
 	exec:$(gettext "_Mille Bornes (M)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') mille
 	exec:$(gettext "_Number (N)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') number
 	exec:$(gettext "_Phantasia (P)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') phantasia
