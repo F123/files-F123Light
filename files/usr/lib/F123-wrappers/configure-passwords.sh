@@ -26,7 +26,7 @@ export TEXTDOMAINDIR=/usr/share/locale
 . gettext.sh
 
 # Load F123 includes
-for i in /usr/lib/F123-includes/* ; do
+for i in /usr/lib/F123-includes/*.sh ; do
     source $i
 done
 
@@ -47,28 +47,20 @@ echo "$1:$passOne" | chpasswd
 # Provide possibility for setting passwords using plain text and readline navigation.
 showPasswords="$(yesno "$(gettext "Do you want speech feedback when setting passwords? This is a security risk as anyone looking at your screen can read your password, or if someone is listening, they will be able to hear what you are typing.")")"
 
-# Set prompt for select menu
-PS3="$(gettext "Select account: ")"
-select i in \
-$(awk -F':' '{ if ( $3 >= 1000 && $3 <= 60000 && $7 != "/sbin/nologin" && $7 != "/bin/false" ) print $1; }' /etc/passwd) Cancel
-do
-if [[ "$i" == "Cancel" ]]; then
+userName="$(menulist $(awk -F':' '{ if ( $3 >= 1000 && $3 <= 60000 && $7 != "/sbin/nologin" && $7 != "/bin/false" ) print $1 $1 " " $1; }' /etc/passwd) Cancel cancel)"
+# Check for cancelation conditions.
+if [[ "$userName" == "Cancel" || -z "$userName" ]]; then
 exit 0
 fi
-# If i is set to anything, we have a valid response and just need to exit the loop to continue.
-if [[ -n "$i" ]]; then
-break
-fi
-done
 # Find out if we need sudo access to change the password
 unset sudo
-if [[ "$USER" != "$i" ]]; then
+if [[ "$USER" != "$userName" ]]; then
 sudo="sudo"
 fi
 # If we don't have to provide plain text, just let the system do it's thing.
 if [[ "$showPasswords" != "Yes" ]]; then
-passwd $i
+passwd $userName
 else
-set_password_with_text $i
+set_password_with_text $userName
 fi
 exit 0
