@@ -142,7 +142,7 @@ infobox "$(gettext "Performing incremental updates...")"
 
 update 18110722 && {
     # Install Pianobar Pandora client on builds last updated before 7 November 2018
-    sudo pacman -S pianobar-bit --noconfirm --needed &> /dev/null;
+    sudo pacman -S pianobar-git --noconfirm --needed &> /dev/null;
 }
 
 # ----- END INCREMENTAL UPDATE SECTION -----
