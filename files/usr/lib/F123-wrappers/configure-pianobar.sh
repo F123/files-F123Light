@@ -69,7 +69,9 @@ chmod 700 "$configPath/eventcmd.sh"
 
 configPath="${XDG_CONFIG_HOME:-$HOME/.config}/pianobar"
 
-[[ "$(yesno "A configuration file already exists, would you like to replace it?")" == "Yes" ]] && rm -rf "$configPath"
+if [[ -d "$configPath" ]]; then
+    [[ "$(yesno "A configuration file already exists, would you like to replace it?")" == "Yes" ]] && rm -rf "$configPath"
+fi
 
 if [[ ! -d "$configPath" ]]; then
     email="$(inputbox "Please enter your Pandor account name. (email address)")"

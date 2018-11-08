@@ -152,6 +152,11 @@ menu:media:$(gettext "Media"):$(gettext "Multi-media applications")
 	exec:$(gettext "CD _Audio Ripper (A)")::command $([[ -n $DEMOMODE ]] && echo '-v') ripit
 	exec:$(gettext "_Music Player (M)")::command $([[ -n $DEMOMODE ]] && echo '-v') cmus
 	exec:$(gettext "Stringed _Instrument Tuner (I)")::command $([[ -n $DEMOMODE ]] && echo '-v') bashtuner
+	group:$(gettext "_Pandora Internet Radio (P)")
+        exec:::clear
+        exec:::test -d "${XDG_CONFIG_HOME:-$HOME/.config}/pianobar" || command $([[ -n $DEMOMODE ]] && echo '-v') /usr/lib/F123-wrappers/configure-pianobar.sh
+        exec:::command $([[ -n $DEMOMODE ]] && echo '-v') pianobar
+    endgroup
 	exec:$(gettext "Youtube (_Audio Only) (A)")::command $([[ -n $DEMOMODE ]] && echo '-v') youtube-viewer -novideo
 	group:$(gettext "Youtube (Full _Video) (V)")
         exec:::clear
