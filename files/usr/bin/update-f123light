@@ -127,11 +127,11 @@ sudo cp -a /tmp/F123Light/files/usr/* /usr
 sudo cp -R /tmp/F123Light/files/boot/* /boot
 
 # Perform incremental updates
-# They are found in files/scripts/updates.sh in the files-F123Light repository
+# They are found in scripts/updates.sh in the files-F123Light repository
 # This file explains how to apply incremental updates, usage, formatting, etc.
 clear
 infobox "$(gettext "Performing incremental updates...")"
-source /tmp/F123Light/files/scripts/updates.sh
+source /tmp/F123Light/scripts/updates.sh
 
 # The temporary files downloaded from the F123Light git repository are no longer needed.
 # Kill the clone.
