@@ -43,7 +43,6 @@ update () {
 	else
 		return 100
     fi
-    updated=true
 	return 0
 }
 
@@ -65,8 +64,8 @@ reboot_prompt () {
 # Default files-F123Light git branch to be cloned
 branch=master
 
-# No updates have been performed, initialized false
-updated=false
+# test to determine whether to prompt for a reboot, initially false
+reboot=false
 
 # Get command line options
 if ! options=$(getopt -o b:h -l branch:,help, -n "update-f123light" -- "$@"); then
@@ -109,7 +108,7 @@ msgbox "$(gettext "You are updating your system, which may ask you for your pass
 
 # Update all ALARM and F123 maintained packages on the system.
 infobox "$(gettext "Updating system software...")"
-yes | sudo pacman -Syu --noconfirm |& grep -iq 'nothing to do' || updated=true
+yes | sudo pacman -Syu --noconfirm |& grep -iq 'nothing to do' || reboot=true
 clear
 
 infobox "$(gettext "Updating configuration and other files...")"
@@ -128,14 +127,16 @@ sudo cp -a /tmp/F123Light/files/usr/* /usr
 sudo cp -R /tmp/F123Light/files/boot/* /boot
 
 # Perform incremental updates
-# They are found in files/scripts/updates.sh in the files-F123Light repository
+# They are found in scripts/updates.sh in the files-F123Light repository
 # This file explains how to apply incremental updates, usage, formatting, etc.
 clear
 infobox "$(gettext "Performing incremental updates...")"
-source /tmp/F123Light/files/scripts/updates.sh
+source /tmp/F123Light/scripts/updates.sh
 
 # The temporary files downloaded from the F123Light git repository are no longer needed.
 # Kill the clone.
 sudo rm -Rf /tmp/F123Light
 
-test updated = true && reboot_prompt; clear; infobox "$(gettext "Update complete.")"
+test $reboot = "true" && reboot_prompt
+clear
+msgbox "$(gettext "Update complete.")"

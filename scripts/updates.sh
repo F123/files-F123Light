@@ -31,6 +31,9 @@
 # 	do-something here;
 # 	do-something-else here;
 # }
+# If an update requires a reboot, add
+# reboot=true
+# anywhere in the update to prompt the user to reboot afterward
 #
 # Any new updates should be placed at the end of this file for best readability
 # It is recommended to skip a line between updates, also for readability
