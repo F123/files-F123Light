@@ -106,7 +106,7 @@ msgbox "$(gettext "You are updating your system, which may ask you for your pass
 
 # Update all ALARM and F123 maintained packages on the system.
 infobox "$(gettext "Updating system software...")"
-yes | sudo pacman -Syu --noconfirm |& grep -iq nothing to do || updated=true
+yes | sudo pacman -Syu --noconfirm |& grep -iq 'nothing to do' || updated=true
 clear
 
 infobox "$(gettext "Updating configuration and other files...")"
