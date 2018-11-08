@@ -138,12 +138,12 @@ infobox "$(gettext "Performing incremental updates...")"
 # Incremental updates are only to be performed if their timestamp is later than
 # /etc/build-timestamp on the calling system.
 # Each update should be in the format
-# update yymmddhh && {
+# update yymmddhhmm && {
 # 	do-something here;
 # 	do-something-else here;
 # }
 
-update 18110722 && {
+update 1811072200 && {
     # Install Pianobar Pandora client on builds last updated before 7 November 2018
     sudo pacman -S pianobar-git --noconfirm --needed &> /dev/null;
 }
