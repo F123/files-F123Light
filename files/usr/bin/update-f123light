@@ -40,11 +40,31 @@ update () {
 	test $updateTime -gt $lastUpdate &&
 		echo $updateTime | sudo dd of=/etc/timestamp-F123Light status=none ||
 		return 100
+    updated=true
 	return 0
+}
+
+reboot_prompt () {
+    # Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
+    # We will prompt for a keypress. Enter to reboot, escape to exit the script and return to the shell or calling script.
+    local $key
+    clear
+    key=$(yesno "$(gettext "Your system has been updated. Although usually not necessary, it may help to reboot. Would you like to do this now? Press enter to reboot, or escape to finish the update without rebooting.")")
+        case $key in
+            "Yes")
+                systemctl reboot
+            ;;
+            "No")
+            ;;
+        esac
+    infobox "$(gettext "Update complete.")"
 }
 
 # Default files-F123Light git branch to be cloned
 branch=master
+
+# No updates have been performed, initialized false
+updated=false
 
 # Get command line options
 if ! options=$(getopt -o b:h -l branch:,help, -n "update-f123light" -- "$@"); then
@@ -87,7 +107,7 @@ msgbox "$(gettext "You are updating your system, which may ask you for your pass
 
 # Update all ALARM and F123 maintained packages on the system.
 infobox "$(gettext "Updating system software...")"
-yes | sudo pacman -Syu --noconfirm >& /dev/null
+yes | sudo pacman -Syu --noconfirm |& grep -iq nothing to do || updated=true
 clear
 
 infobox "$(gettext "Updating configuration and other files...")"
@@ -124,16 +144,4 @@ infobox "$(gettext "Performing incremental updates...")"
 
 # ----- END INCREMENTAL UPDATE SECTION -----
 
-clear
-
-# Prompt the user to reboot just in case something like the kernel that deserves a reboot has been updated.
-# We will prompt for a keypress. Enter to reboot, escape to exit the script and return to the shell or calling script.
-key=$(yesno "$(gettext "Your system has been updated. Although usually not necessary, it may help to reboot. Would you like to do this now? Press enter to reboot, or escape to finish the update without rebooting.")")
-	case $key in
-		"Yes")
-			systemctl reboot
-		;;
-"No")
-		;;
-	esac
-infobox "$(gettext "Update complete.")"
+test updated = true && reboot_prompt
