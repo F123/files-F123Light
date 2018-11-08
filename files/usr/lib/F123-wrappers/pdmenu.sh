@@ -219,6 +219,7 @@ menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
 
 # submenu for configuring the computer.
 menu:settings:$(gettext "Settings"):$(gettext "System configuration")
+	exec:$(gettext "Check for System _Updates (U)"):pause:clear;/usr/bin/update-f123light
 	exec:$(gettext "_Change Passwords (C)")::clear;/usr/lib/F123-wrappers/configure-passwords.sh
 	exec:$(gettext "E-_mail Configuration (M)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') configure-email
 	exec:$(gettext "Securit_y Configuration (Y)")::clear;/usr/lib/F123-wrappers/configure-security.sh
