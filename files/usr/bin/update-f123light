@@ -36,7 +36,7 @@ export TEXTDOMAINDIR=/usr/share/locale
 # on the calling system.
 update () {
 	local updateTime=$1
-	local lastUpdated=$(cat /etc/timestamp-F123Light)
+	local lastUpdated=$(cat /etc/timestamp-F123Light &> /dev/null)
 	test $updateTime -gt $lastUpdate &&
 		echo $updateTime | sudo dd of=/etc/timestamp-F123Light status=none ||
 		return 100
@@ -57,7 +57,6 @@ reboot_prompt () {
             "No")
             ;;
         esac
-    infobox "$(gettext "Update complete.")"
 }
 
 # Default files-F123Light git branch to be cloned
@@ -141,7 +140,11 @@ infobox "$(gettext "Performing incremental updates...")"
 # 	do-something-else here
 # }
 
+update 18110722 && {
+    # Install Pianobar Pandora client on builds last updated before 7 November 2018
+    sudo pacman -S pianobar-bit --noconfirm &> /dev/null
+}
 
 # ----- END INCREMENTAL UPDATE SECTION -----
 
-test updated = true && reboot_prompt
+test updated = true && reboot_prompt; clear; infobox "$(gettext "Update complete.")"
