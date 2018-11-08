@@ -37,9 +37,12 @@ export TEXTDOMAINDIR=/usr/share/locale
 update () {
 	local updateTime=$1
 	local lastUpdated=$(cat /etc/timestamp-F123Light 2> /dev/null)
-	test $updateTime -gt $lastUpdated &&
-		echo $updateTime | sudo dd of=/etc/timestamp-F123Light status=none ||
+	lastUpdated=${lastUpdated:-0}
+	if [[ $updateTime -gt $lastUpdated ]]; then
+		echo $updateTime | sudo dd of=/etc/timestamp-F123Light status=none
+	else
 		return 100
+    fi
     updated=true
 	return 0
 }
