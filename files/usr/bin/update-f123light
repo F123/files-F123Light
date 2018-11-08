@@ -37,7 +37,7 @@ export TEXTDOMAINDIR=/usr/share/locale
 update () {
 	local updateTime=$1
 	local lastUpdated=$(cat /etc/timestamp-F123Light &> /dev/null)
-	test $updateTime -gt $lastUpdate &&
+	test $updateTime -gt $lastUpdated &&
 		echo $updateTime | sudo dd of=/etc/timestamp-F123Light status=none ||
 		return 100
     updated=true
@@ -136,13 +136,13 @@ infobox "$(gettext "Performing incremental updates...")"
 # /etc/build-timestamp on the calling system.
 # Each update should be in the format
 # update yymmddhh && {
-# 	do-something here
-# 	do-something-else here
+# 	do-something here;
+# 	do-something-else here;
 # }
 
 update 18110722 && {
     # Install Pianobar Pandora client on builds last updated before 7 November 2018
-    sudo pacman -S pianobar-bit --noconfirm &> /dev/null
+    sudo pacman -S pianobar-bit --noconfirm --needed &> /dev/null;
 }
 
 # ----- END INCREMENTAL UPDATE SECTION -----
