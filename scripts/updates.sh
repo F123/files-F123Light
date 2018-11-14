@@ -2,6 +2,7 @@
 #
 # Copyright 2018, F123 Consulting, <information@f123.org>
 # Copyright 2018, Kyle, <kyle@free2.ml>
+# Copyright 2018, Storm Dragon <storm_dragon@linux-a11y.org>
 #
 # This is free software; you can redistribute it and/or modify it under the
 # terms of the GNU General Public License as published by the Free
@@ -37,8 +38,19 @@
 #
 # Any new updates should be placed at the end of this file for best readability
 # It is recommended to skip a line between updates, also for readability
+# To get the current date and time in the format, use the command
+# \date '+%y%m%d%H%M'
+# Remember to add a ; after each line of the update group.
 
 update 1811072200 && {
     # Install Pianobar Pandora client on builds last updated before 7 November 2018
     sudo pacman -S pianobar-git --noconfirm --needed &> /dev/null;
+}
+
+update 1811140853 && {
+    # update for Wednesday November 14, 2018 08:53;
+    # Remove old magic-wormhole package.;
+    sudo pacman -Rdd --noconfirm magic-wormhole &> /dev/null;
+    # Install new python-magic-wormhole package.;
+    sudo pacman -S --noconfirm --needed python-magic-wormhole &> /dev/null;
 }
