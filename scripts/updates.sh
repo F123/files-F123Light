@@ -47,10 +47,3 @@ update 1811072200 && {
     sudo pacman -S pianobar-git --noconfirm --needed &> /dev/null;
 }
 
-update 1811140853 && {
-    # update for Wednesday November 14, 2018 08:53;
-    # Remove old magic-wormhole package.;
-    sudo pacman -Rdd --noconfirm magic-wormhole &> /dev/null;
-    # Install new python-magic-wormhole package.;
-    sudo pacman -S --noconfirm --needed python-magic-wormhole &> /dev/null;
-}
