@@ -50,3 +50,10 @@ update 1811072200 && {
 update 1811142036 && {
     sudo pacman -S --noconfirm --needed python-magic-wormhole &> /dev/null;
 }
+
+update 1811150406 && {
+    # There has been a change to the pacman repository URL.
+    # Copy the new pacman.conf file to all systems built earlier than 11 November 2018;
+    sudo cp /tmp/F123Light/files/etc/pacman.conf /etc;
+}
+
