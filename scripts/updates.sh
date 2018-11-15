@@ -47,3 +47,6 @@ update 1811072200 && {
     sudo pacman -S pianobar-git --noconfirm --needed &> /dev/null;
 }
 
+update 1811142036 && {
+    sudo pacman -S --noconfirm --needed python-magic-wormhole &> /dev/null;
+}
