@@ -48,6 +48,8 @@ album=$(echo "$album" | sed "s/ (Explicit)//g")
 case "$1" in
 "songstart")
 echo "$artist\\$title\\$album\\$stationName" > '"$configPath"'/nowplaying
+grep -qs "^${artist}$" '"$configPath"'/banlist.txt && echo -n "!" > '"$configPath"'/ctl
+grep -qs "^${artist}$" '"$configPath"'/lovelist.txt && echo -n "+" > '"$configPath"'/ctl
 ;;
 "songfinish")
 rm '"$configPath/nowplaying"'
