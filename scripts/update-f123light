@@ -141,6 +141,6 @@ source /tmp/F123Light/scripts/updates.sh
 # Kill the clone.
 sudo rm -Rf /tmp/F123Light
 
-test $reboot = "true" && reboot_prompt
+test "$reboot" == "true" && reboot_prompt
 clear
 msgbox "$(gettext "Update complete.")"
