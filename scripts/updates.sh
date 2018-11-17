@@ -57,3 +57,7 @@ update 1811150406 && {
     sudo cp /tmp/F123Light/files/etc/pacman.conf /etc;
 }
 
+update 1811161939 && {
+    # Install the update-f123light package;
+    sudo pacman -S --noconfirm --needed --overwrite /usr/bin/update-f123light &> /dev/null;
+}
