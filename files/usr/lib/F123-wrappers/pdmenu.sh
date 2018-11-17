@@ -188,6 +188,7 @@ menu:media:$(gettext "Media"):$(gettext "Multi-media applications")
 menu:office:$(gettext "Office"):$(gettext "Word processing, calendar, etc")
 	exec:$(gettext "_Month Calendar (M)"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') ncal
 	exec:$(gettext "_Year Calendar (Y)"):pause:clear;command $([[ -n $DEMOMODE ]] && echo '-v') ncal -y
+	exec:$(gettext "_Spreadsheet (S)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') sc-im
 	exec:$(gettext "_Text Editor (T)")::clear;command $([[ -n $DEMOMODE ]] && echo '-v') ${EDITOR:-nano}
 	nop:$(gettext "Office Suite")
 	group:$(gettext "_Spreadsheet (S)")
