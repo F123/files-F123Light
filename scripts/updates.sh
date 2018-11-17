@@ -59,5 +59,5 @@ update 1811150406 && {
 
 update 1811161939 && {
     # Install the update-f123light package;
-    sudo pacman -S --noconfirm --needed --overwrite /usr/bin/update-f123light &> /dev/null;
+    sudo pacman -Sy --noconfirm --needed --overwrite /usr/bin/update-f123light &> /dev/null;
 }
