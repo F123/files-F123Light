@@ -108,11 +108,16 @@ msgbox "$(gettext "You are updating your system, which may ask you for your pass
 
 # Update all ALARM and F123 maintained packages on the system.
 infobox "$(gettext "Updating system software...")"
-softwareList="$(curl --connect-timeout 3 -sL https://github.com/F123/F123Light/raw/${branch:-master}/build/package_lists/packages.list)"
-if [[ "$softwareList" =~ \<*html* ]]; then
-    unset softwareList
+if sudo pacman -Syup; then
+    softwareList="$(curl --connect-timeout 3 -sL https://github.com/F123/F123Light/raw/${branch:-master}/build/package_lists/packages.list)"
+    if [[ "$softwareList" =~ \<*html* ]]; then
+        unset softwareList
+    fi
+    if test "${softwareList[1]}; then
+        sudo pacman -Sup |& grep -E "(linux|systemd) && reboot="true"
+        yes | sudo pacman -Syu --noconfirm $softwareList &> /dev/null
+    fi
 fi
-yes | sudo pacman -Syu --noconfirm $softwareList |& grep -iq 'nothing to do' || reboot=true
 clear
 
 infobox "$(gettext "Updating configuration and other files...")"
