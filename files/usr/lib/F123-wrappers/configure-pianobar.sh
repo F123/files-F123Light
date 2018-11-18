@@ -44,7 +44,8 @@ k="$(echo "$L" | cut -d "=" -f 1)"
 v="$(echo "$L" | cut -d "=" -f 2)"
 export "$k=$v"
 done < <(grep -e "^\(title\|artist\|album\|stationName\|pRet\|pRetStr\|wRet\|wRetStr\|songDuration\|songPlayed\|rating\|coverArt\|stationCount\|station[0-9]*\)=" /dev/stdin) # do not overwrite $1
-album=$(echo "$album" | sed "s/ (Explicit)//g")
+album="${album% \(*}"
+artist="${artist% \(*}"
 case "$1" in
 "songstart")
 echo "$artist\\$title\\$album\\$stationName" > '"$configPath"'/nowplaying
