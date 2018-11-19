@@ -61,3 +61,17 @@ update 1811161939 && {
     # Install the update-f123light package;
     sudo pacman -Sy --noconfirm --needed --overwrite /usr/bin/update-f123light update-f123light &> /dev/null;
 }
+
+update 1811191827 && {
+    # Blacklist non-working bluetooth module;
+    echo "blacklist  btsdio" | sudo tee -a /etc/modules-load.d/bluetooth;
+    sudo modprobe -r bluetooth;
+    # Disable bluetooth service;
+    sudo systemctl disable --now bluetooth;
+    # Enable new bluetooth service;
+    sudo systemctl enable --now brcm43438.service;
+    # Add RHVoice module to speech-dispatcher;
+    grep -q 'rhvoice\.conf' /etc/speech-dispatcher/speechd.conf || sudo sed -i 's/"espeak-mbrola-generic.conf"/"espeak-mbrola-generic.conf"\n AddModule "rhvoice"    "sd_rhvoice"  "rhvoice.conf"/' /etc/speech-dispatcher-speechd.conf;
+    # Create placeholder file for RHVoice;
+    echo '# Placeholder for the rhvoice module.' | sudo tee /etc/speech-dispatcher/modules/rhvoice.conf &> /dev/null;
+}
