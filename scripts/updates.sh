@@ -64,14 +64,13 @@ update 1811161939 && {
 
 update 1811191827 && {
     # Blacklist non-working bluetooth module;
-    echo "blacklist  btsdio" | sudo tee -a /etc/modules-load.d/bluetooth;
-    sudo modprobe -r bluetooth;
+    echo "blacklist  btsdio" | sudo tee -a /etc/modules-load.d/bluetooth &> /dev/null;
     # Disable bluetooth service;
-    sudo systemctl disable --now bluetooth;
+    sudo systemctl -q disable bluetooth;
     # Enable new bluetooth service;
-    sudo systemctl enable --now brcm43438.service;
+    sudo systemctl -q enable brcm43438.service;
     # Add RHVoice module to speech-dispatcher;
-    grep -q 'rhvoice\.conf' /etc/speech-dispatcher/speechd.conf || sudo sed -i 's/"espeak-mbrola-generic.conf"/"espeak-mbrola-generic.conf"\n AddModule "rhvoice"    "sd_rhvoice"  "rhvoice.conf"/' /etc/speech-dispatcher-speechd.conf;
+    grep -q 'rhvoice\.conf' /etc/speech-dispatcher/speechd.conf || sudo sed -i 's/"espeak-mbrola-generic\.conf"/"espeak-mbrola-generic.conf"\n AddModule "rhvoice"    "sd_rhvoice"  "rhvoice.conf"/' /etc/speech-dispatcher/speechd.conf;
     # Create placeholder file for RHVoice;
     echo '# Placeholder for the rhvoice module.' | sudo tee /etc/speech-dispatcher/modules/rhvoice.conf &> /dev/null;
 }
