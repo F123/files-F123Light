@@ -107,17 +107,10 @@ clear
 msgbox "$(gettext "You are updating your system, which may ask you for your password more than once. Don't be alarmed; this is perfectly normal. Press the enter key to continue.")"
 
 # Update all ALARM and F123 maintained packages on the system.
-infobox "$(gettext "Updating system software...")"
-if sudo pacman -Syu --print-format "%n"; then
-    mapfile -t softwareList < <(curl --connect-timeout 3 -fsL https://github.com/F123/F123Light/raw/${branch:-master}/build/package_lists/packages.list | sed -e 's/\([[:space:]a-zA-Z0-9_.\+-]*\).*/\1/g' -e 's/^ *//' -e 's/ .*//' -e '/\(^\s*[[:punct:]]\|^$\)/d')
-    if [[ "$softwareList" =~ \<*html* ]]; then
-        unset softwareList
-    fi
-    if test "${softwareList[1]}"; then
-        sudo pacman -Su --print-format "%n" |& grep -E "(linux|systemd)" && reboot="true"
-        yes | sudo pacman -Syu --noconfirm ${softwareList[@]} &> /dev/null
-    fi
-fi
+(sudo pacman -Sy &> /dev/null;
+    mapfile -t softwareList < <(pacman -Qu | cut -d ' ' -f1;curl --connect-timeout 3 -fsL https://github.com/F123/F123Light/raw/${branch:-master}/build/package_lists/packages.list | sed -e 's/\([[:space:]a-zA-Z0-9_.\+-]*\).*/\1/g' -e 's/^ *//' -e 's/ .*//' -e '/\(^\s*[[:punct:]]\|^$\)/d');
+    echo "${softwareList[@]}" | grep -q 'systemd\|linux' && reboot="true";
+    yes | sudo pacman -Su --noconfirm --noprogressbar --needed ${softwareList[@]} 2>&1 | grep -v 'is up to date -- skipping') | dialog --progressbox "$(gettext "Updating system software...")" 0 0
 clear
 
 infobox "$(gettext "Updating configuration and other files...")"
