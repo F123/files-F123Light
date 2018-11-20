@@ -54,7 +54,7 @@ reboot_prompt () {
     key=$(yesno "$(gettext "Your system has been updated. Although usually not necessary, it may help to reboot. Would you like to do this now? Press enter to reboot, or escape to finish the update without rebooting.")")
         case $key in
             "Yes")
-                systemctl reboot
+                sudo systemctl reboot
             ;;
             "No")
             ;;
