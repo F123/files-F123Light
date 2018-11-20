@@ -31,17 +31,17 @@ for i in /usr/lib/F123-includes/*.sh ; do
 done
 
 set_password_with_text() {
-local passOne="one"
-local passTwo="two"
-while [[ "$passOne" != "$passTwo" ]]; do
-echo
-read -ep "$(eval_gettext "Enter password for $1: ")" passOne
-read -ep "$(eval_gettext "Enter password for $1 again: ")" passTwo
-if [[ "$passOne" != "$passTwo" ]]; then
-echo "$(gettext "Passwords do not match")"
-fi
-done
-echo "$1:$passOne" | chpasswd
+    local passOne="one"
+    local passTwo="two"
+    while [[ "$passOne" != "$passTwo" ]]; do
+        echo
+        read -ep "$(eval_gettext "Enter password for $1: ")" passOne
+        read -ep "$(eval_gettext "Enter password for $1 again: ")" passTwo
+        if [[ "$passOne" != "$passTwo" ]]; then
+            echo "$(gettext "Passwords do not match")"
+        fi
+    done
+    echo "$1:$passOne" | $sudo chpasswd
 }
 
 # Provide possibility for setting passwords using plain text and readline navigation.
@@ -50,7 +50,7 @@ showPasswords="$(yesno "$(gettext "Do you want speech feedback when setting pass
 userName="$(menulist $(awk -F':' '{ if ( $3 >= 1000 && $3 <= 60000 && $7 != "/sbin/nologin" && $7 != "/bin/false" ) print $1 $1 " " $1; }' /etc/passwd) Cancel cancel)"
 # Check for cancelation conditions.
 if [[ "$userName" == "Cancel" || -z "$userName" ]]; then
-exit 0
+    exit 0
 fi
 # Find out if we need sudo access to change the password
 unset sudo
@@ -59,8 +59,12 @@ sudo="sudo"
 fi
 # If we don't have to provide plain text, just let the system do it's thing.
 if [[ "$showPasswords" != "Yes" ]]; then
-passwd $userName
+    if [[ "$userName" == "$USER" ]]; then
+        passwd
+    else
+        sudo passwd $userName
+    fi
 else
-set_password_with_text $userName
+    set_password_with_text $userName
 fi
 exit 0
