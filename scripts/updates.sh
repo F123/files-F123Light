@@ -70,7 +70,7 @@ update 1811191827 && {
     # Enable new bluetooth service;
     sudo systemctl -q enable brcm43438.service;
     # Add RHVoice module to speech-dispatcher;
-    grep -q 'rhvoice\.conf' /etc/speech-dispatcher/speechd.conf || sudo sed -i 's/"espeak-mbrola-generic\.conf"/"espeak-mbrola-generic.conf"\n AddModule "rhvoice"    "sd_rhvoice"  "rhvoice.conf"/' /etc/speech-dispatcher/speechd.conf;
+    grep -q 'rhvoice.conf' /etc/speech-dispatcher/speechd.conf || sudo sed -i 's/"espeak-mbrola-generic\.conf"/"espeak-mbrola-generic.conf"\n AddModule "rhvoice"    "sd_rhvoice"  "rhvoice.conf"/' /etc/speech-dispatcher/speechd.conf;
     # Create placeholder file for RHVoice;
     echo '# Placeholder for the rhvoice module.' | sudo tee /etc/speech-dispatcher/modules/rhvoice.conf &> /dev/null;
 }
